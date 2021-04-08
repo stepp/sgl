@@ -1,0 +1,9 @@
+#ifndef _SGL_BUILD_H
+#define _SGL_BUILD_H
+
+#define SGL_VERSION \"$$SGL_VERSION\"
+#define SGL_INSTALL_LOCATION \"$$INSTALLED_LOCATION\"
+#define SGL_BUILD_DATE \"$$_DATE_\"
+#define SGL_BUILD_USER \"$$(USER)\"
+
+#endif // _SGL_BUILD_H

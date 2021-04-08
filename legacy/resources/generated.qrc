@@ -1,0 +1,20 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+<file alias="about">images/about.gif</file>
+<file alias="background_color">images/background_color.gif</file>
+<file alias="clear_console">images/clear_console.gif</file>
+<file alias="compare_output">images/compare_output.gif</file>
+<file alias="copy">images/copy.gif</file>
+<file alias="cut">images/cut.gif</file>
+<file alias="font">images/font.gif</file>
+<file alias="load_input_script">images/load_input_script.gif</file>
+<file alias="paste">images/paste.gif</file>
+<file alias="print">images/print.gif</file>
+<file alias="quit">images/quit.gif</file>
+<file alias="save">images/save.gif</file>
+<file alias="save_as">images/save_as.gif</file>
+<file alias="select_all">images/select_all.gif</file>
+<file alias="text_color">images/text_color.gif</file>
+<file alias="splicon-large">images/splicon-large.png</file>
+</qresource>
+</RCC>

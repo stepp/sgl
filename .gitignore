@@ -30,3 +30,20 @@
 *.exe
 *.out
 *.app
+
+# Qt Creator files
+*.pro.user
+
+# Visual Studio Code files
+.vscode/
+
+# IntelliJ files
+.idea/
+
+# executable files
+build/
+local/
+sgl-project
+sgl-project.exe
+sgl-lib
+sgl-lib.exe
