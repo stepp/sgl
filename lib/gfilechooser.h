@@ -34,6 +34,8 @@ public:
     /**
      * Pops up a file "Open" chooser dialog with the given top title text,
      * current directory, and file filter.  All arguments are optional.
+     * @param title text to show on the top title bar of the dialog
+     * @param currentDir directory to show initially in the file chooser (defaults to current working directory)
      * @param fileFilter a file filter string such as "*.gif,*.jpg,*.png".
      */
     static std::string showOpenDialog(const std::string& title = "Open file", const std::string& currentDir = "", const std::string& fileFilter = "");
@@ -41,6 +43,9 @@ public:
     /**
      * Pops up a file "Open" chooser dialog with the given top title text,
      * current directory, and file filter.  All arguments are optional.
+     * @param parent graphical window to use as this dialog's parent (modal)
+     * @param title text to show on the top title bar of the dialog
+     * @param currentDir directory to show initially in the file chooser (defaults to current working directory)
      * @param fileFilter a file filter string such as "*.gif,*.jpg,*.png".
      */
     static std::string showOpenDialog(GWindow* parent, const std::string& title = "Open file", const std::string& currentDir = "", const std::string& fileFilter = "");
@@ -48,6 +53,9 @@ public:
     /**
      * Pops up a file "Open" chooser dialog with the given top title text,
      * current directory, and file filter.  All arguments are optional.
+     * @param parent graphical widget to use as this dialog's parent
+     * @param title text to show on the top title bar of the dialog
+     * @param currentDir directory to show initially in the file chooser (defaults to current working directory)
      * @param fileFilter a file filter string such as "*.gif,*.jpg,*.png".
      */
     static std::string showOpenDialog(QWidget* parent, const std::string& title = "Open file", const std::string& currentDir = "", const std::string& fileFilter = "");
@@ -63,6 +71,8 @@ public:
      * If the user chooses the name of a file that already exists, they will
      * be prompted to overwrite this file.  If they choose No, the dialog will
      * remain up; if they choose Yes, it will close.
+     * @param title text to show on the top title bar of the dialog
+     * @param currentDir directory to show initially in the file chooser (defaults to current working directory)
      * @param fileFilter a file filter string such as "*.gif,*.jpg,*.png".
      */
     static std::string showSaveDialog(const std::string& title = "Save file", const std::string& currentDir = "", const std::string& fileFilter = "");
@@ -78,6 +88,9 @@ public:
      * If the user chooses the name of a file that already exists, they will
      * be prompted to overwrite this file.  If they choose No, the dialog will
      * remain up; if they choose Yes, it will close.
+     * @param parent graphical window to use as this dialog's parent (modal)
+     * @param title text to show on the top title bar of the dialog
+     * @param currentDir directory to show initially in the file chooser (defaults to current working directory)
      * @param fileFilter a file filter string such as "*.gif,*.jpg,*.png".
      */
     static std::string showSaveDialog(GWindow* parent, const std::string& title = "Save file", const std::string& currentDir = "", const std::string& fileFilter = "");
@@ -93,6 +106,9 @@ public:
      * If the user chooses the name of a file that already exists, they will
      * be prompted to overwrite this file.  If they choose No, the dialog will
      * remain up; if they choose Yes, it will close.
+     * @param parent graphical widget to use as this dialog's parent
+     * @param title text to show on the top title bar of the dialog
+     * @param currentDir directory to show initially in the file chooser (defaults to current working directory)
      * @param fileFilter a file filter string such as "*.gif,*.jpg,*.png".
      */
     static std::string showSaveDialog(QWidget* parent, const std::string& title = "Save file", const std::string& currentDir = "", const std::string& fileFilter = "");
@@ -111,6 +127,7 @@ private:
     /*
      * Converts between our comma-separated file filter format to the one
      * used by Qt that uses ;; as its separator.
+     * @param fileFilter a file filter string such as "*.gif,*.jpg,*.png".
      */
     static std::string normalizeFileFilter(const std::string& fileFilter);
 };

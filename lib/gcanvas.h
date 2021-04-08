@@ -280,10 +280,8 @@ public:
      */
     void draw(GObject* gobj) override;
 
-    /**
-     * @inherit
-     * @private
-     */
+    /* @private */
+    /* @inherit */
     void draw(QPainter* painter) override;
 
     /**

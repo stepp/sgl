@@ -5,7 +5,6 @@
  */
 
 #include <iostream>
-#include <vector>
 #include "console.h"
 #include "gwindow.h"
 using namespace std;

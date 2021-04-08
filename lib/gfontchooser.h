@@ -39,6 +39,7 @@ public:
     /**
      * Pops up a font chooser dialog with the given top title text
      * and the given initially selected font.  All arguments are optional.
+     * @param title text to show on the top title bar of the dialog
      * @param initialFont a font string such as "Helvetica-12-Bold".
      */
     static std::string showDialog(const std::string& title = "", const std::string& initialFont = "");
@@ -46,6 +47,8 @@ public:
     /**
      * Pops up a font chooser dialog with the given top title text
      * and the given initially selected font.  All arguments are optional.
+     * @param parent graphical window to use as this dialog's parent (modal)
+     * @param title text to show on the top title bar of the dialog
      * @param initialFont a font string such as "Helvetica-12-Bold".
      */
     static std::string showDialog(GWindow* parent, const std::string& title = "", const std::string& initialFont = "");
@@ -53,6 +56,8 @@ public:
     /**
      * Pops up a font chooser dialog with the given top title text
      * and the given initially selected font.  All arguments are optional.
+     * @param parent graphical widget to use as this dialog's parent
+     * @param title text to show on the top title bar of the dialog
      * @param initialFont a font string such as "Helvetica-12-Bold".
      */
     static std::string showDialog(QWidget* parent, const std::string& title = "", const std::string& initialFont = "");

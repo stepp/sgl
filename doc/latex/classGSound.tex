@@ -1,0 +1,155 @@
+\hypertarget{classGSound}{}\section{G\+Sound Class Reference}
+\label{classGSound}\index{G\+Sound@{G\+Sound}}
+
+
+~\newline
+ This class encapsulates a sound file.  
+
+
+
+
+{\ttfamily \#include $<$gsound.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGSound_a981dcd44480101dbeb769d9fb93ef9b2}{G\+Sound}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Creates a {\ttfamily Sound} object by reading in the contents of the specified file or U\+RL. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classGSound_a417fb21fbcfa4b731a58854dd4005da7}{$\sim$\+G\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Frees the memory associated with the sound. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGSound_a6d58098c6cf63c241ed03bc797256bb1}{play}} ()
+\begin{DoxyCompactList}\small\item\em Starts playing the sound. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static long \mbox{\hyperlink{classGSound_affcaa1708a828c64648b58bd21223235}{get\+Duration}} ()
+\begin{DoxyCompactList}\small\item\em Returns the duration of the sound clip that is currently playing. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classGSound_aac9746ddc550ec176b0957affafbdbe7}{get\+Volume}} ()
+\begin{DoxyCompactList}\small\item\em Returns the overall audio volume from 0 (silence) to 100 (full volume). \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classGSound_a7167f5c196fc5e167bfabde1a730e81d}{pause}} ()
+\begin{DoxyCompactList}\small\item\em Pauses playing the sound, if it is playing. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classGSound_a33b24517799bad56a19cfe26b3f962ae}{play\+Sound}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Starts playing the sound if not playing, or unpauses if paused. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classGSound_a6715d5315d47c73b3838f2cb771e7b58}{set\+Volume}} (int volume)
+\begin{DoxyCompactList}\small\item\em Sets the overall audio volume from 0 (silence) to 100 (full volume). \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classGSound_a8c528baf37154d347366083f0f816846}{stop}} ()
+\begin{DoxyCompactList}\small\item\em Stops playing the sound, if it is playing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+~\newline
+ This class encapsulates a sound file. 
+
+The sound file is specified in the constructor and must be a file in either the current directory or a subdirectory named {\ttfamily sounds}.
+
+The following code, for example, plays the sound file {\ttfamily ringtone.\+wav}\+:
+
+
+\begin{DoxyPre}
+     \mbox{\hyperlink{classGSound}{GSound}} ringtone("ringtone.wav");
+     ringtone.play();
+*\end{DoxyPre}
+
+
+You can also use the static {\ttfamily play\+Sound} method\+:
+
+
+\begin{DoxyPre}
+     \mbox{\hyperlink{classGSound_a33b24517799bad56a19cfe26b3f962ae}{GSound::playSound}}("ringtone.wav");
+*\end{DoxyPre}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGSound_a981dcd44480101dbeb769d9fb93ef9b2}\label{classGSound_a981dcd44480101dbeb769d9fb93ef9b2}} 
+\index{G\+Sound@{G\+Sound}!G\+Sound@{G\+Sound}}
+\index{G\+Sound@{G\+Sound}!G\+Sound@{G\+Sound}}
+\subsubsection{\texorpdfstring{G\+Sound()}{GSound()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGSound}{G\+Sound}} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Creates a {\ttfamily Sound} object by reading in the contents of the specified file or U\+RL. 
+
+\mbox{\Hypertarget{classGSound_a417fb21fbcfa4b731a58854dd4005da7}\label{classGSound_a417fb21fbcfa4b731a58854dd4005da7}} 
+\index{G\+Sound@{G\+Sound}!````~G\+Sound@{$\sim$\+G\+Sound}}
+\index{````~G\+Sound@{$\sim$\+G\+Sound}!G\+Sound@{G\+Sound}}
+\subsubsection{\texorpdfstring{$\sim$\+G\+Sound()}{~GSound()}}
+{\footnotesize\ttfamily $\sim$\mbox{\hyperlink{classGSound}{G\+Sound}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Frees the memory associated with the sound. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classGSound_affcaa1708a828c64648b58bd21223235}\label{classGSound_affcaa1708a828c64648b58bd21223235}} 
+\index{G\+Sound@{G\+Sound}!get\+Duration@{get\+Duration}}
+\index{get\+Duration@{get\+Duration}!G\+Sound@{G\+Sound}}
+\subsubsection{\texorpdfstring{get\+Duration()}{getDuration()}}
+{\footnotesize\ttfamily long get\+Duration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns the duration of the sound clip that is currently playing. 
+
+If no clip is playing, returns 0. \mbox{\Hypertarget{classGSound_aac9746ddc550ec176b0957affafbdbe7}\label{classGSound_aac9746ddc550ec176b0957affafbdbe7}} 
+\index{G\+Sound@{G\+Sound}!get\+Volume@{get\+Volume}}
+\index{get\+Volume@{get\+Volume}!G\+Sound@{G\+Sound}}
+\subsubsection{\texorpdfstring{get\+Volume()}{getVolume()}}
+{\footnotesize\ttfamily int get\+Volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns the overall audio volume from 0 (silence) to 100 (full volume). 
+
+The default volume is 100. \mbox{\Hypertarget{classGSound_a7167f5c196fc5e167bfabde1a730e81d}\label{classGSound_a7167f5c196fc5e167bfabde1a730e81d}} 
+\index{G\+Sound@{G\+Sound}!pause@{pause}}
+\index{pause@{pause}!G\+Sound@{G\+Sound}}
+\subsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily void pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pauses playing the sound, if it is playing. 
+
+If paused, calling \mbox{\hyperlink{classGSound_a6d58098c6cf63c241ed03bc797256bb1}{play()}} again will unpause. \mbox{\Hypertarget{classGSound_a6d58098c6cf63c241ed03bc797256bb1}\label{classGSound_a6d58098c6cf63c241ed03bc797256bb1}} 
+\index{G\+Sound@{G\+Sound}!play@{play}}
+\index{play@{play}!G\+Sound@{G\+Sound}}
+\subsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily void play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Starts playing the sound. 
+
+This call returns immediately without waiting for the sound to finish. \mbox{\Hypertarget{classGSound_a33b24517799bad56a19cfe26b3f962ae}\label{classGSound_a33b24517799bad56a19cfe26b3f962ae}} 
+\index{G\+Sound@{G\+Sound}!play\+Sound@{play\+Sound}}
+\index{play\+Sound@{play\+Sound}!G\+Sound@{G\+Sound}}
+\subsubsection{\texorpdfstring{play\+Sound()}{playSound()}}
+{\footnotesize\ttfamily void play\+Sound (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Starts playing the sound if not playing, or unpauses if paused. 
+
+This call returns immediately without waiting for the sound to finish. \mbox{\Hypertarget{classGSound_a6715d5315d47c73b3838f2cb771e7b58}\label{classGSound_a6715d5315d47c73b3838f2cb771e7b58}} 
+\index{G\+Sound@{G\+Sound}!set\+Volume@{set\+Volume}}
+\index{set\+Volume@{set\+Volume}!G\+Sound@{G\+Sound}}
+\subsubsection{\texorpdfstring{set\+Volume()}{setVolume()}}
+{\footnotesize\ttfamily void set\+Volume (\begin{DoxyParamCaption}\item[{int}]{volume }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets the overall audio volume from 0 (silence) to 100 (full volume). 
+
+The default volume is 100. \mbox{\Hypertarget{classGSound_a8c528baf37154d347366083f0f816846}\label{classGSound_a8c528baf37154d347366083f0f816846}} 
+\index{G\+Sound@{G\+Sound}!stop@{stop}}
+\index{stop@{stop}!G\+Sound@{G\+Sound}}
+\subsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Stops playing the sound, if it is playing. 
+

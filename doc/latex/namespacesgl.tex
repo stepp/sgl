@@ -1,0 +1,92 @@
+\hypertarget{namespacesgl}{}\section{sgl Namespace Reference}
+\label{namespacesgl}\index{sgl@{sgl}}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacesgl_1_1qtgui}{qtgui}}
+\item 
+ \mbox{\hyperlink{namespacesgl_1_1version}{version}}
+\end{DoxyCompactItemize}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Console\+Streambuf}
+\item 
+class {\bfseries Echo\+Input\+Streambuf}
+\item 
+class {\bfseries Forwarding\+Streambuf}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespacesgl_a5bb1fbda6b82680cc8f04064e55a85c6}{exit\+Enabled}} ()
+\begin{DoxyCompactList}\small\item\em Returns true if the std\+::exit function is enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_ab36f2e19ed11765f2b025cc8e4636010}{initialize\+Library}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Initializes the S\+GL C++ library. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_aa826ed0038c35ea532e22c6c0a4e6036}{initialize\+Student\+Thread}} ()
+\begin{DoxyCompactList}\small\item\em This is for any initialization that needs to be done in the student\textquotesingle{}s thread rather than on the Qt G\+UI main thread. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_afa57f85846177bb4ed2b4b12fa8a758d}{set\+Exit\+Enabled}} (bool enabled)
+\begin{DoxyCompactList}\small\item\em Sets whether the std\+::exit function will be enabled or not. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_a2937cb1c4385064875d0cb29fcdfeae6}{shutdown\+Library}} ()
+\begin{DoxyCompactList}\small\item\em Shuts down the S\+GL C++ library. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_ad119146bad8508df277e3f629d26284d}{student\+Thread\+Has\+Exited}} (const std\+::string \&reason)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacesgl_a5bb1fbda6b82680cc8f04064e55a85c6}\label{namespacesgl_a5bb1fbda6b82680cc8f04064e55a85c6}} 
+\index{sgl@{sgl}!exit\+Enabled@{exit\+Enabled}}
+\index{exit\+Enabled@{exit\+Enabled}!sgl@{sgl}}
+\subsubsection{\texorpdfstring{exit\+Enabled()}{exitEnabled()}}
+{\footnotesize\ttfamily bool exit\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns true if the std\+::exit function is enabled. 
+
+This will be true unless disabled by, say, an autograder. \mbox{\Hypertarget{namespacesgl_ab36f2e19ed11765f2b025cc8e4636010}\label{namespacesgl_ab36f2e19ed11765f2b025cc8e4636010}} 
+\index{sgl@{sgl}!initialize\+Library@{initialize\+Library}}
+\index{initialize\+Library@{initialize\+Library}!sgl@{sgl}}
+\subsubsection{\texorpdfstring{initialize\+Library()}{initializeLibrary()}}
+{\footnotesize\ttfamily void initialize\+Library (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Initializes the S\+GL C++ library. 
+
+A call to this function is inserted before the student\textquotesingle{}s main() runs. This should be run from the Qt G\+UI (main) thread. \mbox{\Hypertarget{namespacesgl_aa826ed0038c35ea532e22c6c0a4e6036}\label{namespacesgl_aa826ed0038c35ea532e22c6c0a4e6036}} 
+\index{sgl@{sgl}!initialize\+Student\+Thread@{initialize\+Student\+Thread}}
+\index{initialize\+Student\+Thread@{initialize\+Student\+Thread}!sgl@{sgl}}
+\subsubsection{\texorpdfstring{initialize\+Student\+Thread()}{initializeStudentThread()}}
+{\footnotesize\ttfamily void initialize\+Student\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This is for any initialization that needs to be done in the student\textquotesingle{}s thread rather than on the Qt G\+UI main thread. 
+
+Currently this is used primarily to set up exception handlers for the student\textquotesingle{}s thread to catch and report errors. \mbox{\Hypertarget{namespacesgl_afa57f85846177bb4ed2b4b12fa8a758d}\label{namespacesgl_afa57f85846177bb4ed2b4b12fa8a758d}} 
+\index{sgl@{sgl}!set\+Exit\+Enabled@{set\+Exit\+Enabled}}
+\index{set\+Exit\+Enabled@{set\+Exit\+Enabled}!sgl@{sgl}}
+\subsubsection{\texorpdfstring{set\+Exit\+Enabled()}{setExitEnabled()}}
+{\footnotesize\ttfamily void set\+Exit\+Enabled (\begin{DoxyParamCaption}\item[{bool}]{enabled }\end{DoxyParamCaption})}
+
+
+
+Sets whether the std\+::exit function will be enabled or not. 
+
+If disabled, an error() will be thrown if student tries to exit(). \mbox{\Hypertarget{namespacesgl_a2937cb1c4385064875d0cb29fcdfeae6}\label{namespacesgl_a2937cb1c4385064875d0cb29fcdfeae6}} 
+\index{sgl@{sgl}!shutdown\+Library@{shutdown\+Library}}
+\index{shutdown\+Library@{shutdown\+Library}!sgl@{sgl}}
+\subsubsection{\texorpdfstring{shutdown\+Library()}{shutdownLibrary()}}
+{\footnotesize\ttfamily void shutdown\+Library (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Shuts down the S\+GL C++ library. 
+
+A call to this function is inserted after the student\textquotesingle{}s main(). \mbox{\Hypertarget{namespacesgl_ad119146bad8508df277e3f629d26284d}\label{namespacesgl_ad119146bad8508df277e3f629d26284d}} 
+\index{sgl@{sgl}!student\+Thread\+Has\+Exited@{student\+Thread\+Has\+Exited}}
+\index{student\+Thread\+Has\+Exited@{student\+Thread\+Has\+Exited}!sgl@{sgl}}
+\subsubsection{\texorpdfstring{student\+Thread\+Has\+Exited()}{studentThreadHasExited()}}
+{\footnotesize\ttfamily void student\+Thread\+Has\+Exited (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reason }\end{DoxyParamCaption})}
+

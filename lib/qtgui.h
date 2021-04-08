@@ -26,9 +26,9 @@
 
 class GWindow;
 
-class QSPLApplication : public QApplication {
+class QSGLApplication : public QApplication {
 public:
-    QSPLApplication(int& argc, char *argv[]);
+    QSGLApplication(int& argc, char *argv[]);
     bool notify(QObject* receiver, QEvent* e) override;
 };
 
@@ -112,13 +112,13 @@ private:
      * Returns a pointer to the overall Qt application.
      * This will be null if the application has not yet been initialized.
      */
-    QSPLApplication* getApplication();
+    QSGLApplication* getApplication();
 
     bool _initialized;
     int _argc;
     char** _argv;
 
-    static QSPLApplication* _app;
+    static QSGLApplication* _app;
     static QThread* _qtGuiThread;
     static GThread* _studentThread;
     static QtGui* _instance;
