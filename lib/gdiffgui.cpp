@@ -20,12 +20,15 @@
  */
 
 #include "gdiffgui.h"
+#include <cctype>
 #include <iostream>
 #include <vector>
 #include <QScrollBar>
+#include <sstream>
 #include <string>
 #include "consoletext.h"
 #include "gthread.h"
+#include "privatestrlib.h"
 
 namespace sgl {
 

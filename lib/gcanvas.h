@@ -5,6 +5,7 @@
  * @author Marty Stepp
  * @version 2021/04/09
  * - added sgl namespace
+ * - converted Grid functionality to 2D array/vector
  * @version 2019/05/01
  * - added createArgbPixel
  * - bug fixes related to save / setPixels with alpha transparency
@@ -25,13 +26,13 @@
 #define _gcanvas_h
 
 #include <string>
+#include <vector>
 #include <QtEvents>
 #include <QPainter>
 #include "gdrawingsurface.h"
 #include "gevent.h"
 #include "ginteractor.h"
 #include "gobjects.h"
-#include "grid.h"
 
 // default color used to highlight pixels that do not match between two images
 #define GCANVAS_DEFAULT_DIFF_PIXEL_COLOR 0xdd00dd
@@ -52,8 +53,8 @@ class _Internal_QCanvas;
  * lines, rectangles, and ovals on the background layer.
  *
  * The setPixel and setPixels methods manipulate the color of pixels in the
- * background layer.  You can get all of the pixels as a Grid using getPixels,
- * modify the grid, then pass it back in using setPixels, to perform 2D
+ * background layer.  You can get all of the pixels as a 2D array using getPixels,
+ * modify the array, then pass it back in using setPixels, to perform 2D
  * pixel-based manipulations on the canvas.
  *
  * 2) The foreground layer provides an abstraction for adding stateful shapes and
@@ -335,15 +336,6 @@ public:
      */
     virtual void flatten();
 
-    /**
-     * Replaces the entire contents of the background layer of the canvas with
-     * the contents of the given grid of RGB pixel values.
-     * If this image is not the same size as the grid, the image is resized.
-     * Any previous background layer contents are lost.
-     * Equivalent to getPixels.
-     */
-    virtual void fromGrid(const ::sgl::collections::Grid<int>& grid);
-
     /* @inherit */
     std::string getBackground() const override;
 
@@ -390,8 +382,8 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixels to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
-     * then call setPixels to submit all of your changes.
+     * all pixels into a 2D array, then manipulate all desired pixels in that
+     * array, then call setPixels to submit all of your changes.
      *
      * @throw ErrorException if the given x/y values are out of bounds.
      */
@@ -406,29 +398,50 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixels to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
-     * then call setPixels to submit all of your changes.
+     * all pixels into a 2D array, then manipulate all desired pixels in that
+     * array, then call setPixels to submit all of your changes.
      *
      * @throw ErrorException if the given x/y values are out of bounds.
      */
     int getPixelARGB(double x, double y) const override;
 
     /**
-     * Returns all pixels of the background layer of the canvas as a Grid,
-     * where rows represent y values and columns represent x values.
-     * So for example, grid[y][x] returns the RGB int value at that pixel.
-     * Equivalent to toGrid.
+     * Returns all pixels of the surface as a nested STL vector of vectors,
+     * where the first index represents the x value and the second index
+     * represents the y value.
      */
-    ::sgl::collections::Grid<int> getPixels() const override;
+    virtual std::vector<std::vector<int>> getPixels() const override;
 
     /**
-     * Returns all pixels of the background layer of the canvas as a Grid,
-     * where rows represent y values and columns represent x values.
+     * Returns all pixels of the background layer of the canvas as a heap-allocated 2D array,
+     * where the first index represents the x value and the second index
+     * represents the y value.
+     * So for example, pixels[x][y] returns the RGB int value at that pixel.
+     * The caller is responsible for freeing the memory for this array using delete[].
+     */
+    int** getPixelsArray() const override;
+
+    /**
+     * Returns all pixels of the background layer of the canvas as a nested STL
+     * vector of vectors, where the first index represents the x value and the
+     * second index represents the y value.
      * This differs from getPixels in that it explicitly retains and returns
      * the alpha channel of each pixel in the top 8 bits, allowing for
      * transparency effects.
      */
-    ::sgl::collections::Grid<int> getPixelsARGB() const override;
+    virtual std::vector<std::vector<int>> getPixelsARGB() const override;
+
+    /**
+     * Returns all pixels of the background layer of the canvas as a heap-allocated 2D array,
+     * where the first index represents the x value and the second index
+     * represents the y value.
+     * So for example, pixels[x][y] returns the ARGB int value at that pixel.
+     * This differs from getPixelsArray in that it explicitly retains and returns
+     * the alpha channel of each pixel in the top 8 bits, allowing for
+     * transparency effects.
+     * The caller is responsible for freeing the memory for this array using delete[].
+     */
+    int** getPixelsArrayARGB() const override;
 
     /* @inherit */
     std::string getType() const override;
@@ -558,8 +571,8 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixels to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
-     * then call setPixels to submit all of your changes.
+     * all pixels into a 2D array, then manipulate all desired pixels in that
+     * array, then call setPixels to submit all of your changes.
      *
      * @throw ErrorException if x/y is out of range or rgb is an invalid color
      */
@@ -571,8 +584,8 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixels to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
-     * then call setPixels to submit all of your changes.
+     * all pixels into a 2D array, then manipulate all desired pixels in that
+     * array, then call setPixels to submit all of your changes.
      *
      * @throw ErrorException if x/y is out of range or r,g,b are not between 0-255
      */
@@ -584,8 +597,8 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixelsARGB to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
-     * then call setPixelsARGB to submit all of your changes.
+     * all pixels into a 2D array, then manipulate all desired pixels in that
+     * array, then call setPixelsARGB to submit all of your changes.
      *
      * @throw ErrorException if x/y is out of range or argb is an invalid color
      */
@@ -597,8 +610,8 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixelsARGB to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
-     * then call setPixelsARGB to submit all of your changes.
+     * all pixels into a 2D array, then manipulate all desired pixels in that
+     * array, then call setPixelsARGB to submit all of your changes.
      *
      * @throw ErrorException if x/y is out of range or a,r,g,b are not between 0-255
      */
@@ -606,47 +619,48 @@ public:
 
     /**
      * Sets the color of the all pixels in the background layer of the
-     * canvas to the given RGB values, using rows as y-values and columns as
-     * x-values.  Any existing background layer pixels will be replaced.
-     * If the given grid is not the same size as this canvas, the canvas will
-     * be resized to match the grid.
-     * Equivalent to fromGrid.
+     * canvas to the given RGB values, where the first index represents the
+     * x-coordinate and the second index represents the y-coordinate.
+     * Any existing background layer pixels will be replaced.
+     * If the given array is not the same size as this canvas, the canvas will
+     * be resized to match the array.
      */
-    void setPixels(const ::sgl::collections::Grid<int>& pixels) override;
+    void setPixels(int** pixels, int width = -1, int height = -1) override;
 
     /**
      * Sets the color of the all pixels in the background layer of the
-     * canvas to the given ARGB values, using rows as y-values and columns as
-     * x-values.  Any existing background layer pixels will be replaced.
-     * If the given grid is not the same size as this canvas, the canvas will
-     * be resized to match the grid.
+     * canvas to the given RGB values, where the first index represents the
+     * x-coordinate and the second index represents the y-coordinate.
+     * Any existing background layer pixels will be replaced.
+     * If the given vector is not the same size as this interactor, the interactor
+     * will be resized to match the vector.
      */
-    void setPixelsARGB(const ::sgl::collections::Grid<int>& pixelsARGB) override;
+    virtual void setPixels(const std::vector<std::vector<int>>& pixels) override;
+
+    /**
+     * Sets the color of the all pixels in the background layer of the
+     * canvas to the given ARGB values, where the first index represents the
+     * x-coordinate and the second index represents the y-coordinate.
+     * Any existing background layer pixels will be replaced.
+     * If the given array is not the same size as this canvas, the canvas will
+     * be resized to match the array.
+     */
+    void setPixelsARGB(int** pixelsARGB, int width = -1, int height = -1) override;
+
+    /**
+     * Sets the color of the all pixels in the background layer of the
+     * canvas to the given ARGB values, where the first index represents the
+     * x-coordinate and the second index represents the y-coordinate.
+     * Any existing background layer pixels will be replaced.
+     * If the given grid is not the same size as this interactor, the interactor
+     * will be resized to match the grid.
+     */
+    virtual void setPixelsARGB(const std::vector<std::vector<int>>& pixelsARGB) override;
 
     /**
      * Converts the pixels of the canvas into a GImage object.
      */
     virtual GImage* toGImage() const;
-
-    /**
-     * Converts this canvas's pixel data into a grid of RGB pixels.
-     * The grid's first index is a row or y-index, and its second index
-     * is the column or x-index.
-     * So for example, grid[y][x] returns the RGB int value at that pixel.
-     * In this version of the method, the grid is returned.
-     * Equivalent to getPixels.
-     */
-    virtual ::sgl::collections::Grid<int> toGrid() const;
-
-    /**
-     * Converts this canvas's pixel data into a grid of RGB pixels.
-     * The grid's first index is a row or y-index, and its second index
-     * is the column or x-index.
-     * So for example, grid[y][x] returns the RGB int value at that pixel.
-     * In this version of the method, the grid is filled by reference.
-     * Equivalent to getPixels.
-     */
-    virtual void toGrid(::sgl::collections::Grid<int>& grid) const;
 
 private:
     Q_DISABLE_COPY(GCanvas)

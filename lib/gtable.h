@@ -28,13 +28,13 @@
 #include <QStyledItemDelegate>
 #include <QTableWidget>
 
-#include "grid.h"
 #include "ginteractor.h"
 #include "gobjects.h"
 #include "gtypes.h"
 
 namespace sgl {
 
+struct GTableIndex;
 class _Internal_QTableWidget;
 
 /**
@@ -151,7 +151,7 @@ public:
      * Returns the row and column of the cell that is currently selected.
      * Sets both row and column to -1 if no cell is currently selected.
      */
-    virtual ::sgl::collections::GridLocation getSelectedCell() const;
+    virtual GTableIndex getSelectedCell() const;
 
     /**
      * Returns the row and column of the cell that is currently selected
@@ -669,6 +669,51 @@ private:
 
     friend class GTable;
 };
+
+struct GTableIndex {
+public:
+
+    /*
+     * Constructs a location representing the given row and column.
+     * Any indexes are allowed, including negatives and out-of-bounds indexes.
+     */
+    GTableIndex(int row, int col);
+
+    /*
+     * Constructs a default location 0, 0.
+     */
+    GTableIndex();
+
+    /*
+     * Returns a string representation of this location, such as "r2c17".
+     */
+    std::string toString() const;
+
+    /* row and column data - may be directly accessed or modified */
+    int row;
+    int col;
+};
+
+/*
+ * Returns a string representation of this location, such as "r2c17".
+ */
+std::string to_string(const GTableIndex& value);
+
+/*
+ * Relational operators for comparing grid locations.
+ */
+bool operator <(const GTableIndex& loc1, const GTableIndex& loc2);
+bool operator <=(const GTableIndex& loc1, const GTableIndex& loc2);
+bool operator ==(const GTableIndex& loc1, const GTableIndex& loc2);
+bool operator !=(const GTableIndex& loc1, const GTableIndex& loc2);
+bool operator >(const GTableIndex& loc1, const GTableIndex& loc2);
+bool operator >=(const GTableIndex& loc1, const GTableIndex& loc2);
+
+/*
+ * I/O stream operators for reading or writing locations in their toString format.
+ */
+std::ostream& operator <<(std::ostream& out, const GTableIndex& loc);
+std::istream& operator >>(std::istream& input, GTableIndex& loc);
 
 } // namespace sgl
 

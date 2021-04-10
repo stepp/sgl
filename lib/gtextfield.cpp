@@ -31,6 +31,7 @@
 #include "gthread.h"
 #include "gwindow.h"
 #include "require.h"
+#include "privatestrlib.h"
 
 namespace sgl {
 
@@ -179,8 +180,8 @@ std::string GTextField::getValue() const {
 }
 
 bool GTextField::getValueAsBool() const {
-    std::string text = sgl::priv::strlib::trim(getText());
-    return sgl::priv::strlib::stringToBool(text);
+    std::string text = ::sgl::priv::strlib::trim(getText());
+    return ::sgl::priv::strlib::stringToBool(text);
 }
 
 char GTextField::getValueAsChar() const {
@@ -193,8 +194,8 @@ char GTextField::getValueAsChar() const {
 }
 
 double GTextField::getValueAsDouble() const {
-    std::string text = sgl::priv::strlib::trim(getText());
-    return sgl::priv::strlib::stringToDouble(text);
+    std::string text = ::sgl::priv::strlib::trim(getText());
+    return ::sgl::priv::strlib::stringToDouble(text);
 }
 
 int GTextField::getValueAsInt() const {
@@ -202,8 +203,8 @@ int GTextField::getValueAsInt() const {
 }
 
 int GTextField::getValueAsInteger() const {
-    std::string text = sgl::priv::strlib::trim(getText());
-    return sgl::priv::strlib::stringToInteger(text);
+    std::string text = ::sgl::priv::strlib::trim(getText());
+    return ::sgl::priv::strlib::stringToInteger(text);
 }
 
 QWidget* GTextField::getWidget() const {
@@ -355,11 +356,11 @@ void GTextField::setTextChangeListener(GEventListenerVoid func) {
 }
 
 void GTextField::setValue(bool value) {
-    setText(sgl::priv::strlib::boolToString(value));
+    setText(::sgl::priv::strlib::boolToString(value));
 }
 
 void GTextField::setValue(char value) {
-    setText(sgl::priv::strlib::charToString(value));
+    setText(::sgl::priv::strlib::charToString(value));
 }
 
 void GTextField::setValue(double value) {
@@ -375,7 +376,7 @@ void GTextField::setValue(const std::string& value) {
 }
 
 bool GTextField::valueIsBool() const {
-    return sgl::priv::strlib::stringIsBool(sgl::priv::strlib::trim(getText()));
+    return ::sgl::priv::strlib::stringIsBool(::sgl::priv::strlib::trim(getText()));
 }
 
 bool GTextField::valueIsChar() const {
@@ -383,11 +384,11 @@ bool GTextField::valueIsChar() const {
 }
 
 bool GTextField::valueIsDouble() const {
-    return sgl::priv::strlib::stringIsDouble(sgl::priv::strlib::trim(getText()));
+    return ::sgl::priv::strlib::stringIsDouble(::sgl::priv::strlib::trim(getText()));
 }
 
 bool GTextField::valueIsInt() const {
-    return sgl::priv::strlib::stringIsInteger(sgl::priv::strlib::trim(getText()));
+    return ::sgl::priv::strlib::stringIsInteger(::sgl::priv::strlib::trim(getText()));
 }
 
 bool GTextField::valueIsInteger() const {

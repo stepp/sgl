@@ -28,6 +28,7 @@
 #include <exception>
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 #include <QBrush>
 #include <QColor>
 #include <QHeaderView>
@@ -39,6 +40,7 @@
 #include "gevent.h"
 #include "gfont.h"
 #include "gthread.h"
+#include "privatestrlib.h"
 
 namespace sgl {
 
@@ -224,25 +226,25 @@ double GTable::getRowHeight(int row) const {
     return _iqtableview->rowHeight(row);
 }
 
-::sgl::collections::GridLocation GTable::getSelectedCell() const {
+GTableIndex GTable::getSelectedCell() const {
     QModelIndexList list = _iqtableview->selectionModel()->selectedIndexes();
     if (list.empty()) {
-        return ::sgl::collections::GridLocation(-1, -1);
+        return GTableIndex(-1, -1);
     } else {
         QModelIndex index = list.at(0);
-        return ::sgl::collections::GridLocation(index.row(), index.column());
+        return GTableIndex(index.row(), index.column());
     }
 }
 
 void GTable::getSelectedCell(int& row, int& column) const {
-    ::sgl::collections::GridLocation loc = getSelectedCell();
+    GTableIndex loc = getSelectedCell();
     row = loc.row;
     column = loc.col;
 }
 
 std::string GTable::getSelectedCellValue() const {
     if (hasSelectedCell()) {
-        ::sgl::collections::GridLocation loc = getSelectedCell();
+        GTableIndex loc = getSelectedCell();
         return get(loc.row, loc.col);
     } else {
         return "";
@@ -266,7 +268,7 @@ QWidget* GTable::getWidget() const {
 }
 
 bool GTable::hasSelectedCell() const {
-    ::sgl::collections::GridLocation loc = getSelectedCell();
+    GTableIndex loc = getSelectedCell();
     return loc.row >= 0 && loc.col >= 0;
 }
 
@@ -306,7 +308,7 @@ void GTable::requestFocus() {
     GInteractor::requestFocus();
     if (!wasEditing && hasSelectedCell()) {
         GThread::runOnQtGuiThread([this]() {
-            ::sgl::collections::GridLocation loc = getSelectedCell();
+            GTableIndex loc = getSelectedCell();
             _iqtableview->closePersistentEditor(_iqtableview->item(loc.row, loc.col));
         });
     }
@@ -757,7 +759,7 @@ void GTable::setRowHeight(int row, double height) {
 
 void GTable::setSelectedCellValue(const std::string& text) {
     if (hasSelectedCell()) {
-        ::sgl::collections::GridLocation loc = getSelectedCell();
+        GTableIndex loc = getSelectedCell();
         set(loc.row, loc.col, text);
     }
 }
@@ -790,7 +792,7 @@ std::string GTable::toExcelColumnName(int col) {
     std::string colStr;
     col = col + 1;   // 1-based
     while (col-- > 0) {
-        colStr = sgl::priv::strlib::charToString((char) ('A' + (col % 26))) + colStr;
+        colStr = ::sgl::priv::strlib::charToString((char) ('A' + (col % 26))) + colStr;
         col /= 26;
     }
     return colStr;
@@ -963,7 +965,7 @@ void _Internal_QTableWidget::keyPressEvent(QKeyEvent* event) {
     if (!wasEditing && event->key() == Qt::Key_Delete) {
         // clear data from selected cell
         if (_gtable->hasSelectedCell()) {
-            ::sgl::collections::GridLocation loc = _gtable->getSelectedCell();
+            GTableIndex loc = _gtable->getSelectedCell();
             _gtable->clearCell(loc.row, loc.col);
             return;
         }
@@ -979,7 +981,7 @@ void _Internal_QTableWidget::keyPressEvent(QKeyEvent* event) {
 
     if (GClipboard::isCut(event)) {
         // keyboard "cut" command; remove data from cell into clipboard
-        ::sgl::collections::GridLocation loc = _gtable->getSelectedCell();
+        GTableIndex loc = _gtable->getSelectedCell();
         std::string cellValue = _gtable->get(loc.row, loc.col);
         GClipboard::set(cellValue);
         _gtable->clearCell(loc.row, loc.col);
@@ -1029,6 +1031,103 @@ QSize _Internal_QTableWidget::sizeHint() const {
     } else {
         return QTableWidget::sizeHint();
     }
+}
+
+
+/*
+ * This file implements the members of the <code>GTableIndex</code> structure.
+ * See gtable.h for the declarations of each member.
+ *
+ * @version 2021/04/09
+ * - added sgl::collections namespace
+ * @version 2021/04/03
+ * - removed dependencies
+ * - removed hashCode
+ * - added to_string
+ * @version 2018/03/12
+ * - initial version
+ */
+
+GTableIndex::GTableIndex(int row, int col) {
+    this->row = row;
+    this->col = col;
+}
+
+GTableIndex::GTableIndex() : GTableIndex(0, 0) {}
+
+std::string GTableIndex::toString() const {
+    std::ostringstream out;
+    out << *this;
+    return out.str();
+}
+
+std::string to_string(const GTableIndex& value) {
+    return value.toString();
+}
+
+bool operator <(const GTableIndex& loc1, const GTableIndex& loc2) {
+    return loc1.row < loc2.row ||
+            (loc1.row == loc2.row && loc1.col < loc2.col);
+}
+
+bool operator <=(const GTableIndex& loc1, const GTableIndex& loc2) {
+    return loc1 < loc2 || loc1 == loc2;
+}
+
+bool operator ==(const GTableIndex& loc1, const GTableIndex& loc2) {
+    return loc1.row == loc2.row && loc1.col == loc2.col;
+}
+
+bool operator !=(const GTableIndex& loc1, const GTableIndex& loc2) {
+    return !(loc1 == loc2);
+}
+
+bool operator >(const GTableIndex& loc1, const GTableIndex& loc2) {
+    return loc2 < loc1;
+}
+
+bool operator >=(const GTableIndex& loc1, const GTableIndex& loc2) {
+    return !(loc1 < loc2);
+}
+
+std::ostream& operator <<(std::ostream& out, const GTableIndex& loc) {
+    return out << "r" << loc.row << "c" << loc.col;
+}
+
+std::istream& operator >>(std::istream& input, GTableIndex& loc) {
+    // read 'r'
+    char ch = '\0';
+    input >> ch;
+    if (!input || ch != 'r' ) {
+        input.setstate(std::ios_base::failbit);
+        return input;
+    }
+
+    // read row
+    int row;
+    if (!(input >> row)) {
+        input.setstate(std::ios_base::failbit);
+        return input;
+    }
+
+    // read 'c'
+    ch = input.get();
+    if (!input || ch != 'c') {
+        input.setstate(std::ios_base::failbit);
+        return input;
+    }
+
+    // read col
+    int col;
+    if (!(input >> col)) {
+        input.setstate(std::ios_base::failbit);
+        return input;
+    }
+
+    // success!
+    loc.row = row;
+    loc.col = col;
+    return input;
 }
 
 } // namespace sgl

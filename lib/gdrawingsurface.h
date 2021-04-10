@@ -5,6 +5,7 @@
  * @author Marty Stepp
  * @version 2021/04/09
  * - added sgl namespace
+ * - converted Grid functionality to 2D array/vector
  * @version 2018/09/10
  * - added doc comments for new documentation generation
  * @version 2018/08/23
@@ -18,11 +19,10 @@
 #define _gdrawingsurface_h
 
 #include <string>
+#include <vector>
 #include <QFont>
 #include <QWidget>
-
 #include "gobjects.h"
-#include "grid.h"
 #include "gtypes.h"
 
 namespace sgl {
@@ -378,19 +378,40 @@ public:
     virtual int getPixelARGB(double x, double y) const = 0;
 
     /**
-     * Returns all pixels of the surface as a Grid,
-     * where rows represent y values and columns represent x values.
+     * Returns all pixels of the surface as a nested STL vector of vectors,
+     * where the first index represents the x value and the second index
+     * represents the y value.
      */
-    virtual ::sgl::collections::Grid<int> getPixels() const = 0;
+    virtual std::vector<std::vector<int>> getPixels() const = 0;
 
     /**
-     * Returns all pixels of the background layer of the surface as a Grid,
-     * where rows represent y values and columns represent x values.
+     * Returns all pixels of the surface as a heap-allocated 2D array,
+     * where the first index represents the x value and the second index
+     * represents the y value.
+     * The caller is responsible for freeing the memory for this array using delete[].
+     */
+    virtual int** getPixelsArray() const = 0;
+
+    /**
+     * Returns all pixels of the background layer of the surface as a nested STL
+     * vector of vectors, where the first index represents the x value and the
+     * second index represents the y value.
      * This differs from getPixels in that it explicitly retains and returns
      * the alpha channel of each pixel in the top 8 bits, allowing for
      * transparency effects.
      */
-    virtual ::sgl::collections::Grid<int> getPixelsARGB() const = 0;
+    virtual std::vector<std::vector<int>> getPixelsARGB() const = 0;
+
+    /**
+     * Returns all pixels of the background layer of the surface as a heap-allocated
+     * 2D array, where the first index represents the x value and the
+     * second index represents the y value.
+     * This differs from getPixelsArray in that it explicitly retains and returns
+     * the alpha channel of each pixel in the top 8 bits, allowing for
+     * transparency effects.
+     * The caller is responsible for freeing the memory for this array using delete[].
+     */
+    virtual int** getPixelsArrayARGB() const = 0;
 
     /**
      * Returns the color of the pixel at the given x/y coordinates of the image
@@ -585,8 +606,8 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixels to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
-     * then call setPixels to submit all of your changes.
+     * all pixels into a nested vector, then manipulate all desired pixels in that
+     * vector, then call setPixels to submit all of your changes.
      * Equivalent to setRGB.
      *
      * @throw ErrorException if x/y is out of range or rgb is an invalid color
@@ -599,8 +620,8 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixels to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
-     * then call setPixels to submit all of your changes.
+     * all pixels into a nested vector, then manipulate all desired pixels in that
+     * vector, then call setPixels to submit all of your changes.
      * Equivalent to setRGB.
      *
      * @throw ErrorException if x/y is out of range or r,g,b are not between 0-255
@@ -613,8 +634,8 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixels to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
-     * then call setPixels to submit all of your changes.
+     * all pixels into a nested vector, then manipulate all desired pixels in that
+     * vector, then call setPixels to submit all of your changes.
      * Equivalent to setRGB.
      *
      * @throw ErrorException if x/y is out of range
@@ -627,8 +648,8 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixelsARGB to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
-     * then call setPixelsARGB to submit all of your changes.
+     * all pixels into a nested vector, then manipulate all desired pixels in that
+     * vector, then call setPixelsARGB to submit all of your changes.
      *
      * @throw ErrorException if x/y is out of range or argb is an invalid color
      */
@@ -640,8 +661,8 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixelsARGB to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
-     * then call setPixelsARGB to submit all of your changes.
+     * all pixels into a nested vector, then manipulate all desired pixels in that
+     * vector, then call setPixelsARGB to submit all of your changes.
      *
      * @throw ErrorException if x/y is out of range or a,r,g,b are not between 0-255
      */
@@ -649,21 +670,43 @@ public:
 
     /**
      * Sets the color of the all pixels in the background layer of the
-     * interactor to the given RGB values, using rows as y-values and columns as
-     * x-values.  Any existing background layer pixels will be replaced.
-     * If the given grid is not the same size as this interactor, the interactor
-     * will be resized to match the grid.
+     * interactor to the given RGB values, where the first index represents the
+     * x-coordinate and the second index represents the y-coordinate.
+     * Any existing background layer pixels will be replaced.
+     * If the given array is not the same size as this interactor, the interactor
+     * will be resized to match the array.
      */
-    virtual void setPixels(const ::sgl::collections::Grid<int>& pixels) = 0;
+    virtual void setPixels(int** pixels, int width = -1, int height = -1) = 0;
 
     /**
      * Sets the color of the all pixels in the background layer of the
-     * interactor to the given ARGB values, using rows as y-values and columns as
-     * x-values.  Any existing background layer pixels will be replaced.
-     * If the given grid is not the same size as this interactor, the interactor
-     * will be resized to match the grid.
+     * interactor to the given RGB values, where the first index represents the
+     * x-coordinate and the second index represents the y-coordinate.
+     * Any existing background layer pixels will be replaced.
+     * If the given vector is not the same size as this interactor, the interactor
+     * will be resized to match the vector.
      */
-    virtual void setPixelsARGB(const ::sgl::collections::Grid<int>& pixelsARGB) = 0;
+    virtual void setPixels(const std::vector<std::vector<int>>& pixels) = 0;
+
+    /**
+     * Sets the color of the all pixels in the background layer of the
+     * interactor to the given ARGB values, where the first index represents the
+     * x-coordinate and the second index represents the y-coordinate.
+     * Any existing background layer pixels will be replaced.
+     * If the given array is not the same size as this interactor, the interactor
+     * will be resized to match the array.
+     */
+    virtual void setPixelsARGB(int** pixelsARGB, int width = -1, int height = -1) = 0;
+
+    /**
+     * Sets the color of the all pixels in the background layer of the
+     * interactor to the given ARGB values, where the first index represents the
+     * x-coordinate and the second index represents the y-coordinate.
+     * Any existing background layer pixels will be replaced.
+     * If the given vector is not the same size as this interactor, the interactor
+     * will be resized to match the vector.
+     */
+    virtual void setPixelsARGB(const std::vector<std::vector<int>>& pixelsARGB) = 0;
 
     /**
      * Sets whether the interactor should repaint itself automatically whenever
@@ -682,7 +725,7 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixels to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
+     * all pixels into a vector, then manipulate all desired pixels in that vector,
      * then call setPixels to submit all of your changes.
      * Equivalent to setPixel.
      *
@@ -696,7 +739,7 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixels to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
+     * all pixels into a vector, then manipulate all desired pixels in that vector,
      * then call setPixels to submit all of your changes.
      * Equivalent to setPixel.
      *
@@ -710,7 +753,7 @@ public:
      *
      * Note that if you are planning to set many pixels in the background and
      * want maximum performance, you should instead call getPixels to extract
-     * all pixels into a Grid, then manipulate all desired pixels in that Grid,
+     * all pixels into a vector, then manipulate all desired pixels in that vector,
      * then call setPixels to submit all of your changes.
      * Equivalent to setPixel.
      *
@@ -790,8 +833,10 @@ public:
     void draw(QPainter* painter) override;
     int getPixel(double x, double y) const override;
     int getPixelARGB(double x, double y) const override;
-    ::sgl::collections::Grid<int> getPixels() const override;
-    ::sgl::collections::Grid<int> getPixelsARGB() const override;
+    std::vector<std::vector<int>> getPixels() const override;
+    int** getPixelsArray() const override;
+    std::vector<std::vector<int>> getPixelsARGB() const override;
+    int** getPixelsArrayARGB() const override;
     bool isAutoRepaint() const override;
     void repaint() override;
     void repaintRegion(int x, int y, int width, int height) override;
@@ -809,8 +854,10 @@ public:
     void setPixel(double x, double y, int r, int g, int b) override;
     void setPixelARGB(double x, double y, int argb) override;
     void setPixelARGB(double x, double y, int a, int r, int g, int b) override;
-    void setPixels(const ::sgl::collections::Grid<int>& pixels) override;
-    void setPixelsARGB(const ::sgl::collections::Grid<int>& pixelsARGB) override;
+    void setPixels(int** pixels, int width = -1, int height = -1) override;
+    void setPixels(const std::vector<std::vector<int>>& pixels) override;
+    void setPixelsARGB(int** pixelsARGB, int width = -1, int height = -1) override;
+    void setPixelsARGB(const std::vector<std::vector<int>>& pixelsARGB) override;
     void setRepaintImmediately(bool repaintImmediately) override;
 
 protected:

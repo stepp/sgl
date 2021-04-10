@@ -5,6 +5,7 @@
  * @author Marty Stepp
  * @version 2021/04/09
  * - added sgl namespace
+ * - converted Grid functionality to 2D array/vector
  * @version 2018/08/23
  * - renamed to gdrawingsurface.cpp to replace Java version
  * @version 2018/07/11
@@ -543,14 +544,24 @@ int GForwardDrawingSurface::getPixelARGB(double x, double y) const {
     return _forwardTarget->getPixelARGB(x, y);
 }
 
-::sgl::collections::Grid<int> GForwardDrawingSurface::getPixels() const {
+std::vector<std::vector<int>> GForwardDrawingSurface::getPixels() const {
     ensureForwardTargetConstHack();
     return _forwardTarget->getPixels();
 }
 
-::sgl::collections::Grid<int> GForwardDrawingSurface::getPixelsARGB() const {
+int** GForwardDrawingSurface::getPixelsArray() const {
+    ensureForwardTargetConstHack();
+    return _forwardTarget->getPixelsArray();
+}
+
+std::vector<std::vector<int>> GForwardDrawingSurface::getPixelsARGB() const {
     ensureForwardTargetConstHack();
     return _forwardTarget->getPixelsARGB();
+}
+
+int** GForwardDrawingSurface::getPixelsArrayARGB() const {
+    ensureForwardTargetConstHack();
+    return _forwardTarget->getPixelsArrayARGB();
 }
 
 bool GForwardDrawingSurface::isAutoRepaint() const {
@@ -640,12 +651,22 @@ void GForwardDrawingSurface::setPixelARGB(double x, double y, int a, int r, int 
     _forwardTarget->setPixelARGB(x, y, a, r, g, b);
 }
 
-void GForwardDrawingSurface::setPixels(const ::sgl::collections::Grid<int>& pixels) {
+void GForwardDrawingSurface::setPixels(int** pixels, int width, int height) {
+    ensureForwardTarget();
+    _forwardTarget->setPixels(pixels, width, height);
+}
+
+void GForwardDrawingSurface::setPixels(const std::vector<std::vector<int>>& pixels) {
     ensureForwardTarget();
     _forwardTarget->setPixels(pixels);
 }
 
-void GForwardDrawingSurface::setPixelsARGB(const ::sgl::collections::Grid<int>& pixelsARGB) {
+void GForwardDrawingSurface::setPixelsARGB(int** pixelsARGB, int width, int height) {
+    ensureForwardTarget();
+    _forwardTarget->setPixelsARGB(pixelsARGB, width, height);
+}
+
+void GForwardDrawingSurface::setPixelsARGB(const std::vector<std::vector<int>>& pixelsARGB) {
     ensureForwardTarget();
     _forwardTarget->setPixelsARGB(pixelsARGB);
 }

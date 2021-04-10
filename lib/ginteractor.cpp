@@ -34,6 +34,7 @@
 #include "gwindow.h"
 #include "qtgui.h"
 #include "require.h"
+#include "privatestrlib.h"
 
 namespace sgl {
 

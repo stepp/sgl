@@ -5,6 +5,7 @@
  * @author Marty Stepp
  * @version 2021/04/09
  * - added sgl namespace
+ * - converted Grid functionality to 2D array/vector
  * @version 2019/05/01
  * - added createArgbPixel
  * - bug fixes related to save / setPixels with alpha transparency
@@ -294,14 +295,20 @@ GCanvas* GCanvas::diff(const GCanvas& image, int diffPixelColor) const {
     int wmax = std::max(w1, w2);
     int hmax = std::max(h1, h2);
 
-    ::sgl::collections::Grid<int> resultGrid;
-    resultGrid.resize(hmax, wmax);
-    resultGrid.fill(diffPixelColor);
+    int** resultGrid = new int*[hmax];
+    for (int r = 0; r < hmax; r++) {
+        resultGrid[r] = new int[wmax];
+        for (int c = 0; c < wmax; c++) {
+            resultGrid[r][c] = diffPixelColor;
+        }
+    }
+
     for (int r = 0; r < h1; r++) {
         for (int c = 0; c < w1; c++) {
             resultGrid[r][c] = _backgroundColorInt;
         }
     }
+
     for (int y = 0; y < hmin; y++) {
         for (int x = 0; x < wmin; x++) {
             int px1 = _backgroundImage->pixel(static_cast<int>(x), static_cast<int>(y)) & 0x00ffffff;
@@ -312,7 +319,7 @@ GCanvas* GCanvas::diff(const GCanvas& image, int diffPixelColor) const {
         }
     }
     GCanvas* result = new GCanvas(wmax, hmax);
-    result->fromGrid(resultGrid);
+    result->setPixels(resultGrid);
     unlockConst();
     return result;
 }
@@ -442,31 +449,6 @@ void GCanvas::flatten() {
     });
 }
 
-void GCanvas::fromGrid(const ::sgl::collections::Grid<int>& grid) {
-    checkSize("GCanvas::fromGrid", grid.numCols(), grid.numRows());
-    setSize(grid.numCols(), grid.numRows());
-
-    bool wasAutoRepaint = isAutoRepaint();
-    setAutoRepaint(false);
-
-    GThread::runOnQtGuiThread([this, &grid]() {
-        ensureBackgroundImage();
-        lockForWrite();
-        for (int row = 0, width = grid.numCols(), height = grid.numRows(); row < height; row++) {
-            for (int col = 0; col < width; col++) {
-                int argb = GColor::fixAlpha(grid[row][col]);
-                _backgroundImage->setPixel(col, row, static_cast<unsigned int>(argb));
-            }
-        }
-        unlock();
-    });
-
-    if (wasAutoRepaint) {
-        setAutoRepaint(wasAutoRepaint);
-        conditionalRepaint();
-    }
-}
-
 std::string GCanvas::getBackground() const {
     return GDrawingSurface::getBackground();
 }
@@ -526,32 +508,68 @@ int GCanvas::getPixelARGB(double x, double y) const {
     return pixel;
 }
 
-::sgl::collections::Grid<int> GCanvas::getPixels() const {
+std::vector<std::vector<int>> GCanvas::getPixels() const {
     ensureBackgroundImageConstHack();
     lockForReadConst();
     int w = static_cast<int>(getWidth());
     int h = static_cast<int>(getHeight());
-    ::sgl::collections::Grid<int> grid(h, w);
-    for (int y = 0; y < h; y++) {
-        for (int x = 0; x < w; x++) {
-            grid[y][x] = _backgroundImage->pixel(x, y) & 0x00ffffff;
+    std::vector<std::vector<int>> pixels(w);
+    for (int x = 0; x < w; x++) {
+        pixels[x].reserve(h);
+        for (int y = 0; y < h; y++) {
+            pixels[x].push_back(_backgroundImage->pixel(x, y) & 0x00ffffff);
         }
     }
     unlockConst();
-    return grid;
+    return pixels;
 }
 
-::sgl::collections::Grid<int> GCanvas::getPixelsARGB() const {
+int** GCanvas::getPixelsArray() const {
     ensureBackgroundImageConstHack();
     lockForReadConst();
-    ::sgl::collections::Grid<int> grid(static_cast<int>(getHeight()), static_cast<int>(getWidth()));
-    for (int y = 0; y < static_cast<int>(getHeight()); y++) {
-        for (int x = 0; x < static_cast<int>(getWidth()); x++) {
-            grid[y][x] = static_cast<int>(_backgroundImage->pixel(x, y));
+    int w = static_cast<int>(getWidth());
+    int h = static_cast<int>(getHeight());
+    int** pixels = new int*[w];
+    for (int x = 0; x < w; x++) {
+        pixels[x] = new int[h];
+        for (int y = 0; y < h; y++) {
+            pixels[x][y] = _backgroundImage->pixel(x, y) & 0x00ffffff;
         }
     }
     unlockConst();
-    return grid;
+    return pixels;
+}
+
+std::vector<std::vector<int>> GCanvas::getPixelsARGB() const {
+    ensureBackgroundImageConstHack();
+    lockForReadConst();
+    int w = static_cast<int>(getWidth());
+    int h = static_cast<int>(getHeight());
+    std::vector<std::vector<int>> pixels(w);
+    for (int x = 0; x < w; x++) {
+        pixels[x].reserve(h);
+        for (int y = 0; y < h; y++) {
+            pixels[x].push_back(static_cast<int>(_backgroundImage->pixel(x, y)));
+        }
+    }
+    unlockConst();
+    return pixels;
+}
+
+int** GCanvas::getPixelsArrayARGB() const {
+    ensureBackgroundImageConstHack();
+    lockForReadConst();
+    int w = static_cast<int>(getWidth());
+    int h = static_cast<int>(getHeight());
+    int** pixels = new int*[w];
+    for (int x = 0; x < w; x++) {
+        pixels[x] = new int[h];
+        for (int y = 0; y < h; y++) {
+            pixels[x][y] = static_cast<int>(_backgroundImage->pixel(x, y));
+        }
+    }
+    unlockConst();
+    return pixels;
 }
 
 std::string GCanvas::getType() const {
@@ -694,7 +712,7 @@ void GCanvas::repaintRegion(int x, int y, int width, int height) {
 void GCanvas::resize(double width, double height, bool /* retain */) {
     checkSize("GCanvas::resize", width, height);
 
-    // TODO
+    // TODO: resize pixel array
     setSize(width, height);
 
     conditionalRepaint();
@@ -845,19 +863,27 @@ void GCanvas::setPixelARGB(double x, double y, int a, int r, int g, int b) {
     setPixelARGB(x, y, GColor::convertARGBToARGB(a, r, g, b));
 }
 
-void GCanvas::setPixels(const ::sgl::collections::Grid<int>& pixels) {
-    // TODO: is this redundant with fromGrid?
+void GCanvas::setPixels(int** pixels, int width, int height) {
     ensureBackgroundImage();
-    if (pixels.numCols() != (int) getWidth() || pixels.numRows() != (int) getHeight()) {
+    if (width < 0) {
+        width = getWidth();
+    }
+    if (height < 0) {
+        height = getHeight();
+    }
+
+    if (width != (int) getWidth() || height != (int) getHeight()) {
         // TODO
         // resize(pixels.width(), pixels.height());
-        throw std::runtime_error("GCanvas::setPixels: wrong size");
+        throw std::runtime_error("GCanvas::setPixels: wrong size: got "
+            + std::to_string(width) + "x" + std::to_string(height)
+            + "; need "+ std::to_string((int) getWidth()) + "x" + std::to_string((int) getHeight()));
     }
-    GThread::runOnQtGuiThread([this, &pixels]() {
+    GThread::runOnQtGuiThread([this, pixels, width, height]() {
         lockForWrite();
-        for (int y = 0, w = pixels.numCols(), h = pixels.numRows(); y < h; y++) {
-            for (int x = 0; x < w; x++) {
-                int argb = pixels[y][x] | 0xff000000;
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                int argb = pixels[x][y] | 0xff000000;
                 _backgroundImage->setPixel(x, y, static_cast<unsigned int>(argb));
             }
         }
@@ -866,19 +892,76 @@ void GCanvas::setPixels(const ::sgl::collections::Grid<int>& pixels) {
     });
 }
 
-void GCanvas::setPixelsARGB(const ::sgl::collections::Grid<int>& pixels) {
+void GCanvas::setPixels(const std::vector<std::vector<int>>& pixels) {
     ensureBackgroundImage();
-    if (pixels.numCols() != (int) getWidth() || pixels.numRows() != (int) getHeight()) {
+
+    int width = pixels.size();
+    int height = width == 0 ? 0 : pixels[0].size();
+    if (width != (int) getWidth() || height != (int) getHeight()) {
         // TODO
         // resize(pixels.width(), pixels.height());
-        throw std::runtime_error("GCanvas::setPixels: wrong size");
+        throw std::runtime_error("GCanvas::setPixels: wrong size: got "
+            + std::to_string(width) + "x" + std::to_string(height)
+            + "; need "+ std::to_string((int) getWidth()) + "x" + std::to_string((int) getHeight()));
+    }
+    GThread::runOnQtGuiThread([this, &pixels, width, height]() {
+        lockForWrite();
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                int argb = pixels[x][y] | 0xff000000;
+                _backgroundImage->setPixel(x, y, static_cast<unsigned int>(argb));
+            }
+        }
+        unlock();
+        conditionalRepaint();
+    });
+}
+
+void GCanvas::setPixelsARGB(int** pixels, int width, int height) {
+    ensureBackgroundImage();
+    if (width < 0) {
+        width = getWidth();
+    }
+    if (height < 0) {
+        height = getHeight();
     }
 
-    GThread::runOnQtGuiThread([this, &pixels]() {
+    if (width != (int) getWidth() || height != (int) getHeight()) {
+        // TODO
+        // resize(pixels.width(), pixels.height());
+        throw std::runtime_error("GCanvas::setPixelsARGB: wrong size: got "
+            + std::to_string(width) + "x" + std::to_string(height)
+            + "; need "+ std::to_string((int) getWidth()) + "x" + std::to_string((int) getHeight()));
+    }
+
+    GThread::runOnQtGuiThread([this, pixels, width, height]() {
         lockForWrite();
-        for (int y = 0; y < pixels.numRows(); y++) {
-            for (int x = 0; x < pixels.numCols(); x++) {
-                _backgroundImage->setPixel(x, y, pixels[y][x]);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                _backgroundImage->setPixel(x, y, pixels[x][y]);
+            }
+        }
+        unlock();
+        conditionalRepaint();
+    });
+}
+
+void GCanvas::setPixelsARGB(const std::vector<std::vector<int>>& pixelsARGB) {
+    ensureBackgroundImage();
+    int width = pixelsARGB.size();
+    int height = width == 0 ? 0 : pixelsARGB[0].size();
+    if (width != (int) getWidth() || height != (int) getHeight()) {
+        // TODO
+        // resize(pixels.width(), pixels.height());
+        throw std::runtime_error("GCanvas::setPixelsARGB: wrong size: got "
+            + std::to_string(width) + "x" + std::to_string(height)
+            + "; need "+ std::to_string((int) getWidth()) + "x" + std::to_string((int) getHeight()));
+    }
+    GThread::runOnQtGuiThread([this, &pixelsARGB, width, height]() {
+        lockForWrite();
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                _backgroundImage->setPixel(x, y, static_cast<unsigned int>(pixelsARGB[x][y]));
             }
         }
         unlock();
@@ -908,23 +991,6 @@ GImage* GCanvas::toGImage() const {
 //        gimage = new GImage(copy);
 //    });
 //    return gimage;
-}
-
-::sgl::collections::Grid<int> GCanvas::toGrid() const {
-    ::sgl::collections::Grid<int> grid;
-    toGrid(grid);
-    return grid;
-}
-
-void GCanvas::toGrid(::sgl::collections::Grid<int>& grid) const {
-    grid.resize(getHeight(), getWidth());
-    lockForReadConst();
-    for (int row = 0, width = (int) getWidth(), height = (int) getHeight(); row < height; row++) {
-        for (int col = 0; col < width; col++) {
-            grid[row][col] = _backgroundImage->pixel(col, row);
-        }
-    }
-    unlockConst();
 }
 
 

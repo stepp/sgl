@@ -5,7 +5,7 @@
 # @author Marty Stepp
 ###############################################################################
 
-SGL_VERSION = 2021.4
+SGL_VERSION = 2021.04.09
 
 TEMPLATE    =   app
 QT          +=  core gui widgets multimedia network
