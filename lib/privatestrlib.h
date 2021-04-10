@@ -117,7 +117,7 @@ bool equalsIgnoreCase(const std::string& s1, const std::string& s2);
  * Converts the given string from an HTML-encoded version to its decoded
  * equivalent; the opposite of htmlEncode. Any escaped HTML character entities
  * will be replaced by their unescaped equivalents.
- * For example, <code>htmlEncode("&lt;p class=&quot;abc&quot;&gt;I love you &amp; me&lt;/p&gt;")
+ * For example, <code>htmlEncode("&lt;p class=&quot;abc&quot;&gt;I love you &amp; me&lt;/p&gt;")</code>
  * returns "<p class=\"abc\">I love you & me</p>".
  */
 std::string htmlDecode(const std::string& s);
@@ -125,7 +125,7 @@ std::string htmlDecode(const std::string& s);
 /**
  * Converts the given string into an HTML-encoded equivalent version, with
  * any relevant HTML character entities replaced by escaped equivalents.
- * For example, <code>htmlEncode("<p class=\"abc\">I love you & me</p>") returns
+ * For example, <code>htmlEncode("<p class=\"abc\">I love you & me</p>")</code> returns
  * "&lt;p class=&quot;abc&quot;&gt;I love you &amp; me&lt;/p&gt;".
  */
 std::string htmlEncode(const std::string& s);

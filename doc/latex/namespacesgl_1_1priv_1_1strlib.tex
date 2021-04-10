@@ -1,0 +1,780 @@
+\hypertarget{namespacesgl_1_1priv_1_1strlib}{}\section{sgl\+:\+:priv\+:\+:strlib Namespace Reference}
+\label{namespacesgl_1_1priv_1_1strlib}\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a16b65d62216f8caae8d5827707e64435}{bool\+To\+String}} (bool b)
+\begin{DoxyCompactList}\small\item\em Returns the string \char`\"{}true\char`\"{} if b is true, or \char`\"{}false\char`\"{} if b is false. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a3300f402b35ce83e6d5c5cf6e072d28f}{bool\+To\+String}} (int b)
+\begin{DoxyCompactList}\small\item\em Returns the string \char`\"{}true\char`\"{} if b is nonzero, or \char`\"{}false\char`\"{} if b is 0. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_ab5a53662a70083a78e227d1da5ccd5aa}{char\+To\+Integer}} (char c)
+\begin{DoxyCompactList}\small\item\em Returns an integer equivalent of the given numeric character. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_afad9c4d2ec707624d928791a48309f1f}{char\+To\+String}} (char c)
+\begin{DoxyCompactList}\small\item\em Returns a single-\/character string containing the given character. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_afaddda53f8dbc93d9f3b8955067e92d0}{contains}} (const std\+::string \&s, char ch)
+\begin{DoxyCompactList}\small\item\em Returns true if the given character occurs somewhere in s. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_aa15d39098819490cce8293e470e5ef36}{contains}} (const std\+::string \&s, const std\+::string \&substring)
+\begin{DoxyCompactList}\small\item\em Returns true if the given substring occurs somewhere in s. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a93b653853091dcbcb8d6f7ae75b48720}{double\+To\+String}} (double d)
+\begin{DoxyCompactList}\small\item\em Converts a floating-\/point number into the corresponding string form. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_af69d242dc4439ee48dc41d92fe604fd7}{ends\+With}} (const std\+::string \&str, char suffix)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily true} if the string {\ttfamily str} ends with the specified character. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a713373507ec8485d5466e3f4fcdaefa1}{ends\+With}} (const std\+::string \&str, const std\+::string \&suffix)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily true} if the string {\ttfamily str} ends with the specified suffix. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a4aad54fd1c2e01c5d3e243aecf4a4e1e}{equals\+Ignore\+Case}} (const std\+::string \&s1, const std\+::string \&s2)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily true} if {\ttfamily s1} and {\ttfamily s2} are equal discounting differences in case. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a166b00da7243e2a911bffeafceeab62d}{html\+Decode}} (const std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em Converts the given string from an H\+T\+M\+L-\/encoded version to its decoded equivalent; the opposite of html\+Encode. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a21319276d7e93ef843ec933eba1d30ba}{html\+Encode}} (const std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em Converts the given string into an H\+T\+M\+L-\/encoded equivalent version, with any relevant H\+T\+ML character entities replaced by escaped equivalents. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_ac00729dfe0ba994523cf8591a16c1f8e}{index\+Of}} (const std\+::string \&s, char ch, int start\+Index=0)
+\begin{DoxyCompactList}\small\item\em Returns the index of the start of the first occurrence of the given character in s, if it occurs in s. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_afb99d6e0fd373a67f029ad67cf9c46db}{index\+Of}} (const std\+::string \&s, const std\+::string \&substring, int start\+Index=0)
+\begin{DoxyCompactList}\small\item\em Returns the index of the start of the first occurrence of the given substring in s, if it occurs in s. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_adf319817276df06d9df8124ebdb354b1}{integer\+To\+Char}} (int n)
+\begin{DoxyCompactList}\small\item\em Converts an integer into the corresponding numeric character. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a495a9775bf29121e1781cc2627f84484}{integer\+To\+String}} (int n, int radix=10)
+\begin{DoxyCompactList}\small\item\em Converts an integer into the corresponding string of digits. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_ae167c589e7dec5af5a4521f264017fd4}{join}} (const std\+::vector$<$ std\+::string $>$ \&v, char delimiter=\textquotesingle{}\textbackslash{}n\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Combines the elements of the given vector into a single string, with the given delimiter separating neighboring elements, and returns it. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a057d49d2499f5680499155e2d6b82f7a}{join}} (const std\+::vector$<$ std\+::string $>$ \&v, const std\+::string \&delimiter=\char`\"{}\textbackslash{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Combines the elements of the given vector into a single string, with the given delimiter separating neighboring elements, and returns it. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a9df48773b46bf6e813faa1c60ec344ed}{last\+Index\+Of}} (const std\+::string \&s, char ch, int start\+Index=(int) std\+::string\+::npos)
+\begin{DoxyCompactList}\small\item\em Returns the index of the start of the last occurrence of the given character in s, if it occurs in s. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_acdad5d6c6003d11b1f4d2c10deadcc28}{last\+Index\+Of}} (const std\+::string \&s, const std\+::string \&substring, int start\+Index=(int) std\+::string\+::npos)
+\begin{DoxyCompactList}\small\item\em Returns the index of the start of the last occurrence of the given substring in s, if it occurs in s. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a2abafd3e6dc4ddbb44d13b691ed962da}{long\+To\+String}} (long n, int radix=10)
+\begin{DoxyCompactList}\small\item\em Converts an integer into the corresponding string of digits. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a0348f17da6a9403cb06a7464b562da44}{pad\+Left}} (const std\+::string \&s, int length, char fill=\textquotesingle{} \textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Inserts spaces at the start of the given string until it is at least the given length. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a00d3d8b86782caf6b4d4386ef8c020ce}{pad\+Right}} (const std\+::string \&s, int length)
+\begin{DoxyCompactList}\small\item\em Inserts spaces at the end of the given string until it is at least the given length. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_ac5ec1322098b5170af6c580bd1e01b3b}{pad\+Right}} (const std\+::string \&s, int length, char fill)
+\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a531909a249cc38a472816a42eb9329e8}{pointer\+To\+String}} (void $\ast$p)
+\begin{DoxyCompactList}\small\item\em Returns a hexadecimal string for the given pointer, such as \char`\"{}0x3f0427b\char`\"{}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_af1835c719cd027ed09ca12e7b700c7d7}{real\+To\+String}} (double d)
+\begin{DoxyCompactList}\small\item\em Converts a floating-\/point number into the corresponding string form. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a9ee83dec7fbd7c18bc68ee91502ed839}{replace}} (const std\+::string \&str, char old, char replacement, int limit=-\/1)
+\begin{DoxyCompactList}\small\item\em Returns a new string formed by replacing any occurrences of the given \textquotesingle{}old\textquotesingle{} character with the given replacement character in \textquotesingle{}str\textquotesingle{}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a378825875fe99bccd7d7aa8f971d2ea3}{replace}} (const std\+::string \&str, const std\+::string \&old, const std\+::string \&replacement, int limit=-\/1)
+\begin{DoxyCompactList}\small\item\em Returns a new string formed by replacing any occurrences of the given \textquotesingle{}old\textquotesingle{} text with the given replacement text in \textquotesingle{}str\textquotesingle{}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a6ef4063d045756e26512bde874824042}{replace\+In\+Place}} (std\+::string \&str, char old, char replacement, int limit=-\/1)
+\begin{DoxyCompactList}\small\item\em A variant of string\+Replace, except that it accepts the string as a reference and modifies it in-\/place rather than returning a new string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a96605c78e69e67a8bd3909f7969fe8cf}{replace\+In\+Place}} (std\+::string \&str, const std\+::string \&old, const std\+::string \&replacement, int limit=-\/1)
+\begin{DoxyCompactList}\small\item\em A variant of string\+Replace, except that it accepts the string as a reference and modifies it in-\/place rather than returning a new string. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_ad26db0032c572d1b848ca89b98cf6cab}{split}} (const std\+::string \&str, char delimiter, int limit=-\/1)
+\begin{DoxyCompactList}\small\item\em Returns a vector whose elements are strings formed by splitting the given string \textquotesingle{}str\textquotesingle{} by the given separator character. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_addd79cd11aaf0c887c9190aee4457cfb}{split}} (const std\+::string \&str, const std\+::string \&delimiter, int limit=-\/1)
+\begin{DoxyCompactList}\small\item\em Returns a vector whose elements are strings formed by splitting the given string \textquotesingle{}str\textquotesingle{} by the given separator text. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a612efd2a5aec9ec46eb60da87788f522}{starts\+With}} (const std\+::string \&str, char prefix)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily true} if the string {\ttfamily str} starts with the specified prefix. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a11c9a498274d9d966fdf7a40305a1be9}{starts\+With}} (const std\+::string \&str, const std\+::string \&prefix)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily true} if the string {\ttfamily str} starts with the specified character. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_ac05fc94e69329f8d379a801c01105069}{string\+Is\+Bool}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Returns true if the given string is either \char`\"{}true\char`\"{} or \char`\"{}false\char`\"{}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a370a1baccb1cc15a675e64b40d9afad6}{string\+Is\+Double}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Returns true if the given string could be converted to an real number successfully by the string\+To\+Real function, which will be true if the string has the format of a real number such as \char`\"{}3.\+14\char`\"{} or \char`\"{}-\/46\char`\"{}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a5a1194f3117e549291895bdbbe76f85f}{string\+Is\+Integer}} (const std\+::string \&str, int radix=10)
+\begin{DoxyCompactList}\small\item\em Returns true if the given string could be converted to an integer successfully by the string\+To\+Integer function, which will be true if the string has the format of an integer such as \char`\"{}1234\char`\"{} or \char`\"{}-\/8\char`\"{}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_ac7499f39dad1514e946909d251d07ffd}{string\+Is\+Long}} (const std\+::string \&str, int radix=10)
+\begin{DoxyCompactList}\small\item\em Returns true if the given string could be converted to a long successfully by the string\+To\+Long function, which will be true if the string has the format of an integer such as \char`\"{}1234\char`\"{} or \char`\"{}-\/8\char`\"{}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a2b4e3df7dfde2e8c5e78cdf7b31e03ce}{string\+Is\+Real}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Returns true if the given string could be converted to an real number successfully by the string\+To\+Real function, which will be true if the string has the format of a real number such as \char`\"{}3.\+14\char`\"{} or \char`\"{}-\/46\char`\"{}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_ad026739e163ac00059e145060cba9eec}{string\+To\+Bool}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em If str is \char`\"{}true\char`\"{}, returns the bool value true. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a7327a216701560fa447a513814916ecf}{string\+To\+Char}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Converts a single-\/character string into its corresponding char value. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_ab45e289eae123f82e9155b01ec636710}{string\+To\+Double}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Converts a string representing a real number into its corresponding value. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a8c234a839fbe3556e1b7b1d93b92b1e6}{string\+To\+Integer}} (const std\+::string \&str, int radix=10)
+\begin{DoxyCompactList}\small\item\em Converts a string of digits into an integer. \end{DoxyCompactList}\item 
+long \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a1e7f514d7bb739231262e4a267b53184}{string\+To\+Long}} (const std\+::string \&str, int radix=10)
+\begin{DoxyCompactList}\small\item\em Converts a string of digits into a long. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a6a7701384dec7dbee60264b792e613c7}{string\+To\+Real}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Converts a string representing a real number into its corresponding value. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_acad0624097ac17da5bda04d41c1363f7}{to\+Lower\+Case}} (char ch)
+\begin{DoxyCompactList}\small\item\em Returns a new character in which the given uppercase character has been converted into its lowercase equivalent. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_ad8200839a864ebdf2f129fbffa33967b}{to\+Lower\+Case}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Returns a new string in which all uppercase characters have been converted into their lowercase equivalents. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a35dff265e3225cca9aacba6254d4e083}{to\+Lower\+Case\+In\+Place}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Modifies the given string in-\/place such that all uppercase characters have been converted into their lowercase equivalents. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a13fc513819fb1d0c1aad0dce15fdcecc}{to\+Upper\+Case}} (char ch)
+\begin{DoxyCompactList}\small\item\em Returns a new character in which the given lowercase character has been converted into its uppercase equivalent. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_aa504de245b08376b4309366fa40a5815}{to\+Upper\+Case}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Returns a new string in which all lowercase characters have been converted into their uppercase equivalents. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a5501f6f1a57507fd37a02c8eec4c26c6}{to\+Upper\+Case\+In\+Place}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Modifies the given string in-\/place such that all lowercase characters have been converted into their uppercase equivalents. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a5a01f705cc7b4a7317a57f6bf41aef25}{trim}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Returns a new string after removing any whitespace characters from the beginning and end of the argument. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a369c1375de145427183c1b3e3e8b5fde}{trim\+End}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Returns a new string after removing any whitespace characters from the end of the argument. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_ac50a0b8051eb7e5400cd949e962dbc1a}{trim\+End\+In\+Place}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Modifies the given string in-\/place to remove any whitespace characters from its end. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a41b53191870377c67ad37dd21404df8d}{trim\+In\+Place}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Modifies the given string in-\/place where any whitespace characters from the beginning and end of the argument are removed. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a3a00e1a99ff51e899181bb9011238c93}{trim\+Start}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Returns a new string after removing any whitespace characters from the beginning of the argument. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a841f8a71a4e70a1a65ebcf9ed24e3334}{trim\+Start\+In\+Place}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Modifies the given string in-\/place to remove removing any whitespace characters from the beginning of it. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a27232ef1c4000c2cf048d43b75d3faba}{url\+Decode}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Returns a U\+R\+L-\/decoded version of the given string, where any xx character codes are converted back to the equivalent characters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a18179778100838daa81655bf9a912e9e}{url\+Decode\+In\+Place}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Modifies the given string in-\/place into a U\+R\+L-\/decoded version of itself, where any xx character codes are converted back to the equivalent characters. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_aee15f17b2470cc3e874de693b091e702}{url\+Encode}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Returns a U\+R\+L-\/encoded version of the given string, where most non-\/ alphabetic characters are replaced by xx character codes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_1_1priv_1_1strlib_a0d795c9b0ee3f6a80517e290da8f16d4}{url\+Encode\+In\+Place}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Modifies the given string in-\/place into a U\+R\+L-\/encoded version of itself, where most non-\/ alphabetic characters are replaced by xx character codes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a16b65d62216f8caae8d5827707e64435}\label{namespacesgl_1_1priv_1_1strlib_a16b65d62216f8caae8d5827707e64435}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!bool\+To\+String@{bool\+To\+String}}
+\index{bool\+To\+String@{bool\+To\+String}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{bool\+To\+String()}{boolToString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string bool\+To\+String (\begin{DoxyParamCaption}\item[{bool}]{b }\end{DoxyParamCaption})}
+
+
+
+Returns the string \char`\"{}true\char`\"{} if b is true, or \char`\"{}false\char`\"{} if b is false. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a3300f402b35ce83e6d5c5cf6e072d28f}\label{namespacesgl_1_1priv_1_1strlib_a3300f402b35ce83e6d5c5cf6e072d28f}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!bool\+To\+String@{bool\+To\+String}}
+\index{bool\+To\+String@{bool\+To\+String}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{bool\+To\+String()}{boolToString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string bool\+To\+String (\begin{DoxyParamCaption}\item[{int}]{b }\end{DoxyParamCaption})}
+
+
+
+Returns the string \char`\"{}true\char`\"{} if b is nonzero, or \char`\"{}false\char`\"{} if b is 0. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_ab5a53662a70083a78e227d1da5ccd5aa}\label{namespacesgl_1_1priv_1_1strlib_ab5a53662a70083a78e227d1da5ccd5aa}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!char\+To\+Integer@{char\+To\+Integer}}
+\index{char\+To\+Integer@{char\+To\+Integer}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{char\+To\+Integer()}{charToInteger()}}
+{\footnotesize\ttfamily int char\+To\+Integer (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Returns an integer equivalent of the given numeric character. 
+
+For example, char\+To\+Integer(\textquotesingle{}3\textquotesingle{}) returns the int 3. If the character is not \textquotesingle{}0\textquotesingle{} through \textquotesingle{}9\textquotesingle{}, throws an error. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_afad9c4d2ec707624d928791a48309f1f}\label{namespacesgl_1_1priv_1_1strlib_afad9c4d2ec707624d928791a48309f1f}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!char\+To\+String@{char\+To\+String}}
+\index{char\+To\+String@{char\+To\+String}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{char\+To\+String()}{charToString()}}
+{\footnotesize\ttfamily std\+::string char\+To\+String (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Returns a single-\/character string containing the given character. 
+
+For example, char\+To\+String(\textquotesingle{}Q\textquotesingle{}) returns the string \char`\"{}\+Q\char`\"{}. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_afaddda53f8dbc93d9f3b8955067e92d0}\label{namespacesgl_1_1priv_1_1strlib_afaddda53f8dbc93d9f3b8955067e92d0}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!contains@{contains}}
+\index{contains@{contains}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{contains()}{contains()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool contains (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{char}]{ch }\end{DoxyParamCaption})}
+
+
+
+Returns true if the given character occurs somewhere in s. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_aa15d39098819490cce8293e470e5ef36}\label{namespacesgl_1_1priv_1_1strlib_aa15d39098819490cce8293e470e5ef36}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!contains@{contains}}
+\index{contains@{contains}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{contains()}{contains()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool contains (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{const std\+::string \&}]{substring }\end{DoxyParamCaption})}
+
+
+
+Returns true if the given substring occurs somewhere in s. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a93b653853091dcbcb8d6f7ae75b48720}\label{namespacesgl_1_1priv_1_1strlib_a93b653853091dcbcb8d6f7ae75b48720}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!double\+To\+String@{double\+To\+String}}
+\index{double\+To\+String@{double\+To\+String}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{double\+To\+String()}{doubleToString()}}
+{\footnotesize\ttfamily std\+::string double\+To\+String (\begin{DoxyParamCaption}\item[{double}]{d }\end{DoxyParamCaption})}
+
+
+
+Converts a floating-\/point number into the corresponding string form. 
+
+For example, calling {\ttfamily double\+To\+String(23.\+45)} returns the string {\ttfamily \char`\"{}23.\+45\char`\"{}}. Equivalent to real\+To\+String. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_af69d242dc4439ee48dc41d92fe604fd7}\label{namespacesgl_1_1priv_1_1strlib_af69d242dc4439ee48dc41d92fe604fd7}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!ends\+With@{ends\+With}}
+\index{ends\+With@{ends\+With}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{ends\+With()}{endsWith()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool ends\+With (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{char}]{suffix }\end{DoxyParamCaption})}
+
+
+
+Returns {\ttfamily true} if the string {\ttfamily str} ends with the specified character. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a713373507ec8485d5466e3f4fcdaefa1}\label{namespacesgl_1_1priv_1_1strlib_a713373507ec8485d5466e3f4fcdaefa1}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!ends\+With@{ends\+With}}
+\index{ends\+With@{ends\+With}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{ends\+With()}{endsWith()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool ends\+With (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{const std\+::string \&}]{suffix }\end{DoxyParamCaption})}
+
+
+
+Returns {\ttfamily true} if the string {\ttfamily str} ends with the specified suffix. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a4aad54fd1c2e01c5d3e243aecf4a4e1e}\label{namespacesgl_1_1priv_1_1strlib_a4aad54fd1c2e01c5d3e243aecf4a4e1e}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!equals\+Ignore\+Case@{equals\+Ignore\+Case}}
+\index{equals\+Ignore\+Case@{equals\+Ignore\+Case}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{equals\+Ignore\+Case()}{equalsIgnoreCase()}}
+{\footnotesize\ttfamily bool equals\+Ignore\+Case (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s1,  }\item[{const std\+::string \&}]{s2 }\end{DoxyParamCaption})}
+
+
+
+Returns {\ttfamily true} if {\ttfamily s1} and {\ttfamily s2} are equal discounting differences in case. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a166b00da7243e2a911bffeafceeab62d}\label{namespacesgl_1_1priv_1_1strlib_a166b00da7243e2a911bffeafceeab62d}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!html\+Decode@{html\+Decode}}
+\index{html\+Decode@{html\+Decode}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{html\+Decode()}{htmlDecode()}}
+{\footnotesize\ttfamily std\+::string html\+Decode (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s }\end{DoxyParamCaption})}
+
+
+
+Converts the given string from an H\+T\+M\+L-\/encoded version to its decoded equivalent; the opposite of html\+Encode. 
+
+Any escaped H\+T\+ML character entities will be replaced by their unescaped equivalents. For example, {\ttfamily html\+Encode(\char`\"{}<p class="abc">\+I love you \& me</p>\char`\"{}) returns \char`\"{}$<$p class=\textbackslash{}\char`\"{}abc"$>$I love you \& me}
+
+{\ttfamily ". }\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a21319276d7e93ef843ec933eba1d30ba}\label{namespacesgl_1_1priv_1_1strlib_a21319276d7e93ef843ec933eba1d30ba}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!html\+Encode@{html\+Encode}}
+\index{html\+Encode@{html\+Encode}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{html\+Encode()}{htmlEncode()}}
+{\footnotesize\ttfamily std\+::string html\+Encode (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s }\end{DoxyParamCaption})}
+
+
+
+Converts the given string into an H\+T\+M\+L-\/encoded equivalent version, with any relevant H\+T\+ML character entities replaced by escaped equivalents. 
+
+For example, {\ttfamily html\+Encode(\char`\"{}$<$p class=\textbackslash{}\char`\"{}abc"$>$I love you \& me}
+
+{\ttfamily \char`\"{}) returns
+\char`\"{}$<$p class="abc"$>$I love you \& me$<$/p$>$". }\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_ac00729dfe0ba994523cf8591a16c1f8e}\label{namespacesgl_1_1priv_1_1strlib_ac00729dfe0ba994523cf8591a16c1f8e}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!index\+Of@{index\+Of}}
+\index{index\+Of@{index\+Of}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{index\+Of()}{indexOf()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int index\+Of (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{char}]{ch,  }\item[{int}]{start\+Index = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Returns the index of the start of the first occurrence of the given character in s, if it occurs in s. 
+
+If it does not occur, returns -\/1. This function is very similar to string.\+find, but find returns string\+::npos when the string is not found. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_afb99d6e0fd373a67f029ad67cf9c46db}\label{namespacesgl_1_1priv_1_1strlib_afb99d6e0fd373a67f029ad67cf9c46db}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!index\+Of@{index\+Of}}
+\index{index\+Of@{index\+Of}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{index\+Of()}{indexOf()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int index\+Of (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{const std\+::string \&}]{substring,  }\item[{int}]{start\+Index = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Returns the index of the start of the first occurrence of the given substring in s, if it occurs in s. 
+
+If it does not occur, returns -\/1. This function is very similar to string.\+find, but find returns string\+::npos when the string is not found. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_adf319817276df06d9df8124ebdb354b1}\label{namespacesgl_1_1priv_1_1strlib_adf319817276df06d9df8124ebdb354b1}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!integer\+To\+Char@{integer\+To\+Char}}
+\index{integer\+To\+Char@{integer\+To\+Char}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{integer\+To\+Char()}{integerToChar()}}
+{\footnotesize\ttfamily char integer\+To\+Char (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Converts an integer into the corresponding numeric character. 
+
+For example, calling {\ttfamily integer\+To\+Char(3)} returns the char {\ttfamily \textquotesingle{}3\textquotesingle{}}. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Exception} & if the given integer is not a single-\/digit number from 0-\/9 inclusive \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a495a9775bf29121e1781cc2627f84484}\label{namespacesgl_1_1priv_1_1strlib_a495a9775bf29121e1781cc2627f84484}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!integer\+To\+String@{integer\+To\+String}}
+\index{integer\+To\+String@{integer\+To\+String}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{integer\+To\+String()}{integerToString()}}
+{\footnotesize\ttfamily std\+::string integer\+To\+String (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{int}]{radix = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Converts an integer into the corresponding string of digits. 
+
+For example, calling {\ttfamily integer\+To\+String(123)} returns the string {\ttfamily \char`\"{}123\char`\"{}}. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_ae167c589e7dec5af5a4521f264017fd4}\label{namespacesgl_1_1priv_1_1strlib_ae167c589e7dec5af5a4521f264017fd4}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!join@{join}}
+\index{join@{join}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{join()}{join()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string join (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{v,  }\item[{char}]{delimiter = {\ttfamily \textquotesingle{}\textbackslash{}n\textquotesingle{}} }\end{DoxyParamCaption})}
+
+
+
+Combines the elements of the given vector into a single string, with the given delimiter separating neighboring elements, and returns it. 
+
+For example, joining the elements of the vector \{\char`\"{}\+Hi\char`\"{}, \char`\"{}there\char`\"{}, \char`\"{}\char`\"{}, \char`\"{}\+Jim\char`\"{}\} with the delimiter \textquotesingle{}?\textquotesingle{} returns \char`\"{}\+Hi?there??\+Jim\char`\"{}. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a057d49d2499f5680499155e2d6b82f7a}\label{namespacesgl_1_1priv_1_1strlib_a057d49d2499f5680499155e2d6b82f7a}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!join@{join}}
+\index{join@{join}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{join()}{join()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string join (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{v }\end{DoxyParamCaption})}
+
+
+
+Combines the elements of the given vector into a single string, with the given delimiter separating neighboring elements, and returns it. 
+
+For example, joining the elements of the vector \{\char`\"{}\+Hi\char`\"{}, \char`\"{}there\char`\"{}, \char`\"{}\char`\"{}, \char`\"{}\+Jim\char`\"{}\} with the delimiter \char`\"{}??\char`\"{} returns \char`\"{}\+Hi??there????\+Jim\char`\"{}. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a9df48773b46bf6e813faa1c60ec344ed}\label{namespacesgl_1_1priv_1_1strlib_a9df48773b46bf6e813faa1c60ec344ed}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!last\+Index\+Of@{last\+Index\+Of}}
+\index{last\+Index\+Of@{last\+Index\+Of}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{last\+Index\+Of()}{lastIndexOf()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int last\+Index\+Of (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{char}]{ch,  }\item[{int}]{start\+Index = {\ttfamily (int)~std\+:\+:string\+:\+:npos} }\end{DoxyParamCaption})}
+
+
+
+Returns the index of the start of the last occurrence of the given character in s, if it occurs in s. 
+
+If it does not occur, returns -\/1. This function is very similar to string.\+rfind, but rfind returns string\+::npos when the string is not found. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_acdad5d6c6003d11b1f4d2c10deadcc28}\label{namespacesgl_1_1priv_1_1strlib_acdad5d6c6003d11b1f4d2c10deadcc28}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!last\+Index\+Of@{last\+Index\+Of}}
+\index{last\+Index\+Of@{last\+Index\+Of}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{last\+Index\+Of()}{lastIndexOf()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int last\+Index\+Of (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{const std\+::string \&}]{substring,  }\item[{int}]{start\+Index = {\ttfamily (int)~std\+:\+:string\+:\+:npos} }\end{DoxyParamCaption})}
+
+
+
+Returns the index of the start of the last occurrence of the given substring in s, if it occurs in s. 
+
+If it does not occur, returns -\/1. This function is very similar to string.\+rfind, but rfind returns string\+::npos when the string is not found. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a2abafd3e6dc4ddbb44d13b691ed962da}\label{namespacesgl_1_1priv_1_1strlib_a2abafd3e6dc4ddbb44d13b691ed962da}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!long\+To\+String@{long\+To\+String}}
+\index{long\+To\+String@{long\+To\+String}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{long\+To\+String()}{longToString()}}
+{\footnotesize\ttfamily std\+::string long\+To\+String (\begin{DoxyParamCaption}\item[{long}]{n,  }\item[{int}]{radix = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Converts an integer into the corresponding string of digits. 
+
+For example, calling {\ttfamily long\+To\+String(123)} returns the string {\ttfamily \char`\"{}123\char`\"{}}. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a0348f17da6a9403cb06a7464b562da44}\label{namespacesgl_1_1priv_1_1strlib_a0348f17da6a9403cb06a7464b562da44}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!pad\+Left@{pad\+Left}}
+\index{pad\+Left@{pad\+Left}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{pad\+Left()}{padLeft()}}
+{\footnotesize\ttfamily std\+::string pad\+Left (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{int}]{length,  }\item[{char}]{fill = {\ttfamily \textquotesingle{}~\textquotesingle{}} }\end{DoxyParamCaption})}
+
+
+
+Inserts spaces at the start of the given string until it is at least the given length. 
+
+You can optionally pass a fill character (other than space) as a third parameter.
+
+Note that if you are printing strings and want your output to line up at a given number of characters, you may be better served using the built-\/in C++ ostream manipulators such as setw(int), left, and right, as defined in the iomanip library. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a00d3d8b86782caf6b4d4386ef8c020ce}\label{namespacesgl_1_1priv_1_1strlib_a00d3d8b86782caf6b4d4386ef8c020ce}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!pad\+Right@{pad\+Right}}
+\index{pad\+Right@{pad\+Right}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{pad\+Right()}{padRight()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string sgl\+::priv\+::strlib\+::pad\+Right (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Inserts spaces at the end of the given string until it is at least the given length. 
+
+You can optionally pass a fill character (other than space) as a third parameter.
+
+Note that if you are printing strings and want your output to line up at a given number of characters, you may be better served using the built-\/in C++ ostream manipulators such as setw(int), left, and right, as defined in the iomanip library. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_ac5ec1322098b5170af6c580bd1e01b3b}\label{namespacesgl_1_1priv_1_1strlib_ac5ec1322098b5170af6c580bd1e01b3b}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!pad\+Right@{pad\+Right}}
+\index{pad\+Right@{pad\+Right}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{pad\+Right()}{padRight()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string sgl\+::priv\+::strlib\+::pad\+Right (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{int}]{length,  }\item[{char}]{fill }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a531909a249cc38a472816a42eb9329e8}\label{namespacesgl_1_1priv_1_1strlib_a531909a249cc38a472816a42eb9329e8}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!pointer\+To\+String@{pointer\+To\+String}}
+\index{pointer\+To\+String@{pointer\+To\+String}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{pointer\+To\+String()}{pointerToString()}}
+{\footnotesize\ttfamily std\+::string pointer\+To\+String (\begin{DoxyParamCaption}\item[{void $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Returns a hexadecimal string for the given pointer, such as \char`\"{}0x3f0427b\char`\"{}. 
+
+Returns \char`\"{}nullptr\char`\"{} if p is a null pointer. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_af1835c719cd027ed09ca12e7b700c7d7}\label{namespacesgl_1_1priv_1_1strlib_af1835c719cd027ed09ca12e7b700c7d7}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!real\+To\+String@{real\+To\+String}}
+\index{real\+To\+String@{real\+To\+String}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{real\+To\+String()}{realToString()}}
+{\footnotesize\ttfamily std\+::string real\+To\+String (\begin{DoxyParamCaption}\item[{double}]{d }\end{DoxyParamCaption})}
+
+
+
+Converts a floating-\/point number into the corresponding string form. 
+
+For example, calling {\ttfamily real\+To\+String(23.\+45)} returns the string {\ttfamily \char`\"{}23.\+45\char`\"{}}. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a9ee83dec7fbd7c18bc68ee91502ed839}\label{namespacesgl_1_1priv_1_1strlib_a9ee83dec7fbd7c18bc68ee91502ed839}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!replace@{replace}}
+\index{replace@{replace}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{replace()}{replace()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string replace (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{char}]{old,  }\item[{char}]{replacement,  }\item[{int}]{limit = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+
+Returns a new string formed by replacing any occurrences of the given \textquotesingle{}old\textquotesingle{} character with the given replacement character in \textquotesingle{}str\textquotesingle{}. 
+
+Note that this is N\+OT a regular expression replacement; it looks for the \textquotesingle{}old\textquotesingle{} string literally. If you want regular expressions, see regexpr.\+h. The \textquotesingle{}in\+Place\textquotesingle{} variant modifies an existing string rather than returning a new one, and returns the number of occurrences of \textquotesingle{}old\textquotesingle{} were replaced. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a378825875fe99bccd7d7aa8f971d2ea3}\label{namespacesgl_1_1priv_1_1strlib_a378825875fe99bccd7d7aa8f971d2ea3}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!replace@{replace}}
+\index{replace@{replace}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{replace()}{replace()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string replace (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{const std\+::string \&}]{old,  }\item[{const std\+::string \&}]{replacement,  }\item[{int}]{limit = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+
+Returns a new string formed by replacing any occurrences of the given \textquotesingle{}old\textquotesingle{} text with the given replacement text in \textquotesingle{}str\textquotesingle{}. 
+
+Note that this is N\+OT a regular expression replacement; it looks for the \textquotesingle{}old\textquotesingle{} string literally. If you want regular expressions, see regexpr.\+h. The \textquotesingle{}in\+Place\textquotesingle{} variant modifies an existing string rather than returning a new one, and returns the number of occurrences of \textquotesingle{}old\textquotesingle{} were replaced. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a6ef4063d045756e26512bde874824042}\label{namespacesgl_1_1priv_1_1strlib_a6ef4063d045756e26512bde874824042}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!replace\+In\+Place@{replace\+In\+Place}}
+\index{replace\+In\+Place@{replace\+In\+Place}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{replace\+In\+Place()}{replaceInPlace()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int replace\+In\+Place (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str,  }\item[{char}]{old,  }\item[{char}]{replacement,  }\item[{int}]{limit }\end{DoxyParamCaption})}
+
+
+
+A variant of string\+Replace, except that it accepts the string as a reference and modifies it in-\/place rather than returning a new string. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a96605c78e69e67a8bd3909f7969fe8cf}\label{namespacesgl_1_1priv_1_1strlib_a96605c78e69e67a8bd3909f7969fe8cf}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!replace\+In\+Place@{replace\+In\+Place}}
+\index{replace\+In\+Place@{replace\+In\+Place}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{replace\+In\+Place()}{replaceInPlace()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int replace\+In\+Place (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str,  }\item[{const std\+::string \&}]{old,  }\item[{const std\+::string \&}]{replacement,  }\item[{int}]{limit }\end{DoxyParamCaption})}
+
+
+
+A variant of string\+Replace, except that it accepts the string as a reference and modifies it in-\/place rather than returning a new string. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_ad26db0032c572d1b848ca89b98cf6cab}\label{namespacesgl_1_1priv_1_1strlib_ad26db0032c572d1b848ca89b98cf6cab}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!split@{split}}
+\index{split@{split}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{split()}{split()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ split (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{char}]{delimiter,  }\item[{int}]{limit = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+
+Returns a vector whose elements are strings formed by splitting the given string \textquotesingle{}str\textquotesingle{} by the given separator character. 
+
+For example, splitting \char`\"{}\+Hi there  Jim!\char`\"{} on \char`\"{} \char`\"{} returns \{\char`\"{}\+Hi\char`\"{}, \char`\"{}there\char`\"{}, \char`\"{}\char`\"{}, \char`\"{}\+Jim!\char`\"{}\}. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_addd79cd11aaf0c887c9190aee4457cfb}\label{namespacesgl_1_1priv_1_1strlib_addd79cd11aaf0c887c9190aee4457cfb}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!split@{split}}
+\index{split@{split}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{split()}{split()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ split (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{const std\+::string \&}]{delimiter,  }\item[{int}]{limit = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+
+Returns a vector whose elements are strings formed by splitting the given string \textquotesingle{}str\textquotesingle{} by the given separator text. 
+
+For example, splitting \char`\"{}\+Hi there  Jim!\char`\"{} on \char`\"{} \char`\"{} returns \{\char`\"{}\+Hi\char`\"{}, \char`\"{}there\char`\"{}, \char`\"{}\char`\"{}, \char`\"{}\+Jim!\char`\"{}\}. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a612efd2a5aec9ec46eb60da87788f522}\label{namespacesgl_1_1priv_1_1strlib_a612efd2a5aec9ec46eb60da87788f522}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!starts\+With@{starts\+With}}
+\index{starts\+With@{starts\+With}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{starts\+With()}{startsWith()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool starts\+With (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{char}]{prefix }\end{DoxyParamCaption})}
+
+
+
+Returns {\ttfamily true} if the string {\ttfamily str} starts with the specified prefix. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a11c9a498274d9d966fdf7a40305a1be9}\label{namespacesgl_1_1priv_1_1strlib_a11c9a498274d9d966fdf7a40305a1be9}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!starts\+With@{starts\+With}}
+\index{starts\+With@{starts\+With}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{starts\+With()}{startsWith()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool starts\+With (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{const std\+::string \&}]{prefix }\end{DoxyParamCaption})}
+
+
+
+Returns {\ttfamily true} if the string {\ttfamily str} starts with the specified character. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_ac05fc94e69329f8d379a801c01105069}\label{namespacesgl_1_1priv_1_1strlib_ac05fc94e69329f8d379a801c01105069}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!string\+Is\+Bool@{string\+Is\+Bool}}
+\index{string\+Is\+Bool@{string\+Is\+Bool}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{string\+Is\+Bool()}{stringIsBool()}}
+{\footnotesize\ttfamily bool string\+Is\+Bool (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Returns true if the given string is either \char`\"{}true\char`\"{} or \char`\"{}false\char`\"{}. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a370a1baccb1cc15a675e64b40d9afad6}\label{namespacesgl_1_1priv_1_1strlib_a370a1baccb1cc15a675e64b40d9afad6}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!string\+Is\+Double@{string\+Is\+Double}}
+\index{string\+Is\+Double@{string\+Is\+Double}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{string\+Is\+Double()}{stringIsDouble()}}
+{\footnotesize\ttfamily bool string\+Is\+Double (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Returns true if the given string could be converted to an real number successfully by the string\+To\+Real function, which will be true if the string has the format of a real number such as \char`\"{}3.\+14\char`\"{} or \char`\"{}-\/46\char`\"{}. 
+
+Equivalent to string\+Is\+Real. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a5a1194f3117e549291895bdbbe76f85f}\label{namespacesgl_1_1priv_1_1strlib_a5a1194f3117e549291895bdbbe76f85f}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!string\+Is\+Integer@{string\+Is\+Integer}}
+\index{string\+Is\+Integer@{string\+Is\+Integer}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{string\+Is\+Integer()}{stringIsInteger()}}
+{\footnotesize\ttfamily bool string\+Is\+Integer (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{int}]{radix = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Returns true if the given string could be converted to an integer successfully by the string\+To\+Integer function, which will be true if the string has the format of an integer such as \char`\"{}1234\char`\"{} or \char`\"{}-\/8\char`\"{}. 
+
+Optionally accepts a radix (base) parameter if base-\/10 is not desired. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_ac7499f39dad1514e946909d251d07ffd}\label{namespacesgl_1_1priv_1_1strlib_ac7499f39dad1514e946909d251d07ffd}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!string\+Is\+Long@{string\+Is\+Long}}
+\index{string\+Is\+Long@{string\+Is\+Long}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{string\+Is\+Long()}{stringIsLong()}}
+{\footnotesize\ttfamily bool string\+Is\+Long (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{int}]{radix = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Returns true if the given string could be converted to a long successfully by the string\+To\+Long function, which will be true if the string has the format of an integer such as \char`\"{}1234\char`\"{} or \char`\"{}-\/8\char`\"{}. 
+
+Optionally accepts a radix (base) parameter if base-\/10 is not desired. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a2b4e3df7dfde2e8c5e78cdf7b31e03ce}\label{namespacesgl_1_1priv_1_1strlib_a2b4e3df7dfde2e8c5e78cdf7b31e03ce}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!string\+Is\+Real@{string\+Is\+Real}}
+\index{string\+Is\+Real@{string\+Is\+Real}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{string\+Is\+Real()}{stringIsReal()}}
+{\footnotesize\ttfamily bool string\+Is\+Real (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Returns true if the given string could be converted to an real number successfully by the string\+To\+Real function, which will be true if the string has the format of a real number such as \char`\"{}3.\+14\char`\"{} or \char`\"{}-\/46\char`\"{}. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_ad026739e163ac00059e145060cba9eec}\label{namespacesgl_1_1priv_1_1strlib_ad026739e163ac00059e145060cba9eec}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!string\+To\+Bool@{string\+To\+Bool}}
+\index{string\+To\+Bool@{string\+To\+Bool}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{string\+To\+Bool()}{stringToBool()}}
+{\footnotesize\ttfamily bool string\+To\+Bool (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+If str is \char`\"{}true\char`\"{}, returns the bool value true. 
+
+If str is \char`\"{}false\char`\"{}, returns the bool value false. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Exception} & if str is any other value than \char`\"{}true\char`\"{} or \char`\"{}false\char`\"{} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a7327a216701560fa447a513814916ecf}\label{namespacesgl_1_1priv_1_1strlib_a7327a216701560fa447a513814916ecf}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!string\+To\+Char@{string\+To\+Char}}
+\index{string\+To\+Char@{string\+To\+Char}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{string\+To\+Char()}{stringToChar()}}
+{\footnotesize\ttfamily char string\+To\+Char (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Converts a single-\/character string into its corresponding char value. 
+
+For example, string\+To\+Char(\char`\"{}hello\char`\"{}) returns the char \textquotesingle{}h\textquotesingle{}. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Exception} & if the given string does not contain exactly 1 character \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_ab45e289eae123f82e9155b01ec636710}\label{namespacesgl_1_1priv_1_1strlib_ab45e289eae123f82e9155b01ec636710}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!string\+To\+Double@{string\+To\+Double}}
+\index{string\+To\+Double@{string\+To\+Double}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{string\+To\+Double()}{stringToDouble()}}
+{\footnotesize\ttfamily double string\+To\+Double (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Converts a string representing a real number into its corresponding value. 
+
+Equivalent to string\+To\+Real. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Exception} & if the string is not a legal floating-\/point number or contains extraneous characters other than whitespace \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a8c234a839fbe3556e1b7b1d93b92b1e6}\label{namespacesgl_1_1priv_1_1strlib_a8c234a839fbe3556e1b7b1d93b92b1e6}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!string\+To\+Integer@{string\+To\+Integer}}
+\index{string\+To\+Integer@{string\+To\+Integer}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{string\+To\+Integer()}{stringToInteger()}}
+{\footnotesize\ttfamily int string\+To\+Integer (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{int}]{radix = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Converts a string of digits into an integer. 
+
+The function accepts an optional radix (base); for example, string\+To\+Integer(\char`\"{}234\char`\"{}, 16) assumes that the string is in base-\/16 and returns 2$\ast$16$\ast$16 + 3$\ast$16 + 4 = 564. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Exception} & if the string is not a legal integer or contains extraneous characters other than whitespace \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a1e7f514d7bb739231262e4a267b53184}\label{namespacesgl_1_1priv_1_1strlib_a1e7f514d7bb739231262e4a267b53184}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!string\+To\+Long@{string\+To\+Long}}
+\index{string\+To\+Long@{string\+To\+Long}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{string\+To\+Long()}{stringToLong()}}
+{\footnotesize\ttfamily long string\+To\+Long (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{int}]{radix = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Converts a string of digits into a long. 
+
+The function accepts an optional radix (base); for example, string\+To\+Long(\char`\"{}234\char`\"{}, 16) assumes that the string is in base-\/16 and returns 2$\ast$16$\ast$16 + 3$\ast$16 + 4 = 564. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Exception} & if the string is not a legal long or contains extraneous characters other than whitespace \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a6a7701384dec7dbee60264b792e613c7}\label{namespacesgl_1_1priv_1_1strlib_a6a7701384dec7dbee60264b792e613c7}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!string\+To\+Real@{string\+To\+Real}}
+\index{string\+To\+Real@{string\+To\+Real}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{string\+To\+Real()}{stringToReal()}}
+{\footnotesize\ttfamily double string\+To\+Real (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Converts a string representing a real number into its corresponding value. 
+
+Equivalent to string\+To\+Double. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Exception} & if the string is not a legal floating-\/point number or contains extraneous characters other than whitespace \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_acad0624097ac17da5bda04d41c1363f7}\label{namespacesgl_1_1priv_1_1strlib_acad0624097ac17da5bda04d41c1363f7}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!to\+Lower\+Case@{to\+Lower\+Case}}
+\index{to\+Lower\+Case@{to\+Lower\+Case}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{to\+Lower\+Case()}{toLowerCase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily char to\+Lower\+Case (\begin{DoxyParamCaption}\item[{char}]{ch }\end{DoxyParamCaption})}
+
+
+
+Returns a new character in which the given uppercase character has been converted into its lowercase equivalent. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_ad8200839a864ebdf2f129fbffa33967b}\label{namespacesgl_1_1priv_1_1strlib_ad8200839a864ebdf2f129fbffa33967b}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!to\+Lower\+Case@{to\+Lower\+Case}}
+\index{to\+Lower\+Case@{to\+Lower\+Case}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{to\+Lower\+Case()}{toLowerCase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string to\+Lower\+Case (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Returns a new string in which all uppercase characters have been converted into their lowercase equivalents. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a35dff265e3225cca9aacba6254d4e083}\label{namespacesgl_1_1priv_1_1strlib_a35dff265e3225cca9aacba6254d4e083}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!to\+Lower\+Case\+In\+Place@{to\+Lower\+Case\+In\+Place}}
+\index{to\+Lower\+Case\+In\+Place@{to\+Lower\+Case\+In\+Place}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{to\+Lower\+Case\+In\+Place()}{toLowerCaseInPlace()}}
+{\footnotesize\ttfamily void to\+Lower\+Case\+In\+Place (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Modifies the given string in-\/place such that all uppercase characters have been converted into their lowercase equivalents. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a13fc513819fb1d0c1aad0dce15fdcecc}\label{namespacesgl_1_1priv_1_1strlib_a13fc513819fb1d0c1aad0dce15fdcecc}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!to\+Upper\+Case@{to\+Upper\+Case}}
+\index{to\+Upper\+Case@{to\+Upper\+Case}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{to\+Upper\+Case()}{toUpperCase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily char to\+Upper\+Case (\begin{DoxyParamCaption}\item[{char}]{ch }\end{DoxyParamCaption})}
+
+
+
+Returns a new character in which the given lowercase character has been converted into its uppercase equivalent. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_aa504de245b08376b4309366fa40a5815}\label{namespacesgl_1_1priv_1_1strlib_aa504de245b08376b4309366fa40a5815}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!to\+Upper\+Case@{to\+Upper\+Case}}
+\index{to\+Upper\+Case@{to\+Upper\+Case}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{to\+Upper\+Case()}{toUpperCase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string to\+Upper\+Case (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Returns a new string in which all lowercase characters have been converted into their uppercase equivalents. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a5501f6f1a57507fd37a02c8eec4c26c6}\label{namespacesgl_1_1priv_1_1strlib_a5501f6f1a57507fd37a02c8eec4c26c6}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!to\+Upper\+Case\+In\+Place@{to\+Upper\+Case\+In\+Place}}
+\index{to\+Upper\+Case\+In\+Place@{to\+Upper\+Case\+In\+Place}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{to\+Upper\+Case\+In\+Place()}{toUpperCaseInPlace()}}
+{\footnotesize\ttfamily void to\+Upper\+Case\+In\+Place (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Modifies the given string in-\/place such that all lowercase characters have been converted into their uppercase equivalents. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a5a01f705cc7b4a7317a57f6bf41aef25}\label{namespacesgl_1_1priv_1_1strlib_a5a01f705cc7b4a7317a57f6bf41aef25}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!trim@{trim}}
+\index{trim@{trim}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{trim()}{trim()}}
+{\footnotesize\ttfamily std\+::string trim (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Returns a new string after removing any whitespace characters from the beginning and end of the argument. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a369c1375de145427183c1b3e3e8b5fde}\label{namespacesgl_1_1priv_1_1strlib_a369c1375de145427183c1b3e3e8b5fde}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!trim\+End@{trim\+End}}
+\index{trim\+End@{trim\+End}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{trim\+End()}{trimEnd()}}
+{\footnotesize\ttfamily std\+::string trim\+End (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Returns a new string after removing any whitespace characters from the end of the argument. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_ac50a0b8051eb7e5400cd949e962dbc1a}\label{namespacesgl_1_1priv_1_1strlib_ac50a0b8051eb7e5400cd949e962dbc1a}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!trim\+End\+In\+Place@{trim\+End\+In\+Place}}
+\index{trim\+End\+In\+Place@{trim\+End\+In\+Place}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{trim\+End\+In\+Place()}{trimEndInPlace()}}
+{\footnotesize\ttfamily void trim\+End\+In\+Place (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Modifies the given string in-\/place to remove any whitespace characters from its end. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a41b53191870377c67ad37dd21404df8d}\label{namespacesgl_1_1priv_1_1strlib_a41b53191870377c67ad37dd21404df8d}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!trim\+In\+Place@{trim\+In\+Place}}
+\index{trim\+In\+Place@{trim\+In\+Place}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{trim\+In\+Place()}{trimInPlace()}}
+{\footnotesize\ttfamily void trim\+In\+Place (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Modifies the given string in-\/place where any whitespace characters from the beginning and end of the argument are removed. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a3a00e1a99ff51e899181bb9011238c93}\label{namespacesgl_1_1priv_1_1strlib_a3a00e1a99ff51e899181bb9011238c93}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!trim\+Start@{trim\+Start}}
+\index{trim\+Start@{trim\+Start}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{trim\+Start()}{trimStart()}}
+{\footnotesize\ttfamily std\+::string trim\+Start (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Returns a new string after removing any whitespace characters from the beginning of the argument. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a841f8a71a4e70a1a65ebcf9ed24e3334}\label{namespacesgl_1_1priv_1_1strlib_a841f8a71a4e70a1a65ebcf9ed24e3334}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!trim\+Start\+In\+Place@{trim\+Start\+In\+Place}}
+\index{trim\+Start\+In\+Place@{trim\+Start\+In\+Place}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{trim\+Start\+In\+Place()}{trimStartInPlace()}}
+{\footnotesize\ttfamily void trim\+Start\+In\+Place (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Modifies the given string in-\/place to remove removing any whitespace characters from the beginning of it. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a27232ef1c4000c2cf048d43b75d3faba}\label{namespacesgl_1_1priv_1_1strlib_a27232ef1c4000c2cf048d43b75d3faba}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!url\+Decode@{url\+Decode}}
+\index{url\+Decode@{url\+Decode}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{url\+Decode()}{urlDecode()}}
+{\footnotesize\ttfamily std\+::string url\+Decode (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Returns a U\+R\+L-\/decoded version of the given string, where any xx character codes are converted back to the equivalent characters. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a18179778100838daa81655bf9a912e9e}\label{namespacesgl_1_1priv_1_1strlib_a18179778100838daa81655bf9a912e9e}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!url\+Decode\+In\+Place@{url\+Decode\+In\+Place}}
+\index{url\+Decode\+In\+Place@{url\+Decode\+In\+Place}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{url\+Decode\+In\+Place()}{urlDecodeInPlace()}}
+{\footnotesize\ttfamily void url\+Decode\+In\+Place (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Modifies the given string in-\/place into a U\+R\+L-\/decoded version of itself, where any xx character codes are converted back to the equivalent characters. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_aee15f17b2470cc3e874de693b091e702}\label{namespacesgl_1_1priv_1_1strlib_aee15f17b2470cc3e874de693b091e702}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!url\+Encode@{url\+Encode}}
+\index{url\+Encode@{url\+Encode}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{url\+Encode()}{urlEncode()}}
+{\footnotesize\ttfamily std\+::string url\+Encode (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Returns a U\+R\+L-\/encoded version of the given string, where most non-\/ alphabetic characters are replaced by xx character codes. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1strlib_a0d795c9b0ee3f6a80517e290da8f16d4}\label{namespacesgl_1_1priv_1_1strlib_a0d795c9b0ee3f6a80517e290da8f16d4}} 
+\index{sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}!url\+Encode\+In\+Place@{url\+Encode\+In\+Place}}
+\index{url\+Encode\+In\+Place@{url\+Encode\+In\+Place}!sgl\+::priv\+::strlib@{sgl\+::priv\+::strlib}}
+\subsubsection{\texorpdfstring{url\+Encode\+In\+Place()}{urlEncodeInPlace()}}
+{\footnotesize\ttfamily void url\+Encode\+In\+Place (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Modifies the given string in-\/place into a U\+R\+L-\/encoded version of itself, where most non-\/ alphabetic characters are replaced by xx character codes. 
+

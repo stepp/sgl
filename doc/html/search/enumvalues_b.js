@@ -1,4 +1,24 @@
 var searchData=
 [
-  ['num_5flock_5fkey',['NUM_LOCK_KEY',['../classGEvent.html#a7885f47644a0388f981f416fa20389b2ae1026f2a198d4e7aa63043b67818d9ea',1,'GEvent']]]
+  ['magenta',['MAGENTA',['../classsgl_1_1GColor.html#a06fc87d81c62e9abb8790b6e5713c55ba56926c820ad72d0977e7ee44d9916e62',1,'sgl::GColor']]],
+  ['menu_5fkey',['MENU_KEY',['../classsgl_1_1GEvent.html#a7885f47644a0388f981f416fa20389b2adf85174536cbc6cb5b6f4a9ae61aaf4c',1,'sgl::GEvent']]],
+  ['message_5fabout',['MESSAGE_ABOUT',['../classsgl_1_1GOptionPane.html#ac6606ebe91c8ac66a2c314c79f5ab013acea265b81d984cd186ef5f7fe627caa5',1,'sgl::GOptionPane']]],
+  ['message_5ferror',['MESSAGE_ERROR',['../classsgl_1_1GOptionPane.html#ac6606ebe91c8ac66a2c314c79f5ab013aeed68e2821e40e5751af74e449ba1fa7',1,'sgl::GOptionPane']]],
+  ['message_5finformation',['MESSAGE_INFORMATION',['../classsgl_1_1GOptionPane.html#ac6606ebe91c8ac66a2c314c79f5ab013a7c67175dfb6af3e42428b6fcfcbe7d94',1,'sgl::GOptionPane']]],
+  ['message_5fplain',['MESSAGE_PLAIN',['../classsgl_1_1GOptionPane.html#ac6606ebe91c8ac66a2c314c79f5ab013ac03a17c74c589b004d166532958a6196',1,'sgl::GOptionPane']]],
+  ['message_5fquestion',['MESSAGE_QUESTION',['../classsgl_1_1GOptionPane.html#ac6606ebe91c8ac66a2c314c79f5ab013a5331d292e92d35f202913bb0b3dfa587',1,'sgl::GOptionPane']]],
+  ['message_5fwarning',['MESSAGE_WARNING',['../classsgl_1_1GOptionPane.html#ac6606ebe91c8ac66a2c314c79f5ab013aa0da5a01a18f78c0f248941ad32cc816',1,'sgl::GOptionPane']]],
+  ['meta_5fdown',['META_DOWN',['../namespacesgl.html#a80f90997871cd543ddb0bf8d282becdda87344aa6189c7356ee6235edf0dd6234',1,'sgl']]],
+  ['meta_5fkey',['META_KEY',['../classsgl_1_1GEvent.html#a7885f47644a0388f981f416fa20389b2afb28a3366d94893a2eaaac6dc31ce05f',1,'sgl::GEvent']]],
+  ['mouse_5fclicked',['MOUSE_CLICKED',['../namespacesgl.html#a2628ea8d12e8b2563c32f05dc7fff6faaa9faeb09e4ace4822bb41a096a4ad5b1',1,'sgl']]],
+  ['mouse_5fdouble_5fclicked',['MOUSE_DOUBLE_CLICKED',['../namespacesgl.html#a2628ea8d12e8b2563c32f05dc7fff6faa4edbf414e396a589fff9a276f78866d1',1,'sgl']]],
+  ['mouse_5fdragged',['MOUSE_DRAGGED',['../namespacesgl.html#a2628ea8d12e8b2563c32f05dc7fff6faa3cc52155e73fd80d0e2df0bdec24daf6',1,'sgl']]],
+  ['mouse_5fentered',['MOUSE_ENTERED',['../namespacesgl.html#a2628ea8d12e8b2563c32f05dc7fff6faa12c07f047bb32c2a270bc3818ffc7ca0',1,'sgl']]],
+  ['mouse_5fevent',['MOUSE_EVENT',['../namespacesgl.html#a6ff6e8ee75a08092e30167b2b7c5d6f7a3cf923d175a341bbb622032a7c54a3de',1,'sgl']]],
+  ['mouse_5fexited',['MOUSE_EXITED',['../namespacesgl.html#a2628ea8d12e8b2563c32f05dc7fff6faa1c91002487e699b6fcd87b5f75d6653c',1,'sgl']]],
+  ['mouse_5fmoved',['MOUSE_MOVED',['../namespacesgl.html#a2628ea8d12e8b2563c32f05dc7fff6faabf73f6998eb93cdcb1de98bf09f93e08',1,'sgl']]],
+  ['mouse_5fpressed',['MOUSE_PRESSED',['../namespacesgl.html#a2628ea8d12e8b2563c32f05dc7fff6faa2a78e34c969c275a8f1d5638eec3e256',1,'sgl']]],
+  ['mouse_5freleased',['MOUSE_RELEASED',['../namespacesgl.html#a2628ea8d12e8b2563c32f05dc7fff6faa3c15ef8596d3b23b6404102c7fb7193a',1,'sgl']]],
+  ['mouse_5fwheel_5fdown',['MOUSE_WHEEL_DOWN',['../namespacesgl.html#a2628ea8d12e8b2563c32f05dc7fff6faaa6bba0beed3325662fddd451caad1d7c',1,'sgl']]],
+  ['mouse_5fwheel_5fup',['MOUSE_WHEEL_UP',['../namespacesgl.html#a2628ea8d12e8b2563c32f05dc7fff6faae83b08d17677a555e2a82128fa1111ad',1,'sgl']]]
 ];

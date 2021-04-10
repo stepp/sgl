@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y',['y',['../structGPoint.html#ab927965981178aa1fba979a37168db2a',1,'GPoint::y()'],['../structGRectangle.html#ab927965981178aa1fba979a37168db2a',1,'GRectangle::y()']]]
+  ['x',['x',['../structsgl_1_1GPoint.html#af88b946fb90d5f08b5fb740c70e98c10',1,'sgl::GPoint::x()'],['../structsgl_1_1GRectangle.html#af88b946fb90d5f08b5fb740c70e98c10',1,'sgl::GRectangle::x()']]]
 ];

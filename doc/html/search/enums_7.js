@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['region',['Region',['../classGContainer.html#a81a01a86de31071a92e6cce0bab9bc4b',1,'GContainer::Region()'],['../classGWindow.html#a81a01a86de31071a92e6cce0bab9bc4b',1,'GWindow::Region()']]]
+  ['orientation',['Orientation',['../classsgl_1_1GScrollBar.html#a871118a09520247c78a71ecd7b0abd58',1,'sgl::GScrollBar::Orientation()'],['../classsgl_1_1GSlider.html#a871118a09520247c78a71ecd7b0abd58',1,'sgl::GSlider::Orientation()']]]
 ];

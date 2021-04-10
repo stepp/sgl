@@ -1,0 +1,137 @@
+\hypertarget{classsgl_1_1GTimer}{}\section{G\+Timer Class Reference}
+\label{classsgl_1_1GTimer}\index{G\+Timer@{G\+Timer}}
+
+
+This class implements a simple interval timer that generates a {\ttfamily G\+Timer\+Event} with a specified frequency.  
+
+
+
+
+{\ttfamily \#include $<$gtimer.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsgl_1_1GTimer_ab947e096ce76b63f283502e4b4446810}{G\+Timer}} (double milliseconds)
+\begin{DoxyCompactList}\small\item\em Creates a timer object that generates a {\ttfamily G\+Timer\+Event} each time the specified number of milliseconds has elapsed. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsgl_1_1GTimer_a2f693771957cae3efd9bfc952c543961}{$\sim$\+G\+Timer}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the timer, stopping it if it\textquotesingle{}s currently running. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classsgl_1_1GTimer_a73d6fbcedb3f4c8379a76161503dc8f8}{get\+Delay}} () const
+\begin{DoxyCompactList}\small\item\em Returns the delay in milliseconds between each tick of this timer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsgl_1_1GTimer_ac1991ea0e286fbb461b60c8c9299d781}{is\+Started}} () const
+\begin{DoxyCompactList}\small\item\em Method\+: is\+Started Usage\+: if (timer.\+is\+Started()) \{ ... \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsgl_1_1GTimer_a22ee094ca3f45aa4156b97d34fe678bf}{restart}} ()
+\begin{DoxyCompactList}\small\item\em Stops the timer (if it was started) and then starts it again. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsgl_1_1GTimer_acebfcbc48c6acd460dac117a8f71a92f}{set\+Delay}} (double ms)
+\begin{DoxyCompactList}\small\item\em Changes the delay in milliseconds between each tick of this timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsgl_1_1GTimer_a60de64d75454385b23995437f1d72669}{start}} ()
+\begin{DoxyCompactList}\small\item\em Starts the timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsgl_1_1GTimer_a8c528baf37154d347366083f0f816846}{stop}} ()
+\begin{DoxyCompactList}\small\item\em Stops the timer so that it stops generating events until it is restarted. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class implements a simple interval timer that generates a {\ttfamily G\+Timer\+Event} with a specified frequency. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classsgl_1_1GTimer_ab947e096ce76b63f283502e4b4446810}\label{classsgl_1_1GTimer_ab947e096ce76b63f283502e4b4446810}} 
+\index{sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}!G\+Timer@{G\+Timer}}
+\index{G\+Timer@{G\+Timer}!sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}}
+\subsubsection{\texorpdfstring{G\+Timer()}{GTimer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsgl_1_1GTimer}{G\+Timer}} (\begin{DoxyParamCaption}\item[{double}]{milliseconds }\end{DoxyParamCaption})}
+
+
+
+Creates a timer object that generates a {\ttfamily G\+Timer\+Event} each time the specified number of milliseconds has elapsed. 
+
+No events are generated until the client calls {\ttfamily start} on the timer.
+
+Due to implementation details, you must create at least one \mbox{\hyperlink{classsgl_1_1GWindow}{G\+Window}} before you can \mbox{\hyperlink{classsgl_1_1GTimer_a60de64d75454385b23995437f1d72669}{start()}} a \mbox{\hyperlink{classsgl_1_1GTimer}{G\+Timer}} object.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Exception} & if milliseconds is negative \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classsgl_1_1GTimer_a2f693771957cae3efd9bfc952c543961}\label{classsgl_1_1GTimer_a2f693771957cae3efd9bfc952c543961}} 
+\index{sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}!````~G\+Timer@{$\sim$\+G\+Timer}}
+\index{````~G\+Timer@{$\sim$\+G\+Timer}!sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}}
+\subsubsection{\texorpdfstring{$\sim$\+G\+Timer()}{~GTimer()}}
+{\footnotesize\ttfamily $\sim$\mbox{\hyperlink{classsgl_1_1GTimer}{G\+Timer}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the timer, stopping it if it\textquotesingle{}s currently running. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classsgl_1_1GTimer_a73d6fbcedb3f4c8379a76161503dc8f8}\label{classsgl_1_1GTimer_a73d6fbcedb3f4c8379a76161503dc8f8}} 
+\index{sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}!get\+Delay@{get\+Delay}}
+\index{get\+Delay@{get\+Delay}!sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}}
+\subsubsection{\texorpdfstring{get\+Delay()}{getDelay()}}
+{\footnotesize\ttfamily double get\+Delay (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the delay in milliseconds between each tick of this timer. 
+
+\mbox{\Hypertarget{classsgl_1_1GTimer_ac1991ea0e286fbb461b60c8c9299d781}\label{classsgl_1_1GTimer_ac1991ea0e286fbb461b60c8c9299d781}} 
+\index{sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}!is\+Started@{is\+Started}}
+\index{is\+Started@{is\+Started}!sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}}
+\subsubsection{\texorpdfstring{is\+Started()}{isStarted()}}
+{\footnotesize\ttfamily bool is\+Started (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method\+: is\+Started Usage\+: if (timer.\+is\+Started()) \{ ... 
+
+\subsubsection*{\} }
+
+Returns true if the given timer has been started (via \mbox{\hyperlink{classsgl_1_1GTimer_a60de64d75454385b23995437f1d72669}{start()}}). If you stop the timer or have not started it yet, this method will return false. \mbox{\Hypertarget{classsgl_1_1GTimer_a22ee094ca3f45aa4156b97d34fe678bf}\label{classsgl_1_1GTimer_a22ee094ca3f45aa4156b97d34fe678bf}} 
+\index{sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}!restart@{restart}}
+\index{restart@{restart}!sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}}
+\subsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily void restart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Stops the timer (if it was started) and then starts it again. 
+
+\mbox{\Hypertarget{classsgl_1_1GTimer_acebfcbc48c6acd460dac117a8f71a92f}\label{classsgl_1_1GTimer_acebfcbc48c6acd460dac117a8f71a92f}} 
+\index{sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}!set\+Delay@{set\+Delay}}
+\index{set\+Delay@{set\+Delay}!sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}}
+\subsubsection{\texorpdfstring{set\+Delay()}{setDelay()}}
+{\footnotesize\ttfamily void set\+Delay (\begin{DoxyParamCaption}\item[{double}]{ms }\end{DoxyParamCaption})}
+
+
+
+Changes the delay in milliseconds between each tick of this timer. 
+
+If the timer is currently running, calling this method will stop and restart the timer with the new delay.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Exception} & if milliseconds is negative \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classsgl_1_1GTimer_a60de64d75454385b23995437f1d72669}\label{classsgl_1_1GTimer_a60de64d75454385b23995437f1d72669}} 
+\index{sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}!start@{start}}
+\index{start@{start}!sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Starts the timer. 
+
+A timer continues to generate timer events until it is stopped; to achieve the effect of a one-\/shot timer, the simplest approach is to call the {\ttfamily stop} method inside the event handler. \mbox{\Hypertarget{classsgl_1_1GTimer_a8c528baf37154d347366083f0f816846}\label{classsgl_1_1GTimer_a8c528baf37154d347366083f0f816846}} 
+\index{sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}!stop@{stop}}
+\index{stop@{stop}!sgl\+::\+G\+Timer@{sgl\+::\+G\+Timer}}
+\subsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Stops the timer so that it stops generating events until it is restarted. 
+

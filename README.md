@@ -6,13 +6,26 @@ It is made for students and teachers, and it is designed to be simpler to use an
 It is cross-platform and works on Windows, Mac, and Linux.
 The design and feel of the provided classes is generally similar to that of Java's AWT/Swing graphical library, using C++ syntax and idioms.
 
-This library is a fork of the Stanford C++ Library, which was originally developed by Stanford Professor Eric Roberts, with the assistance of Julie Zelenski, Keith Schwarz, and other Stanford colleagues.  Many thanks to these Stanford instructors for their excellent work.
+The library includes a rich set of widgets that you can use to implement a graphical user interface, such as `GWindow`, `GButton`, `GTextField`, `GCheckBox`, and more.
+It also includes a `GCanvas` widget that allows you to do 2D graphics such as painting shapes, colors, text, and images.
+(A `GWindow` implicitly has a canvas at its center, so you can issue the same commands to a window to use it as a drawing panel.)
+The library also includes a graphical console window that appears if you `#include "console.h"` in your code.
+This graphical console pops up as its own window, which makes it easier for students to run console programs.
+The graphical console supports some helpful features in its top menus, such as "diffing" the student's program output against expected output files.
+
+This library is a fork of the Stanford C++ Library, which was originally developed by Stanford Professor Eric Roberts, with the assistance of Julie Zelenski, Keith Schwarz, and other Stanford colleagues.
+Many thanks to these Stanford instructors for their excellent work.
+
+The SGL library purposely has a smaller feature set than the Stanford library, which is more of a "kitchen sink" library with many various features such as string manipulation, file processing, console I/O, and custom collection classes.
+SGL removes all of these features and retains only the graphical functionality so that students can learn pure C++ with the language's standard libraries rather than custom instructor-provided libraries.
+If you want some of these removed features, you may prefer to use the Stanford C++ library (which is still actively maintained) instead of this one.
 
 
 # Support
 
-We are sorry to say that we cannot offer any user support for these libraries at this time.
-You are welcome to use the libraries, but we cannot help with compiler issues or answer other technical questions.
+Instructors are welcome to contact the author at the email address below with any questions.
+We are sorry to say that we cannot offer any student support (such as homework help or debugging) for these libraries at this time.
+You are welcome to use the libraries, but we cannot help with compiler issues, installation problems, or other technical questions.
 
 We are willing to accept pull requests if you find bugs or would like to add functionality.
 We recommend contacting us first if you plan to add code to this project.
@@ -95,13 +108,16 @@ The following example program uses SGL to create a window with an image and some
 #include "console.h"   // pops up a graphical console
 #include "gwindow.h"   // for GWindow class
 using namespace std;
+using namespace sgl;   // to refer to sgl widgets such as GWindow
 
 int main()
 {
+    // graphical console should pop up to print this text
     cout << "What is your name? ";
     string name;
     getline(cin, name);
 
+    // graphical window should pop up to show image and text
     GWindow* window = new GWindow(300, 250);
     window->setTitle("SGL Starter Project");
     window->setLocation(300, 150);

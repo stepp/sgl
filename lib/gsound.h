@@ -24,9 +24,9 @@
 namespace sgl {
 
 /**
- * This class encapsulates a sound file.  The sound file is specified in the
- * constructor and must be a file in either the current directory or a
- * subdirectory named <code>sounds</code>.
+ * This class encapsulates a sound file.
+ * The sound file is specified in the constructor and must be a file in either
+ * the current directory or a subdirectory named <code>sounds</code>.
  *
  * The following code, for example, plays the sound file
  * <code>ringtone.wav</code>:

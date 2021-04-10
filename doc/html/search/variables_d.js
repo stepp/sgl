@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['width',['width',['../structGDimension.html#a9df23e056f5d1a0388cd8190431c0e03',1,'GDimension::width()'],['../structGRectangle.html#a9df23e056f5d1a0388cd8190431c0e03',1,'GRectangle::width()']]],
-  ['width_5fheight_5fmax',['WIDTH_HEIGHT_MAX',['../classGCanvas.html#a9150dbfb90e715487461a8c07850871e',1,'GCanvas']]]
+  ['y',['y',['../structsgl_1_1GPoint.html#ab927965981178aa1fba979a37168db2a',1,'sgl::GPoint::y()'],['../structsgl_1_1GRectangle.html#ab927965981178aa1fba979a37168db2a',1,'sgl::GRectangle::y()']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['width',['width',['../structGDimension.html#a9df23e056f5d1a0388cd8190431c0e03',1,'GDimension::width()'],['../structGRectangle.html#a9df23e056f5d1a0388cd8190431c0e03',1,'GRectangle::width()']]],
-  ['width_5fheight_5fmax',['WIDTH_HEIGHT_MAX',['../classGCanvas.html#a9150dbfb90e715487461a8c07850871e',1,'GCanvas']]]
+  ['spacing_5fdefault',['SPACING_DEFAULT',['../classsgl_1_1GContainer.html#a2f9f03af35bbe9cd402d12efb4caa4a3',1,'sgl::GContainer']]],
+  ['standard_5fscreen_5fdpi',['STANDARD_SCREEN_DPI',['../classsgl_1_1GWindow.html#a28d634f1a144a0f1aabf338f0be6afe2',1,'sgl::GWindow']]]
 ];

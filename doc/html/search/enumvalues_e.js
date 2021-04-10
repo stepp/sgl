@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['red',['RED',['../classGColor.html#a06fc87d81c62e9abb8790b6e5713c55baf80f9a890089d211842d59625e561f88',1,'GColor']]],
-  ['region_5fcenter',['REGION_CENTER',['../classGContainer.html#a81a01a86de31071a92e6cce0bab9bc4ba5ba85a564dbf472d69f92d5a2870db16',1,'GContainer::REGION_CENTER()'],['../classGWindow.html#a81a01a86de31071a92e6cce0bab9bc4ba5ba85a564dbf472d69f92d5a2870db16',1,'GWindow::REGION_CENTER()']]],
-  ['region_5feast',['REGION_EAST',['../classGContainer.html#a81a01a86de31071a92e6cce0bab9bc4baac78951bd4e01d20f4825d5ae0a54357',1,'GContainer::REGION_EAST()'],['../classGWindow.html#a81a01a86de31071a92e6cce0bab9bc4baac78951bd4e01d20f4825d5ae0a54357',1,'GWindow::REGION_EAST()']]],
-  ['region_5fnorth',['REGION_NORTH',['../classGContainer.html#a81a01a86de31071a92e6cce0bab9bc4baf40d135fb811ad59acb102f1fb357550',1,'GContainer::REGION_NORTH()'],['../classGWindow.html#a81a01a86de31071a92e6cce0bab9bc4baf40d135fb811ad59acb102f1fb357550',1,'GWindow::REGION_NORTH()']]],
-  ['region_5fsouth',['REGION_SOUTH',['../classGContainer.html#a81a01a86de31071a92e6cce0bab9bc4bab533512ba438173a4ceb9c501eb17628',1,'GContainer::REGION_SOUTH()'],['../classGWindow.html#a81a01a86de31071a92e6cce0bab9bc4bab533512ba438173a4ceb9c501eb17628',1,'GWindow::REGION_SOUTH()']]],
-  ['region_5fwest',['REGION_WEST',['../classGContainer.html#a81a01a86de31071a92e6cce0bab9bc4ba5dd8c2219af001263c00de02b642786d',1,'GContainer::REGION_WEST()'],['../classGWindow.html#a81a01a86de31071a92e6cce0bab9bc4ba5dd8c2219af001263c00de02b642786d',1,'GWindow::REGION_WEST()']]],
-  ['return_5fkey',['RETURN_KEY',['../classGEvent.html#a7885f47644a0388f981f416fa20389b2af5ac08fefce6ee222239468bdfd9e828',1,'GEvent']]],
-  ['right_5farrow_5fkey',['RIGHT_ARROW_KEY',['../classGEvent.html#a7885f47644a0388f981f416fa20389b2aed698a58aaf6c24f8334d7d9810339aa',1,'GEvent']]]
+  ['page_5fdown_5fkey',['PAGE_DOWN_KEY',['../classsgl_1_1GEvent.html#a7885f47644a0388f981f416fa20389b2acaabcca133206248fbe0be4447dce25c',1,'sgl::GEvent']]],
+  ['page_5fup_5fkey',['PAGE_UP_KEY',['../classsgl_1_1GEvent.html#a7885f47644a0388f981f416fa20389b2a303b1e3e75da2aebf9cbaf4dfa833d5e',1,'sgl::GEvent']]],
+  ['pause_5fkey',['PAUSE_KEY',['../classsgl_1_1GEvent.html#a7885f47644a0388f981f416fa20389b2a6a27d19c37941821112decd8a2c301d6',1,'sgl::GEvent']]],
+  ['pink',['PINK',['../classsgl_1_1GColor.html#a06fc87d81c62e9abb8790b6e5713c55ba186598537092d140eaa60720ec7e0821',1,'sgl::GColor']]],
+  ['print_5fscreen_5fkey',['PRINT_SCREEN_KEY',['../classsgl_1_1GEvent.html#a7885f47644a0388f981f416fa20389b2a7770443994203f243868d62da29e3ceb',1,'sgl::GEvent']]],
+  ['purple',['PURPLE',['../classsgl_1_1GColor.html#a06fc87d81c62e9abb8790b6e5713c55ba2772ad7cd64f03c2aed60f91c69fa69d',1,'sgl::GColor']]]
 ];

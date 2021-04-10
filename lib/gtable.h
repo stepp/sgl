@@ -612,7 +612,6 @@ private:
     virtual void setCellForegroundInternal(int row, int column, int color);
 
     static std::string toExcelColumnName(int col);
-    // static GridLocation toRowColumn(const std::string& excelColumnName);
 
     void updateColumnHeaders();
 
@@ -670,21 +669,33 @@ private:
     friend class GTable;
 };
 
+/**
+ * This is a small structure representing a row and column in a table.
+ * Several GTable methods return row/column locations in a single value
+ * using this structure.
+ *
+ * @version 2021/04/03
+ * - removed dependencies
+ * - removed hashCode
+ * - added to_string
+ * @version 2018/03/12
+ * - initial version
+ */
 struct GTableIndex {
 public:
 
-    /*
+    /**
      * Constructs a location representing the given row and column.
      * Any indexes are allowed, including negatives and out-of-bounds indexes.
      */
     GTableIndex(int row, int col);
 
-    /*
+    /**
      * Constructs a default location 0, 0.
      */
     GTableIndex();
 
-    /*
+    /**
      * Returns a string representation of this location, such as "r2c17".
      */
     std::string toString() const;
@@ -694,13 +705,13 @@ public:
     int col;
 };
 
-/*
+/**
  * Returns a string representation of this location, such as "r2c17".
  */
 std::string to_string(const GTableIndex& value);
 
-/*
- * Relational operators for comparing grid locations.
+/**
+ * Relational operators for comparing table locations.
  */
 bool operator <(const GTableIndex& loc1, const GTableIndex& loc2);
 bool operator <=(const GTableIndex& loc1, const GTableIndex& loc2);
@@ -709,7 +720,7 @@ bool operator !=(const GTableIndex& loc1, const GTableIndex& loc2);
 bool operator >(const GTableIndex& loc1, const GTableIndex& loc2);
 bool operator >=(const GTableIndex& loc1, const GTableIndex& loc2);
 
-/*
+/**
  * I/O stream operators for reading or writing locations in their toString format.
  */
 std::ostream& operator <<(std::ostream& out, const GTableIndex& loc);

@@ -1,29 +1,4 @@
 var searchData=
 [
-  ['_7egbrowserpane',['~GBrowserPane',['../classGBrowserPane.html#ad2b090c6d23fd1019afa2a16e9eb1680',1,'GBrowserPane']]],
-  ['_7egbutton',['~GButton',['../classGButton.html#ae8f3d0d454867ef8bc9e7cd69e80f663',1,'GButton']]],
-  ['_7egcanvas',['~GCanvas',['../classGCanvas.html#af7574c14a3a729c56863e9c4ab6a6787',1,'GCanvas']]],
-  ['_7egcheckbox',['~GCheckBox',['../classGCheckBox.html#a40853b1ff7d4f861d33054a5df7fb86d',1,'GCheckBox']]],
-  ['_7egchooser',['~GChooser',['../classGChooser.html#afeff765eb6ee75d629c59da4c244fa59',1,'GChooser']]],
-  ['_7egcontainer',['~GContainer',['../classGContainer.html#a45b3c0c0cc9c78097c024ca842978692',1,'GContainer']]],
-  ['_7egdownloader',['~GDownloader',['../classGDownloader.html#a6a9f476cb937e98d417d8ab43b8cd8d5',1,'GDownloader']]],
-  ['_7egdrawingsurface',['~GDrawingSurface',['../classGDrawingSurface.html#a8e2c882a0c4e31fcbcbb86a207425c1f',1,'GDrawingSurface']]],
-  ['_7egevent',['~GEvent',['../classGEvent.html#a294ad1d22669baa2bae04f3d75eb183c',1,'GEvent']]],
-  ['_7egimage',['~GImage',['../classGImage.html#aff2de2de9e75e1d6bf56248c2fdcc615',1,'GImage']]],
-  ['_7eginteractor',['~GInteractor',['../classGInteractor.html#adb2d61211f85464680d47b511db24561',1,'GInteractor']]],
-  ['_7eglabel',['~GLabel',['../classGLabel.html#a1d11ab4dd459b9a9b1f28410344cfc33',1,'GLabel']]],
-  ['_7egobject',['~GObject',['../classGObject.html#ac955ba26942d1d44fc3d0cd6f76b1790',1,'GObject']]],
-  ['_7egobservable',['~GObservable',['../classGObservable.html#a755e7879db8b0a71916cfde365d49305',1,'GObservable']]],
-  ['_7egradiobutton',['~GRadioButton',['../classGRadioButton.html#a424ac187807b9f40966b28b47b13121f',1,'GRadioButton']]],
-  ['_7egscrollbar',['~GScrollBar',['../classGScrollBar.html#a0b1ea2ea7b58f299e20c6d75249f1a2e',1,'GScrollBar']]],
-  ['_7egscrollpane',['~GScrollPane',['../classGScrollPane.html#a8e55b36c91774865b339877f1f816838',1,'GScrollPane']]],
-  ['_7egslider',['~GSlider',['../classGSlider.html#a8f6de86ca7815ddc1fdfcec42d25c844',1,'GSlider']]],
-  ['_7egsound',['~GSound',['../classGSound.html#a417fb21fbcfa4b731a58854dd4005da7',1,'GSound']]],
-  ['_7egspacer',['~GSpacer',['../classGSpacer.html#a20f146a52fc612e051e0b8f2cdf18a8d',1,'GSpacer']]],
-  ['_7egtable',['~GTable',['../classGTable.html#aa9d949edf98f5e891678aca78500550b',1,'GTable']]],
-  ['_7egtextarea',['~GTextArea',['../classGTextArea.html#a7175406f7376c3e97ea921a39c175daf',1,'GTextArea']]],
-  ['_7egtextfield',['~GTextField',['../classGTextField.html#a3361f8538c9bd9337a7ccc533d3534c0',1,'GTextField']]],
-  ['_7egthread',['~GThread',['../classGThread.html#ae4f0a2859df75533269d8916c361855d',1,'GThread']]],
-  ['_7egtimer',['~GTimer',['../classGTimer.html#a2f693771957cae3efd9bfc952c543961',1,'GTimer']]],
-  ['_7egwindow',['~GWindow',['../classGWindow.html#ab867b220db73c03e315b48c01f868e27',1,'GWindow']]]
+  ['yield',['yield',['../classsgl_1_1GThread.html#a77a5c1943920f355bd1db8cb99bddcfc',1,'sgl::GThread']]]
 ];

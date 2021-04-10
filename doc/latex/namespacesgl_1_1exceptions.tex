@@ -1,0 +1,99 @@
+\hypertarget{namespacesgl_1_1exceptions}{}\section{sgl\+:\+:exceptions Namespace Reference}
+\label{namespacesgl_1_1exceptions}\index{sgl\+::exceptions@{sgl\+::exceptions}}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacesgl_1_1exceptions_af9bff8ff1154a04a899276af806b8586}{status\+\_\+t}} \{ \mbox{\hyperlink{namespacesgl_1_1exceptions_af9bff8ff1154a04a899276af806b8586ae4db7c7ebf0745b6a50dca874c8eb0f7}{D\+B\+G\+\_\+\+U\+N\+K\+N\+O\+WN}} = -\/1, 
+\mbox{\hyperlink{namespacesgl_1_1exceptions_af9bff8ff1154a04a899276af806b8586a7a9a6b0033804e09d661906434f757d2}{D\+B\+G\+\_\+\+NO}}, 
+\mbox{\hyperlink{namespacesgl_1_1exceptions_af9bff8ff1154a04a899276af806b8586a065f682fca49b754e7b3f6a0d82a963f}{D\+B\+G\+\_\+\+Y\+ES}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \& \mbox{\hyperlink{namespacesgl_1_1exceptions_a7056566d5a77c39b9b0bc7060426db66}{get\+Program\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Called by C++ lib\textquotesingle{}s main wrapper so that the stack trace knows the program\textquotesingle{}s name. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1exceptions_a6a3658a12893a1ea2acaa6fc6e8b6d82}{get\+Top\+Level\+Exception\+Handler\+Enabled}} ()
+\begin{DoxyCompactList}\small\item\em Returns whether the top-\/level exception handler is enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_1_1exceptions_ac271a27f160c64bf051b5daf6e0fe6a1}{interrupt\+If\+Debug}} ()
+\begin{DoxyCompactList}\small\item\em If running under debugger, will interrupt program and return control to debugger (as if you pressed \char`\"{}interrupt\char`\"{} button). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_1_1exceptions_a47c669ec573608d439258c48c202d58a}{set\+Program\+Name}} (char $\ast$program\+Name)
+\begin{DoxyCompactList}\small\item\em Called by C++ lib\textquotesingle{}s main wrapper so that the stack trace knows the program\textquotesingle{}s name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_1_1exceptions_aecffab3c2119276b44cb55564b11e520}{set\+Top\+Level\+Exception\+Handler\+Enabled}} (bool enabled)
+\begin{DoxyCompactList}\small\item\em Sets whether the top-\/level exception handler is enabled. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespacesgl_1_1exceptions_af9bff8ff1154a04a899276af806b8586}\label{namespacesgl_1_1exceptions_af9bff8ff1154a04a899276af806b8586}} 
+\index{sgl\+::exceptions@{sgl\+::exceptions}!status\+\_\+t@{status\+\_\+t}}
+\index{status\+\_\+t@{status\+\_\+t}!sgl\+::exceptions@{sgl\+::exceptions}}
+\subsubsection{\texorpdfstring{status\+\_\+t}{status\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacesgl_1_1exceptions_af9bff8ff1154a04a899276af806b8586}{status\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+B\+G\+\_\+\+U\+N\+K\+N\+O\+WN@{D\+B\+G\+\_\+\+U\+N\+K\+N\+O\+WN}!sgl\+::exceptions@{sgl\+::exceptions}}\index{sgl\+::exceptions@{sgl\+::exceptions}!D\+B\+G\+\_\+\+U\+N\+K\+N\+O\+WN@{D\+B\+G\+\_\+\+U\+N\+K\+N\+O\+WN}}}\mbox{\Hypertarget{namespacesgl_1_1exceptions_af9bff8ff1154a04a899276af806b8586ae4db7c7ebf0745b6a50dca874c8eb0f7}\label{namespacesgl_1_1exceptions_af9bff8ff1154a04a899276af806b8586ae4db7c7ebf0745b6a50dca874c8eb0f7}} 
+D\+B\+G\+\_\+\+U\+N\+K\+N\+O\+WN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+B\+G\+\_\+\+NO@{D\+B\+G\+\_\+\+NO}!sgl\+::exceptions@{sgl\+::exceptions}}\index{sgl\+::exceptions@{sgl\+::exceptions}!D\+B\+G\+\_\+\+NO@{D\+B\+G\+\_\+\+NO}}}\mbox{\Hypertarget{namespacesgl_1_1exceptions_af9bff8ff1154a04a899276af806b8586a7a9a6b0033804e09d661906434f757d2}\label{namespacesgl_1_1exceptions_af9bff8ff1154a04a899276af806b8586a7a9a6b0033804e09d661906434f757d2}} 
+D\+B\+G\+\_\+\+NO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+B\+G\+\_\+\+Y\+ES@{D\+B\+G\+\_\+\+Y\+ES}!sgl\+::exceptions@{sgl\+::exceptions}}\index{sgl\+::exceptions@{sgl\+::exceptions}!D\+B\+G\+\_\+\+Y\+ES@{D\+B\+G\+\_\+\+Y\+ES}}}\mbox{\Hypertarget{namespacesgl_1_1exceptions_af9bff8ff1154a04a899276af806b8586a065f682fca49b754e7b3f6a0d82a963f}\label{namespacesgl_1_1exceptions_af9bff8ff1154a04a899276af806b8586a065f682fca49b754e7b3f6a0d82a963f}} 
+D\+B\+G\+\_\+\+Y\+ES&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacesgl_1_1exceptions_a7056566d5a77c39b9b0bc7060426db66}\label{namespacesgl_1_1exceptions_a7056566d5a77c39b9b0bc7060426db66}} 
+\index{sgl\+::exceptions@{sgl\+::exceptions}!get\+Program\+Name@{get\+Program\+Name}}
+\index{get\+Program\+Name@{get\+Program\+Name}!sgl\+::exceptions@{sgl\+::exceptions}}
+\subsubsection{\texorpdfstring{get\+Program\+Name()}{getProgramName()}}
+{\footnotesize\ttfamily std\+::string \& get\+Program\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Called by C++ lib\textquotesingle{}s main wrapper so that the stack trace knows the program\textquotesingle{}s name. 
+
+(Taken from argv\mbox{[}0\mbox{]}.) \mbox{\Hypertarget{namespacesgl_1_1exceptions_a6a3658a12893a1ea2acaa6fc6e8b6d82}\label{namespacesgl_1_1exceptions_a6a3658a12893a1ea2acaa6fc6e8b6d82}} 
+\index{sgl\+::exceptions@{sgl\+::exceptions}!get\+Top\+Level\+Exception\+Handler\+Enabled@{get\+Top\+Level\+Exception\+Handler\+Enabled}}
+\index{get\+Top\+Level\+Exception\+Handler\+Enabled@{get\+Top\+Level\+Exception\+Handler\+Enabled}!sgl\+::exceptions@{sgl\+::exceptions}}
+\subsubsection{\texorpdfstring{get\+Top\+Level\+Exception\+Handler\+Enabled()}{getTopLevelExceptionHandlerEnabled()}}
+{\footnotesize\ttfamily bool get\+Top\+Level\+Exception\+Handler\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns whether the top-\/level exception handler is enabled. 
+
+\mbox{\Hypertarget{namespacesgl_1_1exceptions_ac271a27f160c64bf051b5daf6e0fe6a1}\label{namespacesgl_1_1exceptions_ac271a27f160c64bf051b5daf6e0fe6a1}} 
+\index{sgl\+::exceptions@{sgl\+::exceptions}!interrupt\+If\+Debug@{interrupt\+If\+Debug}}
+\index{interrupt\+If\+Debug@{interrupt\+If\+Debug}!sgl\+::exceptions@{sgl\+::exceptions}}
+\subsubsection{\texorpdfstring{interrupt\+If\+Debug()}{interruptIfDebug()}}
+{\footnotesize\ttfamily void interrupt\+If\+Debug (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+If running under debugger, will interrupt program and return control to debugger (as if you pressed \char`\"{}interrupt\char`\"{} button). 
+
+If not running under debugger, does nothing. \mbox{\Hypertarget{namespacesgl_1_1exceptions_a47c669ec573608d439258c48c202d58a}\label{namespacesgl_1_1exceptions_a47c669ec573608d439258c48c202d58a}} 
+\index{sgl\+::exceptions@{sgl\+::exceptions}!set\+Program\+Name@{set\+Program\+Name}}
+\index{set\+Program\+Name@{set\+Program\+Name}!sgl\+::exceptions@{sgl\+::exceptions}}
+\subsubsection{\texorpdfstring{set\+Program\+Name()}{setProgramName()}}
+{\footnotesize\ttfamily void set\+Program\+Name (\begin{DoxyParamCaption}\item[{char $\ast$}]{program\+Name }\end{DoxyParamCaption})}
+
+
+
+Called by C++ lib\textquotesingle{}s main wrapper so that the stack trace knows the program\textquotesingle{}s name. 
+
+(Taken from argv\mbox{[}0\mbox{]}.) \mbox{\Hypertarget{namespacesgl_1_1exceptions_aecffab3c2119276b44cb55564b11e520}\label{namespacesgl_1_1exceptions_aecffab3c2119276b44cb55564b11e520}} 
+\index{sgl\+::exceptions@{sgl\+::exceptions}!set\+Top\+Level\+Exception\+Handler\+Enabled@{set\+Top\+Level\+Exception\+Handler\+Enabled}}
+\index{set\+Top\+Level\+Exception\+Handler\+Enabled@{set\+Top\+Level\+Exception\+Handler\+Enabled}!sgl\+::exceptions@{sgl\+::exceptions}}
+\subsubsection{\texorpdfstring{set\+Top\+Level\+Exception\+Handler\+Enabled()}{setTopLevelExceptionHandlerEnabled()}}
+{\footnotesize\ttfamily void set\+Top\+Level\+Exception\+Handler\+Enabled (\begin{DoxyParamCaption}\item[{bool}]{enabled }\end{DoxyParamCaption})}
+
+
+
+Sets whether the top-\/level exception handler is enabled. 
+

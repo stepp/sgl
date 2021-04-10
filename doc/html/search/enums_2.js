@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['inputtype',['InputType',['../classGTextField.html#a5fc772c800c3d40d2b95564e8a839bab',1,'GTextField']]]
+  ['horizontalalignment',['HorizontalAlignment',['../namespacesgl.html#aa00e70829e72ff16addc4d9f06fe3bc5',1,'sgl']]]
 ];

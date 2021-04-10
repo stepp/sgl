@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['no_5fdiffs_5fmessage',['NO_DIFFS_MESSAGE',['../namespacediff.html#a4f8bdb0eae6c54a481aba9358db1e9ab',1,'diff']]]
+  ['pi',['PI',['../namespacesgl_1_1math.html#a952eac791b596a61bba0a133a3bb439f',1,'sgl::math']]]
 ];

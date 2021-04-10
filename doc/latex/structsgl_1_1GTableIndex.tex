@@ -1,0 +1,98 @@
+\hypertarget{structsgl_1_1GTableIndex}{}\section{G\+Table\+Index Struct Reference}
+\label{structsgl_1_1GTableIndex}\index{G\+Table\+Index@{G\+Table\+Index}}
+
+
+This is a small structure representing a row and column in a table.  
+
+
+
+
+{\ttfamily \#include $<$gtable.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structsgl_1_1GTableIndex_acce37e5fd80f249f95890ad8aa4aa4e4}{G\+Table\+Index}} (int \mbox{\hyperlink{structsgl_1_1GTableIndex_af1d3cff2e4538e23400e260bae3dadad}{row}}, int \mbox{\hyperlink{structsgl_1_1GTableIndex_afb52e720f5f0c483db5861f9e42e924e}{col}})
+\begin{DoxyCompactList}\small\item\em Constructs a location representing the given row and column. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsgl_1_1GTableIndex_a711af6c0d4a8d8a2616b24adecf0c7e1}{G\+Table\+Index}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a default location 0, 0. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structsgl_1_1GTableIndex_a1fe5121d6528fdea3f243321b3fa3a49}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Returns a string representation of this location, such as \char`\"{}r2c17\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structsgl_1_1GTableIndex_afb52e720f5f0c483db5861f9e42e924e}{col}}
+\item 
+int \mbox{\hyperlink{structsgl_1_1GTableIndex_af1d3cff2e4538e23400e260bae3dadad}{row}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is a small structure representing a row and column in a table. 
+
+Several \mbox{\hyperlink{classsgl_1_1GTable}{G\+Table}} methods return row/column locations in a single value using this structure.
+
+\begin{DoxyVersion}{Version}
+2021/04/03
+\begin{DoxyItemize}
+\item removed dependencies
+\item removed hash\+Code
+\item added to\+\_\+string 
+\end{DoxyItemize}
+
+2018/03/12
+\begin{DoxyItemize}
+\item initial version 
+\end{DoxyItemize}
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structsgl_1_1GTableIndex_acce37e5fd80f249f95890ad8aa4aa4e4}\label{structsgl_1_1GTableIndex_acce37e5fd80f249f95890ad8aa4aa4e4}} 
+\index{sgl\+::\+G\+Table\+Index@{sgl\+::\+G\+Table\+Index}!G\+Table\+Index@{G\+Table\+Index}}
+\index{G\+Table\+Index@{G\+Table\+Index}!sgl\+::\+G\+Table\+Index@{sgl\+::\+G\+Table\+Index}}
+\subsubsection{\texorpdfstring{G\+Table\+Index()}{GTableIndex()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsgl_1_1GTableIndex}{G\+Table\+Index}} (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+Constructs a location representing the given row and column. 
+
+Any indexes are allowed, including negatives and out-\/of-\/bounds indexes. \mbox{\Hypertarget{structsgl_1_1GTableIndex_a711af6c0d4a8d8a2616b24adecf0c7e1}\label{structsgl_1_1GTableIndex_a711af6c0d4a8d8a2616b24adecf0c7e1}} 
+\index{sgl\+::\+G\+Table\+Index@{sgl\+::\+G\+Table\+Index}!G\+Table\+Index@{G\+Table\+Index}}
+\index{G\+Table\+Index@{G\+Table\+Index}!sgl\+::\+G\+Table\+Index@{sgl\+::\+G\+Table\+Index}}
+\subsubsection{\texorpdfstring{G\+Table\+Index()}{GTableIndex()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsgl_1_1GTableIndex}{G\+Table\+Index}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a default location 0, 0. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{structsgl_1_1GTableIndex_a1fe5121d6528fdea3f243321b3fa3a49}\label{structsgl_1_1GTableIndex_a1fe5121d6528fdea3f243321b3fa3a49}} 
+\index{sgl\+::\+G\+Table\+Index@{sgl\+::\+G\+Table\+Index}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!sgl\+::\+G\+Table\+Index@{sgl\+::\+G\+Table\+Index}}
+\subsubsection{\texorpdfstring{to\+String()}{toString()}}
+{\footnotesize\ttfamily std\+::string to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns a string representation of this location, such as \char`\"{}r2c17\char`\"{}. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structsgl_1_1GTableIndex_afb52e720f5f0c483db5861f9e42e924e}\label{structsgl_1_1GTableIndex_afb52e720f5f0c483db5861f9e42e924e}} 
+\index{sgl\+::\+G\+Table\+Index@{sgl\+::\+G\+Table\+Index}!col@{col}}
+\index{col@{col}!sgl\+::\+G\+Table\+Index@{sgl\+::\+G\+Table\+Index}}
+\subsubsection{\texorpdfstring{col}{col}}
+{\footnotesize\ttfamily int col}
+
+\mbox{\Hypertarget{structsgl_1_1GTableIndex_af1d3cff2e4538e23400e260bae3dadad}\label{structsgl_1_1GTableIndex_af1d3cff2e4538e23400e260bae3dadad}} 
+\index{sgl\+::\+G\+Table\+Index@{sgl\+::\+G\+Table\+Index}!row@{row}}
+\index{row@{row}!sgl\+::\+G\+Table\+Index@{sgl\+::\+G\+Table\+Index}}
+\subsubsection{\texorpdfstring{row}{row}}
+{\footnotesize\ttfamily int row}
+

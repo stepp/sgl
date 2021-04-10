@@ -1,0 +1,96 @@
+\hypertarget{classsgl_1_1GClipboard}{}\section{G\+Clipboard Class Reference}
+\label{classsgl_1_1GClipboard}\index{G\+Clipboard@{G\+Clipboard}}
+
+
+The \mbox{\hyperlink{classsgl_1_1GClipboard}{G\+Clipboard}} class contains static methods you can use to get and set the contents of the system clipboard.  
+
+
+
+
+{\ttfamily \#include $<$gclipboard.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classsgl_1_1GClipboard_a4879b26a87a0b49f7d535c7a669620f6}{get}} ()
+\begin{DoxyCompactList}\small\item\em Returns the current contents of the system clipboard. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classsgl_1_1GClipboard_a813cbc957e264a1846175ece316757d3}{is\+Copy}} (Q\+Key\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Returns true if the given event represents a \char`\"{}copy\char`\"{} operation. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classsgl_1_1GClipboard_a5ea46b856cb8eae1295b1e2b7db664aa}{is\+Cut}} (Q\+Key\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Returns true if the given event represents a \char`\"{}cut\char`\"{} operation. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classsgl_1_1GClipboard_a26e3ab35c80c96117dd4bb455cf38c82}{is\+Paste}} (Q\+Key\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Returns true if the given event represents a \char`\"{}paste\char`\"{} operation. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsgl_1_1GClipboard_a59ad3e94e40e8ef08c8a69a3a67377df}{set}} (const std\+::string \&text)
+\begin{DoxyCompactList}\small\item\em Sets the system clipboard to store the given text. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{classsgl_1_1GClipboard}{G\+Clipboard}} class contains static methods you can use to get and set the contents of the system clipboard. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classsgl_1_1GClipboard_a4879b26a87a0b49f7d535c7a669620f6}\label{classsgl_1_1GClipboard_a4879b26a87a0b49f7d535c7a669620f6}} 
+\index{sgl\+::\+G\+Clipboard@{sgl\+::\+G\+Clipboard}!get@{get}}
+\index{get@{get}!sgl\+::\+G\+Clipboard@{sgl\+::\+G\+Clipboard}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily std\+::string get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns the current contents of the system clipboard. 
+
+\mbox{\Hypertarget{classsgl_1_1GClipboard_a813cbc957e264a1846175ece316757d3}\label{classsgl_1_1GClipboard_a813cbc957e264a1846175ece316757d3}} 
+\index{sgl\+::\+G\+Clipboard@{sgl\+::\+G\+Clipboard}!is\+Copy@{is\+Copy}}
+\index{is\+Copy@{is\+Copy}!sgl\+::\+G\+Clipboard@{sgl\+::\+G\+Clipboard}}
+\subsubsection{\texorpdfstring{is\+Copy()}{isCopy()}}
+{\footnotesize\ttfamily bool is\+Copy (\begin{DoxyParamCaption}\item[{Q\+Key\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if the given event represents a \char`\"{}copy\char`\"{} operation. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Exception} & if the event is null \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classsgl_1_1GClipboard_a5ea46b856cb8eae1295b1e2b7db664aa}\label{classsgl_1_1GClipboard_a5ea46b856cb8eae1295b1e2b7db664aa}} 
+\index{sgl\+::\+G\+Clipboard@{sgl\+::\+G\+Clipboard}!is\+Cut@{is\+Cut}}
+\index{is\+Cut@{is\+Cut}!sgl\+::\+G\+Clipboard@{sgl\+::\+G\+Clipboard}}
+\subsubsection{\texorpdfstring{is\+Cut()}{isCut()}}
+{\footnotesize\ttfamily bool is\+Cut (\begin{DoxyParamCaption}\item[{Q\+Key\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if the given event represents a \char`\"{}cut\char`\"{} operation. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Exception} & if the event is null \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classsgl_1_1GClipboard_a26e3ab35c80c96117dd4bb455cf38c82}\label{classsgl_1_1GClipboard_a26e3ab35c80c96117dd4bb455cf38c82}} 
+\index{sgl\+::\+G\+Clipboard@{sgl\+::\+G\+Clipboard}!is\+Paste@{is\+Paste}}
+\index{is\+Paste@{is\+Paste}!sgl\+::\+G\+Clipboard@{sgl\+::\+G\+Clipboard}}
+\subsubsection{\texorpdfstring{is\+Paste()}{isPaste()}}
+{\footnotesize\ttfamily bool is\+Paste (\begin{DoxyParamCaption}\item[{Q\+Key\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if the given event represents a \char`\"{}paste\char`\"{} operation. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Exception} & if the event is null \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classsgl_1_1GClipboard_a59ad3e94e40e8ef08c8a69a3a67377df}\label{classsgl_1_1GClipboard_a59ad3e94e40e8ef08c8a69a3a67377df}} 
+\index{sgl\+::\+G\+Clipboard@{sgl\+::\+G\+Clipboard}!set@{set}}
+\index{set@{set}!sgl\+::\+G\+Clipboard@{sgl\+::\+G\+Clipboard}}
+\subsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void set (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets the system clipboard to store the given text. 
+
+Equivalent to a \char`\"{}copy\char`\"{} operation. 

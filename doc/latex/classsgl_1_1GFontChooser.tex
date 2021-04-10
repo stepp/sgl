@@ -1,0 +1,87 @@
+\hypertarget{classsgl_1_1GFontChooser}{}\section{G\+Font\+Chooser Class Reference}
+\label{classsgl_1_1GFontChooser}\index{G\+Font\+Chooser@{G\+Font\+Chooser}}
+
+
+The \mbox{\hyperlink{classsgl_1_1GFontChooser}{G\+Font\+Chooser}} class contains static methods for popping up font-\/choosing dialog boxes that allow the user to select a font family, size, and style.  
+
+
+
+
+{\ttfamily \#include $<$gfontchooser.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classsgl_1_1GFontChooser_a93eece7081780910ac5878dc6c809f94}{show\+Dialog}} (const std\+::string \&title=\char`\"{}\char`\"{}, const std\+::string \&initial\+Font=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Pops up a font chooser dialog with the given top title text and the given initially selected font. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classsgl_1_1GFontChooser_a67dee62efca9f2c7fb6d80891a73c32f}{show\+Dialog}} (\mbox{\hyperlink{classsgl_1_1GWindow}{G\+Window}} $\ast$parent, const std\+::string \&title=\char`\"{}\char`\"{}, const std\+::string \&initial\+Font=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Pops up a font chooser dialog with the given top title text and the given initially selected font. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classsgl_1_1GFontChooser_a7e0ac529f6e2c4877b13e7a2f06a1bea}{show\+Dialog}} (Q\+Widget $\ast$parent, const std\+::string \&title=\char`\"{}\char`\"{}, const std\+::string \&initial\+Font=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Pops up a font chooser dialog with the given top title text and the given initially selected font. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{classsgl_1_1GFontChooser}{G\+Font\+Chooser}} class contains static methods for popping up font-\/choosing dialog boxes that allow the user to select a font family, size, and style. 
+
+Each method blocks until the font is chosen and the dialog is closed, returning the font the user chose (or an empty string if the user canceled).
+
+Fonts are represented as font strings such as \char`\"{}\+Helvetica-\/12-\/\+Bold\char`\"{} or \char`\"{}\+Times New Roman-\/14\char`\"{}.
+
+See the \mbox{\hyperlink{classsgl_1_1GFont}{G\+Font}} class for more information about fonts and font strings. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classsgl_1_1GFontChooser_a93eece7081780910ac5878dc6c809f94}\label{classsgl_1_1GFontChooser_a93eece7081780910ac5878dc6c809f94}} 
+\index{sgl\+::\+G\+Font\+Chooser@{sgl\+::\+G\+Font\+Chooser}!show\+Dialog@{show\+Dialog}}
+\index{show\+Dialog@{show\+Dialog}!sgl\+::\+G\+Font\+Chooser@{sgl\+::\+G\+Font\+Chooser}}
+\subsubsection{\texorpdfstring{show\+Dialog()}{showDialog()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily std\+::string show\+Dialog (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{title = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const std\+::string \&}]{initial\+Font = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pops up a font chooser dialog with the given top title text and the given initially selected font. 
+
+All arguments are optional. 
+\begin{DoxyParams}{Parameters}
+{\em title} & text to show on the top title bar of the dialog \\
+\hline
+{\em initial\+Font} & a font string such as \char`\"{}\+Helvetica-\/12-\/\+Bold\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsgl_1_1GFontChooser_a67dee62efca9f2c7fb6d80891a73c32f}\label{classsgl_1_1GFontChooser_a67dee62efca9f2c7fb6d80891a73c32f}} 
+\index{sgl\+::\+G\+Font\+Chooser@{sgl\+::\+G\+Font\+Chooser}!show\+Dialog@{show\+Dialog}}
+\index{show\+Dialog@{show\+Dialog}!sgl\+::\+G\+Font\+Chooser@{sgl\+::\+G\+Font\+Chooser}}
+\subsubsection{\texorpdfstring{show\+Dialog()}{showDialog()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily std\+::string show\+Dialog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsgl_1_1GWindow}{G\+Window}} $\ast$}]{parent,  }\item[{const std\+::string \&}]{title = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const std\+::string \&}]{initial\+Font = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pops up a font chooser dialog with the given top title text and the given initially selected font. 
+
+All arguments are optional. 
+\begin{DoxyParams}{Parameters}
+{\em parent} & graphical window to use as this dialog\textquotesingle{}s parent (modal) \\
+\hline
+{\em title} & text to show on the top title bar of the dialog \\
+\hline
+{\em initial\+Font} & a font string such as \char`\"{}\+Helvetica-\/12-\/\+Bold\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsgl_1_1GFontChooser_a7e0ac529f6e2c4877b13e7a2f06a1bea}\label{classsgl_1_1GFontChooser_a7e0ac529f6e2c4877b13e7a2f06a1bea}} 
+\index{sgl\+::\+G\+Font\+Chooser@{sgl\+::\+G\+Font\+Chooser}!show\+Dialog@{show\+Dialog}}
+\index{show\+Dialog@{show\+Dialog}!sgl\+::\+G\+Font\+Chooser@{sgl\+::\+G\+Font\+Chooser}}
+\subsubsection{\texorpdfstring{show\+Dialog()}{showDialog()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily std\+::string show\+Dialog (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent,  }\item[{const std\+::string \&}]{title = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const std\+::string \&}]{initial\+Font = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pops up a font chooser dialog with the given top title text and the given initially selected font. 
+
+All arguments are optional. 
+\begin{DoxyParams}{Parameters}
+{\em parent} & graphical widget to use as this dialog\textquotesingle{}s parent \\
+\hline
+{\em title} & text to show on the top title bar of the dialog \\
+\hline
+{\em initial\+Font} & a font string such as \char`\"{}\+Helvetica-\/12-\/\+Bold\char`\"{}. \\
+\hline
+\end{DoxyParams}

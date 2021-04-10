@@ -1,0 +1,174 @@
+\hypertarget{namespacesgl_1_1priv_1_1filelib}{}\section{sgl\+:\+:priv\+:\+:filelib Namespace Reference}
+\label{namespacesgl_1_1priv_1_1filelib}\index{sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacesgl_1_1priv_1_1filelib_1_1platform}{platform}}
+\begin{DoxyCompactList}\small\item\em Platform-\/dependent functions that differ by operating system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1filelib_afdd89841220a8b18e39e0844a833a18b}{file\+Exists}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily true} if the specified file exists. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1filelib_a7fbee27e6758dc2b1c867d3a0f86ef3a}{get\+Absolute\+Path}} (const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Returns an absolute filename for the given file or directory. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1filelib_a3b2cb6905e3c1893b865272b0b370a1d}{get\+Directory\+Path\+Separator}} ()
+\begin{DoxyCompactList}\small\item\em Returns the standard directory path separator used on this platform. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1filelib_ab0ca25cac63d69dc0a0cd4d4f4e6ceb7}{get\+Extension}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Returns the extension of {\ttfamily filename}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1filelib_a2c275b431da9932dc59b4995cb8a832f}{get\+Head}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em ~\newline
+ Returns all but the last component of a path name. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1filelib_a10310c73e4177a77e32b1633fe7f515a}{get\+Temp\+Directory}} ()
+\begin{DoxyCompactList}\small\item\em Returns the operating system\textquotesingle{}s \char`\"{}temp\char`\"{} folder. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1filelib_a6d1006668c46c13773e52db398217475}{is\+Directory}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily true} if the specified file is a directory. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespacesgl_1_1priv_1_1filelib_afe8ff05c7d9ab00c7b8a4d7f6036a0b2}{list\+Directory}} (const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Adds an alphabetized list of the files in the specified directory to a vector that is returned. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_1_1priv_1_1filelib_ad01c76fd8c527f7dd7dee39fb4597739}{read\+Entire\+File}} (std\+::istream \&is, std\+::vector$<$ std\+::string $>$ \&lines)
+\begin{DoxyCompactList}\small\item\em Reads the entire contents of the specified input stream into the string vector {\ttfamily lines}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1filelib_a86c5d6683613361160de27acd5f5a243}{read\+Entire\+File}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em An overload of read\+Entire\+File that just returns the whole file as a very long single string, rather than a vector of lines. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1filelib_adb97dddab428509c4f231f8ecfaa095e}{read\+Entire\+Stream}} (std\+::istream \&input)
+\begin{DoxyCompactList}\small\item\em Reads the contents of the given stream until its end and returns them as a string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1filelib_a4cbf54fb7425b655a19f0aa36f6bfdc2}{write\+Entire\+File}} (const std\+::string \&filename, const std\+::string \&text, bool append=false)
+\begin{DoxyCompactList}\small\item\em Opens the given file and writes the given text into it. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1filelib_afdd89841220a8b18e39e0844a833a18b}\label{namespacesgl_1_1priv_1_1filelib_afdd89841220a8b18e39e0844a833a18b}} 
+\index{sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}!file\+Exists@{file\+Exists}}
+\index{file\+Exists@{file\+Exists}!sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}}
+\subsubsection{\texorpdfstring{file\+Exists()}{fileExists()}}
+{\footnotesize\ttfamily bool file\+Exists (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Returns {\ttfamily true} if the specified file exists. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1filelib_a7fbee27e6758dc2b1c867d3a0f86ef3a}\label{namespacesgl_1_1priv_1_1filelib_a7fbee27e6758dc2b1c867d3a0f86ef3a}} 
+\index{sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}!get\+Absolute\+Path@{get\+Absolute\+Path}}
+\index{get\+Absolute\+Path@{get\+Absolute\+Path}!sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}}
+\subsubsection{\texorpdfstring{get\+Absolute\+Path()}{getAbsolutePath()}}
+{\footnotesize\ttfamily std\+::string get\+Absolute\+Path (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Returns an absolute filename for the given file or directory. 
+
+This converts from, for example, \char`\"{}temp/foo.\+txt\char`\"{} to \char`\"{}/\+Users/jsmith12/\+Documents/temp/foo.\+txt\char`\"{}. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1filelib_a3b2cb6905e3c1893b865272b0b370a1d}\label{namespacesgl_1_1priv_1_1filelib_a3b2cb6905e3c1893b865272b0b370a1d}} 
+\index{sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}!get\+Directory\+Path\+Separator@{get\+Directory\+Path\+Separator}}
+\index{get\+Directory\+Path\+Separator@{get\+Directory\+Path\+Separator}!sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}}
+\subsubsection{\texorpdfstring{get\+Directory\+Path\+Separator()}{getDirectoryPathSeparator()}}
+{\footnotesize\ttfamily std\+::string get\+Directory\+Path\+Separator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the standard directory path separator used on this platform. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1filelib_ab0ca25cac63d69dc0a0cd4d4f4e6ceb7}\label{namespacesgl_1_1priv_1_1filelib_ab0ca25cac63d69dc0a0cd4d4f4e6ceb7}} 
+\index{sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}!get\+Extension@{get\+Extension}}
+\index{get\+Extension@{get\+Extension}!sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}}
+\subsubsection{\texorpdfstring{get\+Extension()}{getExtension()}}
+{\footnotesize\ttfamily std\+::string get\+Extension (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Returns the extension of {\ttfamily filename}. 
+
+The extension consists of the separating dot and all subsequent characters. If no dot exists in the final component, {\ttfamily get\+Extension} returns the empty string. These semantics ensure that concatenating the root and the extension always returns the original filename. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1filelib_a2c275b431da9932dc59b4995cb8a832f}\label{namespacesgl_1_1priv_1_1filelib_a2c275b431da9932dc59b4995cb8a832f}} 
+\index{sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}!get\+Head@{get\+Head}}
+\index{get\+Head@{get\+Head}!sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}}
+\subsubsection{\texorpdfstring{get\+Head()}{getHead()}}
+{\footnotesize\ttfamily std\+::string get\+Head (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+~\newline
+ Returns all but the last component of a path name. 
+
+The components of the path name can be separated by any of the directory path separators (forward or reverse slashes). The special cases are illustrated by the following examples\+:
+
+
+\begin{DoxyPre}
+     getHead("a/b")  = "a"     getTail("a/b")   = "b"
+     getHead("a")    = ""      getTail("a")     = "a"
+     getHead("/a")   = "/"     getTail("/a")    = "a"
+     getHead("/")    = "/"     getTail("/")     = ""
+*\end{DoxyPre}
+ \mbox{\Hypertarget{namespacesgl_1_1priv_1_1filelib_a10310c73e4177a77e32b1633fe7f515a}\label{namespacesgl_1_1priv_1_1filelib_a10310c73e4177a77e32b1633fe7f515a}} 
+\index{sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}!get\+Temp\+Directory@{get\+Temp\+Directory}}
+\index{get\+Temp\+Directory@{get\+Temp\+Directory}!sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}}
+\subsubsection{\texorpdfstring{get\+Temp\+Directory()}{getTempDirectory()}}
+{\footnotesize\ttfamily std\+::string get\+Temp\+Directory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the operating system\textquotesingle{}s \char`\"{}temp\char`\"{} folder. 
+
+Can be useful if your program needs to store temporary files. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1filelib_a6d1006668c46c13773e52db398217475}\label{namespacesgl_1_1priv_1_1filelib_a6d1006668c46c13773e52db398217475}} 
+\index{sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}!is\+Directory@{is\+Directory}}
+\index{is\+Directory@{is\+Directory}!sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}}
+\subsubsection{\texorpdfstring{is\+Directory()}{isDirectory()}}
+{\footnotesize\ttfamily bool is\+Directory (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Returns {\ttfamily true} if the specified file is a directory. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1filelib_afe8ff05c7d9ab00c7b8a4d7f6036a0b2}\label{namespacesgl_1_1priv_1_1filelib_afe8ff05c7d9ab00c7b8a4d7f6036a0b2}} 
+\index{sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}!list\+Directory@{list\+Directory}}
+\index{list\+Directory@{list\+Directory}!sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}}
+\subsubsection{\texorpdfstring{list\+Directory()}{listDirectory()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ list\+Directory (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Adds an alphabetized list of the files in the specified directory to a vector that is returned. 
+
+This list excludes the names {\ttfamily .} and {\ttfamily ..} entries. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1filelib_ad01c76fd8c527f7dd7dee39fb4597739}\label{namespacesgl_1_1priv_1_1filelib_ad01c76fd8c527f7dd7dee39fb4597739}} 
+\index{sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}!read\+Entire\+File@{read\+Entire\+File}}
+\index{read\+Entire\+File@{read\+Entire\+File}!sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}}
+\subsubsection{\texorpdfstring{read\+Entire\+File()}{readEntireFile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void read\+Entire\+File (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{lines }\end{DoxyParamCaption})}
+
+
+
+Reads the entire contents of the specified input stream into the string vector {\ttfamily lines}. 
+
+The client is responsible for opening and closing the stream. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1filelib_a86c5d6683613361160de27acd5f5a243}\label{namespacesgl_1_1priv_1_1filelib_a86c5d6683613361160de27acd5f5a243}} 
+\index{sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}!read\+Entire\+File@{read\+Entire\+File}}
+\index{read\+Entire\+File@{read\+Entire\+File}!sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}}
+\subsubsection{\texorpdfstring{read\+Entire\+File()}{readEntireFile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string read\+Entire\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+An overload of read\+Entire\+File that just returns the whole file as a very long single string, rather than a vector of lines. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Exception} & if the file is not found or cannot be read. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1filelib_adb97dddab428509c4f231f8ecfaa095e}\label{namespacesgl_1_1priv_1_1filelib_adb97dddab428509c4f231f8ecfaa095e}} 
+\index{sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}!read\+Entire\+Stream@{read\+Entire\+Stream}}
+\index{read\+Entire\+Stream@{read\+Entire\+Stream}!sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}}
+\subsubsection{\texorpdfstring{read\+Entire\+Stream()}{readEntireStream()}}
+{\footnotesize\ttfamily std\+::string read\+Entire\+Stream (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{input }\end{DoxyParamCaption})}
+
+
+
+Reads the contents of the given stream until its end and returns them as a string. 
+
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1filelib_a4cbf54fb7425b655a19f0aa36f6bfdc2}\label{namespacesgl_1_1priv_1_1filelib_a4cbf54fb7425b655a19f0aa36f6bfdc2}} 
+\index{sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}!write\+Entire\+File@{write\+Entire\+File}}
+\index{write\+Entire\+File@{write\+Entire\+File}!sgl\+::priv\+::filelib@{sgl\+::priv\+::filelib}}
+\subsubsection{\texorpdfstring{write\+Entire\+File()}{writeEntireFile()}}
+{\footnotesize\ttfamily bool write\+Entire\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{const std\+::string \&}]{text,  }\item[{bool}]{append = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Opens the given file and writes the given text into it. 
+
+Normally this function replaces any previous contents of the file, but if the optional \textquotesingle{}append\textquotesingle{} parameter is passed, the given text is added at the end of the file, retaining any previous contents. Returns true if the write was successful and false if the file was unable to be opened for writing. 

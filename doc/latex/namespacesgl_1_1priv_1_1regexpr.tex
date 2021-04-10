@@ -1,0 +1,69 @@
+\hypertarget{namespacesgl_1_1priv_1_1regexpr}{}\section{sgl\+:\+:priv\+:\+:regexpr Namespace Reference}
+\label{namespacesgl_1_1priv_1_1regexpr}\index{sgl\+::priv\+::regexpr@{sgl\+::priv\+::regexpr}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespacesgl_1_1priv_1_1regexpr_ac209c2d2280a26805a88a5830572c4e8}{match}} (const std\+::string \&s, const std\+::string \&regexp)
+\begin{DoxyCompactList}\small\item\em Returns true if the given string s matches the given regular expression as a substring. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacesgl_1_1priv_1_1regexpr_ae0041d7f4268e3f1cc914a014b4c6966}{match\+Count}} (const std\+::string \&s, const std\+::string \&regexp)
+\begin{DoxyCompactList}\small\item\em Returns the number of times the given regular expression is found inside the given string s. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesgl_1_1priv_1_1regexpr_a5854e1254f8393744e2c10c998197f96}{match\+Count\+With\+Lines}} (const std\+::string \&s, const std\+::string \&regexp, std\+::vector$<$ int $>$ \&lines\+Out)
+\begin{DoxyCompactList}\small\item\em Finds all matches of the given regular expression in the given string s and fills \textquotesingle{}lines\+Out\textquotesingle{} with the line numbers within the string at which the matches occur, such as \mbox{[}2, 14, 27, 36\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacesgl_1_1priv_1_1regexpr_a5563a971ef7227d5d4f363243dfed74d}{match\+Count\+With\+Lines}} (const std\+::string \&s, const std\+::string \&regexp, std\+::string \&lines\+Out)
+\begin{DoxyCompactList}\small\item\em Finds all matches of the given regular expression in the given string s and fills \textquotesingle{}lines\+Out\textquotesingle{} with a comma-\/separated string representing the line numbers within the string at which the matches occur, such as \char`\"{}2,14,27,36\char`\"{}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacesgl_1_1priv_1_1regexpr_aa2ddd568cd83beb5ee37c9891eda1011}{replace}} (const std\+::string \&s, const std\+::string \&regexp, const std\+::string \&replacement, int limit=-\/1)
+\begin{DoxyCompactList}\small\item\em Replaces occurrences of the given regular expression in s with the given replacement text, and returns the resulting string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacesgl_1_1priv_1_1regexpr_ac209c2d2280a26805a88a5830572c4e8}\label{namespacesgl_1_1priv_1_1regexpr_ac209c2d2280a26805a88a5830572c4e8}} 
+\index{sgl\+::priv\+::regexpr@{sgl\+::priv\+::regexpr}!match@{match}}
+\index{match@{match}!sgl\+::priv\+::regexpr@{sgl\+::priv\+::regexpr}}
+\subsubsection{\texorpdfstring{match()}{match()}}
+{\footnotesize\ttfamily bool match (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{const std\+::string \&}]{regexp }\end{DoxyParamCaption})}
+
+
+
+Returns true if the given string s matches the given regular expression as a substring. 
+
+For an exact match instead, put \char`\"{}$^\wedge$\char`\"{} and \char`\"{}\$\char`\"{} in your regex as start/end anchors. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1regexpr_ae0041d7f4268e3f1cc914a014b4c6966}\label{namespacesgl_1_1priv_1_1regexpr_ae0041d7f4268e3f1cc914a014b4c6966}} 
+\index{sgl\+::priv\+::regexpr@{sgl\+::priv\+::regexpr}!match\+Count@{match\+Count}}
+\index{match\+Count@{match\+Count}!sgl\+::priv\+::regexpr@{sgl\+::priv\+::regexpr}}
+\subsubsection{\texorpdfstring{match\+Count()}{matchCount()}}
+{\footnotesize\ttfamily int match\+Count (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{const std\+::string \&}]{regexp }\end{DoxyParamCaption})}
+
+
+
+Returns the number of times the given regular expression is found inside the given string s. 
+
+Returns 0 if there are no matches for the regexp. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1regexpr_a5854e1254f8393744e2c10c998197f96}\label{namespacesgl_1_1priv_1_1regexpr_a5854e1254f8393744e2c10c998197f96}} 
+\index{sgl\+::priv\+::regexpr@{sgl\+::priv\+::regexpr}!match\+Count\+With\+Lines@{match\+Count\+With\+Lines}}
+\index{match\+Count\+With\+Lines@{match\+Count\+With\+Lines}!sgl\+::priv\+::regexpr@{sgl\+::priv\+::regexpr}}
+\subsubsection{\texorpdfstring{match\+Count\+With\+Lines()}{matchCountWithLines()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void match\+Count\+With\+Lines (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{const std\+::string \&}]{regexp,  }\item[{std\+::vector$<$ int $>$ \&}]{lines\+Out }\end{DoxyParamCaption})}
+
+
+
+Finds all matches of the given regular expression in the given string s and fills \textquotesingle{}lines\+Out\textquotesingle{} with the line numbers within the string at which the matches occur, such as \mbox{[}2, 14, 27, 36\mbox{]}. 
+
+This is mainly useful for grading programs. Returns the number of times the given regular expression is found inside the given string s. Returns 0 if there are no matches for the regexp. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1regexpr_a5563a971ef7227d5d4f363243dfed74d}\label{namespacesgl_1_1priv_1_1regexpr_a5563a971ef7227d5d4f363243dfed74d}} 
+\index{sgl\+::priv\+::regexpr@{sgl\+::priv\+::regexpr}!match\+Count\+With\+Lines@{match\+Count\+With\+Lines}}
+\index{match\+Count\+With\+Lines@{match\+Count\+With\+Lines}!sgl\+::priv\+::regexpr@{sgl\+::priv\+::regexpr}}
+\subsubsection{\texorpdfstring{match\+Count\+With\+Lines()}{matchCountWithLines()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int match\+Count\+With\+Lines (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{const std\+::string \&}]{regexp,  }\item[{std\+::string \&}]{lines\+Out }\end{DoxyParamCaption})}
+
+
+
+Finds all matches of the given regular expression in the given string s and fills \textquotesingle{}lines\+Out\textquotesingle{} with a comma-\/separated string representing the line numbers within the string at which the matches occur, such as \char`\"{}2,14,27,36\char`\"{}. 
+
+This is mainly useful for grading programs. Returns the number of times the given regular expression is found inside the given string s. Returns 0 if there are no matches for the regexp. \mbox{\Hypertarget{namespacesgl_1_1priv_1_1regexpr_aa2ddd568cd83beb5ee37c9891eda1011}\label{namespacesgl_1_1priv_1_1regexpr_aa2ddd568cd83beb5ee37c9891eda1011}} 
+\index{sgl\+::priv\+::regexpr@{sgl\+::priv\+::regexpr}!replace@{replace}}
+\index{replace@{replace}!sgl\+::priv\+::regexpr@{sgl\+::priv\+::regexpr}}
+\subsubsection{\texorpdfstring{replace()}{replace()}}
+{\footnotesize\ttfamily std\+::string replace (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{const std\+::string \&}]{regexp,  }\item[{const std\+::string \&}]{replacement,  }\item[{int}]{limit = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+
+Replaces occurrences of the given regular expression in s with the given replacement text, and returns the resulting string. 
+
+If limit $>$ 0 is passed, replaces that many occurrences of the regex. If limit $<$= 0 is passed (or omitted), all occurrences are replaced. 

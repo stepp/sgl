@@ -1,0 +1,168 @@
+\hypertarget{classsgl_1_1GFileChooser}{}\section{G\+File\+Chooser Class Reference}
+\label{classsgl_1_1GFileChooser}\index{G\+File\+Chooser@{G\+File\+Chooser}}
+
+
+The \mbox{\hyperlink{classsgl_1_1GFileChooser}{G\+File\+Chooser}} class contains static methods for popping up file-\/choosing dialog boxes that allow the user to select a file.  
+
+
+
+
+{\ttfamily \#include $<$gfilechooser.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classsgl_1_1GFileChooser_abe21d73a151b976a4f639005b9652407}{show\+Open\+Dialog}} (const std\+::string \&title=\char`\"{}Open file\char`\"{}, const std\+::string \&current\+Dir=\char`\"{}\char`\"{}, const std\+::string \&file\+Filter=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Pops up a file \char`\"{}\+Open\char`\"{} chooser dialog with the given top title text, current directory, and file filter. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classsgl_1_1GFileChooser_aceba7f99cdc44bebbb08a67a9ba32ab0}{show\+Open\+Dialog}} (\mbox{\hyperlink{classsgl_1_1GWindow}{G\+Window}} $\ast$parent, const std\+::string \&title=\char`\"{}Open file\char`\"{}, const std\+::string \&current\+Dir=\char`\"{}\char`\"{}, const std\+::string \&file\+Filter=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Pops up a file \char`\"{}\+Open\char`\"{} chooser dialog with the given top title text, current directory, and file filter. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classsgl_1_1GFileChooser_a1afbae9ad77732453d6978d3f643ce0b}{show\+Open\+Dialog}} (Q\+Widget $\ast$parent, const std\+::string \&title=\char`\"{}Open file\char`\"{}, const std\+::string \&current\+Dir=\char`\"{}\char`\"{}, const std\+::string \&file\+Filter=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Pops up a file \char`\"{}\+Open\char`\"{} chooser dialog with the given top title text, current directory, and file filter. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classsgl_1_1GFileChooser_a67fbf8f6091d781f22431051e3e83561}{show\+Save\+Dialog}} (const std\+::string \&title=\char`\"{}Save file\char`\"{}, const std\+::string \&current\+Dir=\char`\"{}\char`\"{}, const std\+::string \&file\+Filter=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Pops up a file \char`\"{}\+Save\char`\"{} chooser dialog with the given top title text, current directory, and file filter. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classsgl_1_1GFileChooser_ab1c47de23b7cb122ab4edc94ba672c47}{show\+Save\+Dialog}} (\mbox{\hyperlink{classsgl_1_1GWindow}{G\+Window}} $\ast$parent, const std\+::string \&title=\char`\"{}Save file\char`\"{}, const std\+::string \&current\+Dir=\char`\"{}\char`\"{}, const std\+::string \&file\+Filter=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Pops up a file \char`\"{}\+Save\char`\"{} chooser dialog with the given top title text, current directory, and file filter. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classsgl_1_1GFileChooser_a0207a9ef46bffc79e6cebaba47c2f493}{show\+Save\+Dialog}} (Q\+Widget $\ast$parent, const std\+::string \&title=\char`\"{}Save file\char`\"{}, const std\+::string \&current\+Dir=\char`\"{}\char`\"{}, const std\+::string \&file\+Filter=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Pops up a file \char`\"{}\+Save\char`\"{} chooser dialog with the given top title text, current directory, and file filter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{classsgl_1_1GFileChooser}{G\+File\+Chooser}} class contains static methods for popping up file-\/choosing dialog boxes that allow the user to select a file. 
+
+Each method blocks until the file is chosen and the dialog is closed, returning the file the user chose (or an empty string if the user canceled). 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classsgl_1_1GFileChooser_abe21d73a151b976a4f639005b9652407}\label{classsgl_1_1GFileChooser_abe21d73a151b976a4f639005b9652407}} 
+\index{sgl\+::\+G\+File\+Chooser@{sgl\+::\+G\+File\+Chooser}!show\+Open\+Dialog@{show\+Open\+Dialog}}
+\index{show\+Open\+Dialog@{show\+Open\+Dialog}!sgl\+::\+G\+File\+Chooser@{sgl\+::\+G\+File\+Chooser}}
+\subsubsection{\texorpdfstring{show\+Open\+Dialog()}{showOpenDialog()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily std\+::string show\+Open\+Dialog (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{title = {\ttfamily \char`\"{}Open~file\char`\"{}},  }\item[{const std\+::string \&}]{current\+Dir = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const std\+::string \&}]{file\+Filter = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pops up a file \char`\"{}\+Open\char`\"{} chooser dialog with the given top title text, current directory, and file filter. 
+
+All arguments are optional. 
+\begin{DoxyParams}{Parameters}
+{\em title} & text to show on the top title bar of the dialog \\
+\hline
+{\em current\+Dir} & directory to show initially in the file chooser (defaults to current working directory) \\
+\hline
+{\em file\+Filter} & a file filter string such as \char`\"{}$\ast$.\+gif,$\ast$.\+jpg,$\ast$.\+png\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsgl_1_1GFileChooser_aceba7f99cdc44bebbb08a67a9ba32ab0}\label{classsgl_1_1GFileChooser_aceba7f99cdc44bebbb08a67a9ba32ab0}} 
+\index{sgl\+::\+G\+File\+Chooser@{sgl\+::\+G\+File\+Chooser}!show\+Open\+Dialog@{show\+Open\+Dialog}}
+\index{show\+Open\+Dialog@{show\+Open\+Dialog}!sgl\+::\+G\+File\+Chooser@{sgl\+::\+G\+File\+Chooser}}
+\subsubsection{\texorpdfstring{show\+Open\+Dialog()}{showOpenDialog()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily std\+::string show\+Open\+Dialog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsgl_1_1GWindow}{G\+Window}} $\ast$}]{parent,  }\item[{const std\+::string \&}]{title = {\ttfamily \char`\"{}Open~file\char`\"{}},  }\item[{const std\+::string \&}]{current\+Dir = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const std\+::string \&}]{file\+Filter = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pops up a file \char`\"{}\+Open\char`\"{} chooser dialog with the given top title text, current directory, and file filter. 
+
+All arguments are optional. 
+\begin{DoxyParams}{Parameters}
+{\em parent} & graphical window to use as this dialog\textquotesingle{}s parent (modal) \\
+\hline
+{\em title} & text to show on the top title bar of the dialog \\
+\hline
+{\em current\+Dir} & directory to show initially in the file chooser (defaults to current working directory) \\
+\hline
+{\em file\+Filter} & a file filter string such as \char`\"{}$\ast$.\+gif,$\ast$.\+jpg,$\ast$.\+png\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsgl_1_1GFileChooser_a1afbae9ad77732453d6978d3f643ce0b}\label{classsgl_1_1GFileChooser_a1afbae9ad77732453d6978d3f643ce0b}} 
+\index{sgl\+::\+G\+File\+Chooser@{sgl\+::\+G\+File\+Chooser}!show\+Open\+Dialog@{show\+Open\+Dialog}}
+\index{show\+Open\+Dialog@{show\+Open\+Dialog}!sgl\+::\+G\+File\+Chooser@{sgl\+::\+G\+File\+Chooser}}
+\subsubsection{\texorpdfstring{show\+Open\+Dialog()}{showOpenDialog()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily std\+::string show\+Open\+Dialog (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent,  }\item[{const std\+::string \&}]{title = {\ttfamily \char`\"{}Open~file\char`\"{}},  }\item[{const std\+::string \&}]{current\+Dir = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const std\+::string \&}]{file\+Filter = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pops up a file \char`\"{}\+Open\char`\"{} chooser dialog with the given top title text, current directory, and file filter. 
+
+All arguments are optional. 
+\begin{DoxyParams}{Parameters}
+{\em parent} & graphical widget to use as this dialog\textquotesingle{}s parent \\
+\hline
+{\em title} & text to show on the top title bar of the dialog \\
+\hline
+{\em current\+Dir} & directory to show initially in the file chooser (defaults to current working directory) \\
+\hline
+{\em file\+Filter} & a file filter string such as \char`\"{}$\ast$.\+gif,$\ast$.\+jpg,$\ast$.\+png\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsgl_1_1GFileChooser_a67fbf8f6091d781f22431051e3e83561}\label{classsgl_1_1GFileChooser_a67fbf8f6091d781f22431051e3e83561}} 
+\index{sgl\+::\+G\+File\+Chooser@{sgl\+::\+G\+File\+Chooser}!show\+Save\+Dialog@{show\+Save\+Dialog}}
+\index{show\+Save\+Dialog@{show\+Save\+Dialog}!sgl\+::\+G\+File\+Chooser@{sgl\+::\+G\+File\+Chooser}}
+\subsubsection{\texorpdfstring{show\+Save\+Dialog()}{showSaveDialog()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily std\+::string show\+Save\+Dialog (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{title = {\ttfamily \char`\"{}Save~file\char`\"{}},  }\item[{const std\+::string \&}]{current\+Dir = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const std\+::string \&}]{file\+Filter = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pops up a file \char`\"{}\+Save\char`\"{} chooser dialog with the given top title text, current directory, and file filter. 
+
+All arguments are optional.
+
+The main difference between an \char`\"{}\+Open\char`\"{} dialog and a \char`\"{}\+Save\char`\"{} dialog, aside from the different title bar text, is that a \char`\"{}\+Save\char`\"{} dialog allows the user to type a name of a file that does not yet exist.
+
+If the user chooses the name of a file that already exists, they will be prompted to overwrite this file. If they choose No, the dialog will remain up; if they choose Yes, it will close. 
+\begin{DoxyParams}{Parameters}
+{\em title} & text to show on the top title bar of the dialog \\
+\hline
+{\em current\+Dir} & directory to show initially in the file chooser (defaults to current working directory) \\
+\hline
+{\em file\+Filter} & a file filter string such as \char`\"{}$\ast$.\+gif,$\ast$.\+jpg,$\ast$.\+png\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsgl_1_1GFileChooser_ab1c47de23b7cb122ab4edc94ba672c47}\label{classsgl_1_1GFileChooser_ab1c47de23b7cb122ab4edc94ba672c47}} 
+\index{sgl\+::\+G\+File\+Chooser@{sgl\+::\+G\+File\+Chooser}!show\+Save\+Dialog@{show\+Save\+Dialog}}
+\index{show\+Save\+Dialog@{show\+Save\+Dialog}!sgl\+::\+G\+File\+Chooser@{sgl\+::\+G\+File\+Chooser}}
+\subsubsection{\texorpdfstring{show\+Save\+Dialog()}{showSaveDialog()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily std\+::string show\+Save\+Dialog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsgl_1_1GWindow}{G\+Window}} $\ast$}]{parent,  }\item[{const std\+::string \&}]{title = {\ttfamily \char`\"{}Save~file\char`\"{}},  }\item[{const std\+::string \&}]{current\+Dir = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const std\+::string \&}]{file\+Filter = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pops up a file \char`\"{}\+Save\char`\"{} chooser dialog with the given top title text, current directory, and file filter. 
+
+All arguments are optional.
+
+The main difference between an \char`\"{}\+Open\char`\"{} dialog and a \char`\"{}\+Save\char`\"{} dialog, aside from the different title bar text, is that a \char`\"{}\+Save\char`\"{} dialog allows the user to type a name of a file that does not yet exist.
+
+If the user chooses the name of a file that already exists, they will be prompted to overwrite this file. If they choose No, the dialog will remain up; if they choose Yes, it will close. 
+\begin{DoxyParams}{Parameters}
+{\em parent} & graphical window to use as this dialog\textquotesingle{}s parent (modal) \\
+\hline
+{\em title} & text to show on the top title bar of the dialog \\
+\hline
+{\em current\+Dir} & directory to show initially in the file chooser (defaults to current working directory) \\
+\hline
+{\em file\+Filter} & a file filter string such as \char`\"{}$\ast$.\+gif,$\ast$.\+jpg,$\ast$.\+png\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsgl_1_1GFileChooser_a0207a9ef46bffc79e6cebaba47c2f493}\label{classsgl_1_1GFileChooser_a0207a9ef46bffc79e6cebaba47c2f493}} 
+\index{sgl\+::\+G\+File\+Chooser@{sgl\+::\+G\+File\+Chooser}!show\+Save\+Dialog@{show\+Save\+Dialog}}
+\index{show\+Save\+Dialog@{show\+Save\+Dialog}!sgl\+::\+G\+File\+Chooser@{sgl\+::\+G\+File\+Chooser}}
+\subsubsection{\texorpdfstring{show\+Save\+Dialog()}{showSaveDialog()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily std\+::string show\+Save\+Dialog (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent,  }\item[{const std\+::string \&}]{title = {\ttfamily \char`\"{}Save~file\char`\"{}},  }\item[{const std\+::string \&}]{current\+Dir = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const std\+::string \&}]{file\+Filter = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pops up a file \char`\"{}\+Save\char`\"{} chooser dialog with the given top title text, current directory, and file filter. 
+
+All arguments are optional.
+
+The main difference between an \char`\"{}\+Open\char`\"{} dialog and a \char`\"{}\+Save\char`\"{} dialog, aside from the different title bar text, is that a \char`\"{}\+Save\char`\"{} dialog allows the user to type a name of a file that does not yet exist.
+
+If the user chooses the name of a file that already exists, they will be prompted to overwrite this file. If they choose No, the dialog will remain up; if they choose Yes, it will close. 
+\begin{DoxyParams}{Parameters}
+{\em parent} & graphical widget to use as this dialog\textquotesingle{}s parent \\
+\hline
+{\em title} & text to show on the top title bar of the dialog \\
+\hline
+{\em current\+Dir} & directory to show initially in the file chooser (defaults to current working directory) \\
+\hline
+{\em file\+Filter} & a file filter string such as \char`\"{}$\ast$.\+gif,$\ast$.\+jpg,$\ast$.\+png\char`\"{}. \\
+\hline
+\end{DoxyParams}
