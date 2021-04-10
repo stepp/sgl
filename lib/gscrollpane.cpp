@@ -3,6 +3,8 @@
  * ---------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/09/01
  * - initial version
  */
@@ -11,6 +13,8 @@
 #include "glayout.h"
 #include "gthread.h"
 #include "require.h"
+
+namespace sgl {
 
 GScrollPane::GScrollPane(GInteractor* interactor, QWidget* parent)
         : _iqscrollarea(nullptr),
@@ -114,4 +118,4 @@ QSize _Internal_QScrollArea::sizeHint() const {
     }
 }
 
-
+} // namespace sgl

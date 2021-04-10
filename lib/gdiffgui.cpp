@@ -3,6 +3,8 @@
  * ------------------
  * 
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/04/20
@@ -24,6 +26,8 @@
 #include <string>
 #include "consoletext.h"
 #include "gthread.h"
+
+namespace sgl {
 
 static std::string toPrintable(const std::string& s) {
     std::ostringstream out;
@@ -79,7 +83,7 @@ GDiffGui::GDiffGui(const std::string& name1,
                    int diffFlags,
                    bool /*showCheckBoxes*/) {
     GThread::runOnQtGuiThread([this, name1, text1, name2, text2, diffFlags]() {
-        std::string diffs = diff::diff(text1, text2, diffFlags);
+        std::string diffs = ::sgl::priv::diff::diff(text1, text2, diffFlags);
 
         _window = new GWindow(800, 600);
         _window->setTitle("Compare Output");
@@ -156,13 +160,13 @@ GDiffGui::~GDiffGui() {
 }
 
 void GDiffGui::setupDiffText(const std::string& diffs) {
-    std::vector<std::string> lines = stringSplit(diffs, "\n");
+    std::vector<std::string> lines = sgl::priv::strlib::split(diffs, "\n");
     const std::string COLOR_NORMAL = _textAreaBottom->getColor();
     for (std::string line : lines) {
         std::string color;
-        if (startsWith(line, "EXPECTED <")) {
+        if (sgl::priv::strlib::startsWith(line, "EXPECTED <")) {
             color = GWindow::chooseLightDarkModeColor(COLOR_EXPECTED, COLOR_EXPECTED_DARK_MODE);
-        } else if (startsWith(line, "STUDENT  >")) {
+        } else if (sgl::priv::strlib::startsWith(line, "STUDENT  >")) {
             color = GWindow::chooseLightDarkModeColor(COLOR_STUDENT, COLOR_STUDENT_DARK_MODE);
         } else {
             color = COLOR_NORMAL;
@@ -181,7 +185,7 @@ void GDiffGui::setupLeftRightText(GTextArea* textArea, const std::string& text) 
         return;
     }
 
-    std::vector<std::string> lines = stringSplit(text, "\n");
+    std::vector<std::string> lines = sgl::priv::strlib::split(text, "\n");
     const std::string COLOR_NORMAL = textArea->getColor();
     for (int i = 0; i < lines.size(); i++) {
         std::string line = lines[i];
@@ -189,7 +193,7 @@ void GDiffGui::setupLeftRightText(GTextArea* textArea, const std::string& text) 
         // insert a gray line number at start of each line
         int digits = static_cast<int>(std::to_string(lines.size()).length());
         std::string lineNumberString =
-                padLeft(i == 0 ? std::string("") : std::to_string(i), digits) + "  ";
+                sgl::priv::strlib::padLeft(i == 0 ? std::string("") : std::to_string(i), digits) + "  ";
         textArea->appendFormattedText(lineNumberString, GWindow::chooseLightDarkModeColor(COLOR_LINE_NUMBERS, COLOR_LINE_NUMBERS_DARK_MODE));
         textArea->appendFormattedText(toPrintable(line) + "\n", COLOR_NORMAL);
     }
@@ -216,3 +220,5 @@ void GDiffGui::syncScrollBars(bool left) {
         });
     }
 }
+
+} // namespace sgl

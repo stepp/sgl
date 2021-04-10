@@ -5,6 +5,8 @@
  * See gfilechooser.h for documentation of each member.
  * 
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/09/07
  * - added overloads that accept GWindow* parent
  * @version 2018/08/23
@@ -17,6 +19,8 @@
 #include <QFontDialog>
 #include "gfont.h"
 #include "gthread.h"
+
+namespace sgl {
 
 GFontChooser::GFontChooser() {
     // empty
@@ -42,3 +46,5 @@ std::string GFontChooser::showDialog(QWidget* parent, const std::string& title, 
     });
     return result;
 }
+
+} // namespace sgl

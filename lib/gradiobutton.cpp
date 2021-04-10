@@ -3,6 +3,8 @@
  * ----------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/04/23
@@ -23,6 +25,8 @@
 #include "gthread.h"
 #include "gwindow.h"
 #include "require.h"
+
+namespace sgl {
 
 std::map<std::string, QButtonGroup*> GRadioButton::_buttonGroups;
 
@@ -191,4 +195,4 @@ QSize _Internal_QRadioButton::sizeHint() const {
     }
 }
 
-
+} // namespace sgl

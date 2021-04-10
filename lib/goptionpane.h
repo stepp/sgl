@@ -3,6 +3,8 @@
  * -------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/09/23
@@ -23,6 +25,8 @@
 #include <vector>
 
 #include "ginteractor.h"
+
+namespace sgl {
 
 // forward declaration
 class GWindow;
@@ -255,5 +259,7 @@ private:
         INTERNAL_YES_OPTION = 0
     };
 };
+
+} // namespace sgl
 
 #endif // _goptionpane_h

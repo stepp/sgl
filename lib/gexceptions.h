@@ -7,6 +7,8 @@
  * exception is thrown, though it is hard to consistently do this on all platforms.
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl::exceptions namespace
  * @version 2021/04/03
  * - removed dependencies
  * - renamed to gexceptions
@@ -30,7 +32,8 @@
 
 #include <string>
 
-namespace gexceptions {
+namespace sgl {
+namespace exceptions {
 
 /**
  * Called by C++ lib's main wrapper so that the stack trace knows the program's name.
@@ -60,6 +63,8 @@ void setTopLevelExceptionHandlerEnabled(bool enabled);
  */
 void interruptIfDebug();
 
-} // namespace gexceptions
+
+} // namespace exceptions
+} // namespace sgl
 
 #endif // _gexceptions_h

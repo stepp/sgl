@@ -3,6 +3,8 @@
  * ------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/23
  * - added key events
  * @version 2019/02/02
@@ -19,6 +21,8 @@
 #include "gthread.h"
 #include "gwindow.h"
 #include "require.h"
+
+namespace sgl {
 
 const int GSlider::DEFAULT_MIN_VALUE = 0;
 const int GSlider::DEFAULT_MAX_VALUE = 100;
@@ -262,4 +266,4 @@ QSize _Internal_QSlider::sizeHint() const {
     }
 }
 
-
+} // namespace sgl

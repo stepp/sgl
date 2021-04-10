@@ -3,6 +3,8 @@
  * --------------------
  * 
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/23
  * - can press Escape key to close window
  * @version 2018/10/12
@@ -22,6 +24,8 @@
 #include "gspacer.h"
 #include "gthread.h"
 #include "require.h"
+
+namespace sgl {
 
 /*static*/ const std::string GDiffImage::HIGHLIGHT_COLOR_DEFAULT = "#e000e0";   // 224, 0, 224
 
@@ -227,3 +231,5 @@ std::string GDiffImage::getPixelString(GImage* image, int x, int y) const {
         return "(none)";
     }
 }
+
+} // namespace sgl

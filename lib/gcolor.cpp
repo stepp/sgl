@@ -3,6 +3,8 @@
  * ----------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/05/05
@@ -21,6 +23,8 @@
 #include <iostream>
 #include <stdexcept>
 #include "privatestrlib.h"
+
+namespace sgl {
 
 std::map<std::string, int> GColor::_colorTable;
 std::map<std::string, std::string> GColor::_colorNameTable;
@@ -157,10 +161,10 @@ GColor::GColor() {
     os << std::setw(2) << (rgb >> 16 & 0xFF);
     os << std::setw(2) << (rgb >> 8 & 0xFF);
     os << std::setw(2) << (rgb & 0xFF);
-    std::string color = os.str();
+    std::string color = sgl::priv::strlib::toLowerCase(os.str());
     colorNameTable();
-    if (_colorNameTable.find(toLowerCase(color)) != _colorNameTable.end()) {
-        return _colorNameTable[toLowerCase(color)];
+    if (_colorNameTable.find(color) != _colorNameTable.end()) {
+        return _colorNameTable[color];
     } else {
         return color;
     }
@@ -175,10 +179,10 @@ GColor::GColor() {
     os << std::setw(2) << (r & 0xFF);
     os << std::setw(2) << (g & 0xFF);
     os << std::setw(2) << (b & 0xFF);
-    std::string color = os.str();
+    std::string color = sgl::priv::strlib::toLowerCase(os.str());
     colorNameTable();
-    if (_colorNameTable.find(toLowerCase(color)) != _colorNameTable.end()) {
-        return _colorNameTable[toLowerCase(color)];
+    if (_colorNameTable.find(color) != _colorNameTable.end()) {
+        return _colorNameTable[color];
     } else {
         return color;
     }
@@ -242,3 +246,5 @@ GColor::GColor() {
     splitARGB(argb, a, r, g, b);
     return QColor(r, g, b, a);
 }
+
+} // namespace sgl

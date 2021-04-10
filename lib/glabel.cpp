@@ -3,6 +3,8 @@
  * ----------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/23
  * - moved some event-handling code to GInteractor superclass
  * @version 2019/04/22
@@ -28,6 +30,8 @@
 #include "gwindow.h"
 #include "privatefilelib.h"
 #include "require.h"
+
+namespace sgl {
 
 GLabel::GLabel(const std::string& text, const std::string& iconFileName, QWidget* parent)
         : _gtext(nullptr) {
@@ -218,7 +222,7 @@ void GLabel::setIcon(const QPixmap& icon) {
 
 void GLabel::setIcon(const std::string& filename, bool retainIconSize) {
     GInteractor::setIcon(filename, retainIconSize);
-    if (!filename.empty() && fileExists(filename)) {
+    if (sgl::priv::filelib::fileExists(filename)) {
         GThread::runOnQtGuiThread([this, filename, retainIconSize]() {
             if (filename.empty()) {
                 _iqlabel->setPixmap(QPixmap());
@@ -387,4 +391,4 @@ QSize _Internal_QLabel::sizeHint() const {
     }
 }
 
-
+} // namespace sgl

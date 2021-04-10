@@ -1,17 +1,16 @@
 /*
- * File: regexpr.h
- * ---------------
+ * File: privateregexpr.h
+ * ----------------------
  * This file exports functions for performing regular expression operations
  * on C++ strings.  It will be unnecessary once the C++11 regex library
  * is widely available, but as of this writing the regex library is not
  * supported on gcc and other major C++ compilers.
- * 
- * The regular expression functions are implemented by sending the strings and
- * regexes to the Java Back-End to run the operations in Java.  This is a bit
- * kludgy but we don't want to write our own regex parser from scratch.
- * Using Java's is a compromise for now.
+ * This functionality is considered "private" and not to be used by students.
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - moved to private SGL namespace
+ * - renamed functions to remove 'regex' prefix
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/09/25
@@ -24,25 +23,29 @@
  */
 
 
-#ifndef _regexpr_h
-#define _regexpr_h
+#ifndef _private_regexpr_h
+#define _private_regexpr_h
 
 #include <string>
 #include <vector>
+
+namespace sgl {
+namespace priv {
+namespace regexpr {
 
 /**
  * Returns true if the given string s matches the given regular expression
  * as a substring.
  * For an exact match instead, put "^" and "$" in your regex as start/end anchors.
  */
-bool regexMatch(const std::string& s, const std::string& regexp);
+bool match(const std::string& s, const std::string& regexp);
 
 /**
  * Returns the number of times the given regular expression is found inside
  * the given string s.
  * Returns 0 if there are no matches for the regexp.
  */
-int regexMatchCount(const std::string& s, const std::string& regexp);
+int matchCount(const std::string& s, const std::string& regexp);
 
 /**
  * Finds all matches of the given regular expression in the given string s
@@ -52,8 +55,8 @@ int regexMatchCount(const std::string& s, const std::string& regexp);
  * Returns the number of times the given regular expression is found inside
  * the given string s.  Returns 0 if there are no matches for the regexp.
  */
-int regexMatchCountWithLines(const std::string& s, const std::string& regexp,
-                             std::string& linesOut);
+int matchCountWithLines(const std::string& s, const std::string& regexp,
+                        std::string& linesOut);
 
 /**
  * Finds all matches of the given regular expression in the given string s
@@ -63,8 +66,8 @@ int regexMatchCountWithLines(const std::string& s, const std::string& regexp,
  * Returns the number of times the given regular expression is found inside
  * the given string s.  Returns 0 if there are no matches for the regexp.
  */
-void regexMatchCountWithLines(const std::string& s, const std::string& regexp,
-                              std::vector<int>& linesOut);
+void matchCountWithLines(const std::string& s, const std::string& regexp,
+                         std::vector<int>& linesOut);
 
 /**
  * Replaces occurrences of the given regular expression in s with the given
@@ -72,7 +75,11 @@ void regexMatchCountWithLines(const std::string& s, const std::string& regexp,
  * If limit >  0 is passed, replaces that many occurrences of the regex.
  * If limit <= 0 is passed (or omitted), all occurrences are replaced.
  */
-std::string regexReplace(const std::string& s, const std::string& regexp,
-                         const std::string& replacement, int limit = -1);
+std::string replace(const std::string& s, const std::string& regexp,
+                   const std::string& replacement, int limit = -1);
 
-#endif // _regexpr_h
+} // namespace regexpr
+} // namespace priv
+} // namespace sgl
+
+#endif // _private_regexpr_h

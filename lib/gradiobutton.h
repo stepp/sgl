@@ -3,6 +3,8 @@
  * --------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/04/23
@@ -31,6 +33,8 @@
 #include <QRadioButton>
 
 #include "ginteractor.h"
+
+namespace sgl {
 
 class _Internal_QRadioButton;
 
@@ -159,5 +163,7 @@ private:
 
     friend class GRadioButton;
 };
+
+} // namespace sgl
 
 #endif // _gradiobutton_h

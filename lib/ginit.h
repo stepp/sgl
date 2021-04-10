@@ -7,6 +7,8 @@
  * careful arrangement include+guard, this is no longer used as pre/post work is
  * is inserted into the wrapper "main" function which surrounds student main.
  *
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/08/28
  * - refactor to use namespace and init.cpp
  * @version 2018/07/03
@@ -56,8 +58,6 @@ void setExitEnabled(bool enabled);
  */
 void shutdownLibrary();
 
-
-
 } // namespace sgl
 
 // bypass std::exit function
@@ -68,8 +68,8 @@ void __sgl__exitLibrary(int status);
 #define STD_EXIT __std_exit_function_
 #define exit __sgl__exitLibrary
 
-#ifdef SPL_HEADLESS_MODE
+#ifdef SGL_HEADLESS_MODE
 #include "headless.h"
-#endif // SPL_HEADLESS_MODE
+#endif // SGL_HEADLESS_MODE
 
 #endif // _ginit_h

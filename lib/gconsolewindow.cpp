@@ -4,6 +4,8 @@
  * This file implements the gconsolewindow.h interface.
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections and non-graphical library code
  * @version 2019/04/25
@@ -58,7 +60,9 @@
 #include "privatefilelib.h"
 #include "privatestrlib.h"
 
-void setConsolePropertiesQt();
+extern void setConsolePropertiesQt();
+
+namespace sgl {
 
 /*static*/ const bool GConsoleWindow::ALLOW_RICH_INPUT_EDITING = true;
 /*static*/ const double GConsoleWindow::DEFAULT_WIDTH = 900;
@@ -102,7 +106,7 @@ void setConsolePropertiesQt();
             if (!_instance) {
                 QtGui::instance()->initializeQt();
                 _instance = new GConsoleWindow();
-                setConsolePropertiesQt();
+                ::setConsolePropertiesQt();
             }
         });
     }
@@ -246,8 +250,8 @@ void GConsoleWindow::_initStreams() {
     setbuf(stderr, stderrBuf);
 
     // redirect cin/cout/cerr
-    _cinout_new_buf = new sgl::qtgui::ConsoleStreambufQt();
-    _cerr_new_buf = new sgl::qtgui::ConsoleStreambufQt(/* isStderr */ true);
+    _cinout_new_buf = new sgl::ConsoleStreambufQt();
+    _cerr_new_buf = new sgl::ConsoleStreambufQt(/* isStderr */ true);
     _cin_old_buf = std::cin.rdbuf(_cinout_new_buf);
     _cout_old_buf = std::cout.rdbuf(_cinout_new_buf);
     _cerr_old_buf = std::cerr.rdbuf(_cerr_new_buf);
@@ -395,8 +399,8 @@ void GConsoleWindow::close() {
 
 void GConsoleWindow::compareOutput(const std::string& filename) {
     std::string expectedOutput;
-    if (!filename.empty() && fileExists(filename)) {
-        expectedOutput = readEntireFile(filename);
+    if (!filename.empty() && sgl::priv::filelib::fileExists(filename)) {
+        expectedOutput = sgl::priv::filelib::readEntireFile(filename);
     } else {
         expectedOutput = "File not found: " + filename;
     }
@@ -554,8 +558,9 @@ bool GConsoleWindow::isSelectionInUserInputArea() const {
 }
 
 void GConsoleWindow::loadConfiguration() {
-    std::string configFile = getTempDirectory() + "/" + CONFIG_FILE_NAME;
-    if (fileExists(configFile)) {
+    std::string configFile = sgl::priv::filelib::getTempDirectory()
+            + sgl::priv::filelib::getDirectoryPathSeparator() + CONFIG_FILE_NAME;
+    if (sgl::priv::filelib::fileExists(configFile)) {
         std::ifstream infile;
         infile.open(configFile.c_str());
         if (!infile) {
@@ -563,15 +568,15 @@ void GConsoleWindow::loadConfiguration() {
         }
         std::string line;
         while (getline(infile, line)) {
-            line = trim(line);
+            line = sgl::priv::strlib::trim(line);
             if (line.empty() || line[0] == '#') {
                 continue;
             }
-            std::vector<std::string> tokens = stringSplit(line, "=");
+            std::vector<std::string> tokens = sgl::priv::strlib::split(line, "=");
             if (tokens.size() < 2) {
                 continue;
             }
-            std::string key   = toLowerCase(tokens[0]);
+            std::string key   = sgl::priv::strlib::toLowerCase(tokens[0]);
             std::string value = tokens[1];
             if (key == "font") {
                 setFont(value);
@@ -585,7 +590,7 @@ void GConsoleWindow::loadConfiguration() {
 }
 
 void GConsoleWindow::loadInputScript(int number) {
-    std::string sep = getDirectoryPathSeparator();
+    std::string sep = sgl::priv::filelib::getDirectoryPathSeparator();
     static std::initializer_list<std::string> directoriesToCheck {
             ".",
             "." + sep + "input",
@@ -594,19 +599,19 @@ void GConsoleWindow::loadInputScript(int number) {
     std::string inputFile;
     std::string expectedOutputFile;
     for (std::string dir : directoriesToCheck) {
-        if (!isDirectory(dir)) {
+        if (!sgl::priv::filelib::isDirectory(dir)) {
             continue;
         }
 
-        for (std::string filename : listDirectory(dir)) {
+        for (std::string filename : sgl::priv::filelib::listDirectory(dir)) {
             filename = dir + sep + filename;
             if (inputFile.empty()
-                    && stringContains(filename, "input-" + std::to_string(number))
-                    && endsWith(filename, ".txt")) {
+                    && sgl::priv::strlib::contains(filename, "input-" + std::to_string(number))
+                    && sgl::priv::strlib::endsWith(filename, ".txt")) {
                 inputFile = filename;
             } else if (expectedOutputFile.empty()
-                       && stringContains(filename, "expected-output-" + std::to_string(number))
-                       && endsWith(filename, ".txt")) {
+                       && sgl::priv::strlib::contains(filename, "expected-output-" + std::to_string(number))
+                       && sgl::priv::strlib::endsWith(filename, ".txt")) {
                 expectedOutputFile = filename;
             }
         }
@@ -640,11 +645,11 @@ void GConsoleWindow::loadInputScript(const std::string& filename) {
     if (_shutdown) {
         return;
     }
-    if (!filename.empty() && fileExists(filename)) {
+    if (!filename.empty() && sgl::priv::filelib::fileExists(filename)) {
         std::ifstream infile;
         infile.open(filename.c_str());
         std::vector<std::string> lines;
-        readEntireFile(infile, lines);
+        sgl::priv::filelib::readEntireFile(infile, lines);
 
         _cinQueueMutex.lockForWrite();
         while (!_inputScript.empty()) {
@@ -670,8 +675,8 @@ void GConsoleWindow::print(const std::string& str, bool isStdErr) {
 
     // clean up line breaks (remove \r)
     std::string strToPrint = str;
-    stringReplaceInPlace(strToPrint, "\r\n", "\n");
-    stringReplaceInPlace(strToPrint, "\r", "\n");
+    sgl::priv::strlib::replaceInPlace(strToPrint, "\r\n", "\n");
+    sgl::priv::strlib::replaceInPlace(strToPrint, "\r", "\n");
 
     GThread::runOnQtGuiThread([this, strToPrint, isStdErr]() {
         _coutMutex.lock();
@@ -1027,7 +1032,7 @@ void GConsoleWindow::processUserInputKey(int key) {
         // normal key: append to user input buffer
         _cinMutex.lockForWrite();
 
-        std::string keyStr = charToString((char) key);
+        std::string keyStr = sgl::priv::strlib::charToString((char) key);
 
         bool inserted = false;
         if (ALLOW_RICH_INPUT_EDITING && isCursorInUserInputArea()) {
@@ -1171,7 +1176,7 @@ void GConsoleWindow::saveAs(const std::string& filename) {
         filenameToUse = GFileChooser::showSaveDialog(
                 /* parent */ this->getWidget(),
                 /* title */ "",
-                getHead(_lastSaveFileName));
+                sgl::priv::filelib::getHead(_lastSaveFileName));
     } else {
         filenameToUse = filename;
     }
@@ -1180,7 +1185,7 @@ void GConsoleWindow::saveAs(const std::string& filename) {
     }
 
     std::string consoleText = _textArea->getText();
-    writeEntireFile(filenameToUse, consoleText);
+    sgl::priv::filelib::writeEntireFile(filenameToUse, consoleText);
     _lastSaveFileName = filenameToUse;
 }
 
@@ -1191,12 +1196,13 @@ void GConsoleWindow::saveConfiguration(bool prompt) {
             /* title   */  "Save configuration?")) {
         return;
     }
-    std::string configFile = getTempDirectory() + "/" + CONFIG_FILE_NAME;
-    std::string configText = "# C++ library configuration file\n"
+    std::string configFile = sgl::priv::filelib::getTempDirectory()
+            + sgl::priv::filelib::getDirectoryPathSeparator() + CONFIG_FILE_NAME;
+    std::string configText = "# SGL C++ library configuration file\n"
             "background=" + _textArea->getBackground() + "\n"
             "foreground=" + getOutputColor() + "\n"
             "font=" + _textArea->getFont() + "\n";
-    writeEntireFile(configFile, configText);
+    sgl::priv::filelib::writeEntireFile(configFile, configText);
 }
 
 void GConsoleWindow::selectAll() {
@@ -1344,7 +1350,7 @@ void GConsoleWindow::setUserInputColor(const std::string& userInputColor) {
 
 void GConsoleWindow::showAboutDialog() {
     // this text roughly matches that from old spl.jar message
-    static const std::string ABOUT_MESSAGE = sgl::version::getLibraryInfoPanelMessage();
+    static const std::string ABOUT_MESSAGE = sgl::getLibraryInfoPanelMessage();
     GOptionPane::showMessageDialog(
                 /* parent */   getWidget(),
                 /* message */  ABOUT_MESSAGE,
@@ -1371,7 +1377,7 @@ void GConsoleWindow::showCompareOutputDialog() {
     std::string filename = GFileChooser::showOpenDialog(
                 /* parent */ getWidget(),
                 /* title  */ "Select an expected output file");
-    if (!filename.empty() && fileExists(filename)) {
+    if (!filename.empty() && sgl::priv::filelib::fileExists(filename)) {
         compareOutput(filename);
     }
 }
@@ -1394,7 +1400,7 @@ void GConsoleWindow::showInputScriptDialog() {
     std::string filename = GFileChooser::showOpenDialog(
                 /* parent */ getWidget(),
                 /* title  */ "Select an input script file");
-    if (!filename.empty() && fileExists(filename)) {
+    if (sgl::priv::filelib::fileExists(filename)) {
         loadInputScript(filename);
     }
 }
@@ -1432,10 +1438,6 @@ void GConsoleWindow::shutdown(const std::string& reason) {
 }
 
 // global functions used by ConsoleStreambufQt
-
-namespace sgl {
-namespace qtgui {
-
 void endLineConsoleQt(bool isStderr) {
     GConsoleWindow::instance()->println(isStderr);
 }
@@ -1448,5 +1450,4 @@ void putConsoleQt(const std::string& str, bool isStderr) {
     GConsoleWindow::instance()->print(str, isStderr);
 }
 
-} // namespace qtgui
 } // namespace sgl

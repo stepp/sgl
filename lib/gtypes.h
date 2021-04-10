@@ -4,6 +4,8 @@
  * This file defines classes for representing points, dimensions, and
  * rectangles.
  *
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/09/09
  * - added doc comments for new documentation generation
  * @version 2018/07/14
@@ -18,6 +20,8 @@
 #include <iostream>
 #include <Qt>
 #include <string>
+
+namespace sgl {
 
 /**
  * An alias for a function wrapper around a void function with no parameters
@@ -418,5 +422,7 @@ bool operator >(const GRectangle& r1, const GRectangle& r2);
  * Relational operators that compare rectangles by x, y, then width, then height.
  */
 bool operator >=(const GRectangle& r1, const GRectangle& r2);
+
+} // namespace sgl
 
 #endif // _gtypes_h

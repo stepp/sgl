@@ -5,6 +5,8 @@
  * popping up graphical dialog boxes to select file names.
  * 
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/09/07
  * - added doc comments for new documentation generation
  * - added overloads that accept GWindow* parent
@@ -22,6 +24,8 @@
 #include <QWidget>
 
 #include "gwindow.h"
+
+namespace sgl {
 
 /**
  * The GFileChooser class contains static methods for popping up file-choosing
@@ -131,5 +135,7 @@ private:
      */
     static std::string normalizeFileFilter(const std::string& fileFilter);
 };
+
+} // namespace sgl
 
 #endif // _gfilechooser_h

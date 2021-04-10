@@ -1,10 +1,14 @@
 /*
- * File: regexpr.cpp
- * -----------------
- * Implementation of the functions in regexpr.h.
+ * File: privateregexpr.cpp
+ * ------------------------
+ * Implementation of the functions in privateregexpr.h.
  * See regexpr.h for documentation of each function.
+ * This functionality is considered "private" and not to be used by students.
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - moved to private SGL namespace
+ * - renamed functions to remove 'regex' prefix
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/12/16
@@ -21,29 +25,42 @@
  */
 
 #include "privateregexpr.h"
-#ifndef SPL_HEADLESS_MODE
+#ifndef SGL_HEADLESS_MODE
 #include <exception>
 #include <stdexcept>
 #include <QtGlobal>
-#endif // SPL_HEADLESS_MODE
+#endif // SGL_HEADLESS_MODE
 
 #if defined(SPL_CODESTEPBYSTEP) || QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
-bool regexMatch(const std::string& /*s*/, const std::string& /*regexp*/) {
+namespace sgl {
+namespace priv {
+namespace regexpr {
+
+bool match(const std::string& /*s*/, const std::string& /*regexp*/) {
     return false;   // not supported
 }
 
-int regexMatchCount(const std::string& /*s*/, const std::string& /*regexp*/) {
+int matchCount(const std::string& /*s*/, const std::string& /*regexp*/) {
     return 0;   // not supported
 }
 
-void regexMatchCountWithLines(const std::string& /*s*/, const std::string& /*regexp*/,
-                             std::vector<int>& /*linesOut*/) {
+void matchCountWithLines(const std::string& /*s*/, const std::string& /*regexp*/,
+                         std::vector<int>& /*linesOut*/) {
     // empty; not supported
 }
 
-std::string regexReplace(const std::string& s, const std::string& /*regexp*/, const std::string& /*replacement*/, int /*limit*/) {
+int matchCountWithLines(const std::string& /*s*/, const std::string& /*regexp*/,
+                        std::string& /*linesOut*/) {
+    return 0;   // not supported
+}
+
+std::string replace(const std::string& s, const std::string& /*regexp*/, const std::string& /*replacement*/, int /*limit*/) {
     return s;   // not supported
 }
+
+} // namespace regexpr
+} // namespace priv
+} // namespace sgl
 
 #else // QT_VERSION
 
@@ -51,21 +68,25 @@ std::string regexReplace(const std::string& s, const std::string& /*regexp*/, co
 #include <iterator>
 #include <regex>
 
-bool regexMatch(const std::string& s, const std::string& regexp) {
+namespace sgl {
+namespace priv {
+namespace regexpr {
+
+bool match(const std::string& s, const std::string& regexp) {
     std::regex reg(regexp);
     std::smatch match;
     return std::regex_search(s, match, reg);
 }
 
-int regexMatchCount(const std::string& s, const std::string& regexp) {
+int matchCount(const std::string& s, const std::string& regexp) {
     std::regex reg(regexp);
     auto it1 = std::sregex_iterator(s.begin(), s.end(), reg);
     auto it2 = std::sregex_iterator();
     return std::distance(it1, it2);
 }
 
-void regexMatchCountWithLines(const std::string& s, const std::string& regexp,
-                             std::vector<int>& linesOut) {
+void matchCountWithLines(const std::string& s, const std::string& regexp,
+                         std::vector<int>& linesOut) {
     linesOut.clear();
 
     // keep a running index and line#, and each time we find a regex match,
@@ -91,7 +112,23 @@ void regexMatchCountWithLines(const std::string& s, const std::string& regexp,
     }
 }
 
-std::string regexReplace(const std::string& s, const std::string& regexp, const std::string& replacement, int limit) {
+int matchCountWithLines(const std::string& s, const std::string& regexp,
+                        std::string& linesOut) {
+    std::vector<int> linesOutVec;
+    matchCountWithLines(s, regexp, linesOutVec);
+
+    // concatenate the vector into a string like "1, 4, 7, 7, 19"
+    linesOut = "";
+    if (!linesOutVec.empty()) {
+        linesOut += std::to_string(linesOutVec[0]);
+        for (int i = 1; i < linesOutVec.size(); i++) {
+            linesOut += ", " + std::to_string(linesOutVec[i]);
+        }
+    }
+    return linesOutVec.size();
+}
+
+std::string replace(const std::string& s, const std::string& regexp, const std::string& replacement, int limit) {
     std::regex reg(regexp);
     std::string result;
     if (limit == 1) {
@@ -106,20 +143,9 @@ std::string regexReplace(const std::string& s, const std::string& regexp, const 
     }
     return result;
 }
+
+} // namespace regexpr
+} // namespace priv
+} // namespace sgl
+
 #endif // QT_VERSION
-
-// this function can be implemented the same way whether regexes are available or not
-int regexMatchCountWithLines(const std::string& s, const std::string& regexp, std::string& linesOut) {
-    std::vector<int> linesOutVec;
-    regexMatchCountWithLines(s, regexp, linesOutVec);
-
-    // concatenate the vector into a string like "1, 4, 7, 7, 19"
-    linesOut = "";
-    if (!linesOutVec.empty()) {
-        linesOut += std::to_string(linesOutVec[0]);
-        for (int i = 1; i < linesOutVec.size(); i++) {
-            linesOut += ", " + std::to_string(linesOutVec[i]);
-        }
-    }
-    return linesOutVec.size();
-}

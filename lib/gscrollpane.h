@@ -3,6 +3,8 @@
  * -------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/09/08
  * - added doc comments for new documentation generation
  * @version 2018/09/01
@@ -17,6 +19,8 @@
 #include <QScrollArea>
 
 #include "ginteractor.h"
+
+namespace sgl {
 
 class _Internal_QScrollArea;
 
@@ -128,5 +132,7 @@ public:
 // private:
     // GScrollPane* _gscrollpane;
 };
+
+} // namespace sgl
 
 #endif // _gscrollpane_h

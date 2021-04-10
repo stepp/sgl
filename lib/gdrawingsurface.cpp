@@ -3,6 +3,8 @@
  * -------------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/08/23
  * - renamed to gdrawingsurface.cpp to replace Java version
  * @version 2018/07/11
@@ -15,6 +17,8 @@
 #include "gfont.h"
 #include "gmath.h"
 #include "require.h"
+
+namespace sgl {
 
 GDrawingSurface::GDrawingSurface()
         : _forwardTarget(nullptr),
@@ -131,8 +135,8 @@ GPoint GDrawingSurface::drawPolarLine(const GPoint& p0, double r, double theta) 
 }
 
 GPoint GDrawingSurface::drawPolarLine(double x0, double y0, double r, double theta) {
-    double x1 = x0 + r * cosDegrees(theta);
-    double y1 = y0 - r * sinDegrees(theta);
+    double x1 = x0 + r * ::sgl::math::cosDegrees(theta);
+    double y1 = y0 - r * ::sgl::math::sinDegrees(theta);
     drawLine(x0, y0, x1, y1);
     return GPoint(x1, y1);
 }
@@ -539,12 +543,12 @@ int GForwardDrawingSurface::getPixelARGB(double x, double y) const {
     return _forwardTarget->getPixelARGB(x, y);
 }
 
-Grid<int> GForwardDrawingSurface::getPixels() const {
+::sgl::collections::Grid<int> GForwardDrawingSurface::getPixels() const {
     ensureForwardTargetConstHack();
     return _forwardTarget->getPixels();
 }
 
-Grid<int> GForwardDrawingSurface::getPixelsARGB() const {
+::sgl::collections::Grid<int> GForwardDrawingSurface::getPixelsARGB() const {
     ensureForwardTargetConstHack();
     return _forwardTarget->getPixelsARGB();
 }
@@ -636,12 +640,12 @@ void GForwardDrawingSurface::setPixelARGB(double x, double y, int a, int r, int 
     _forwardTarget->setPixelARGB(x, y, a, r, g, b);
 }
 
-void GForwardDrawingSurface::setPixels(const Grid<int>& pixels) {
+void GForwardDrawingSurface::setPixels(const ::sgl::collections::Grid<int>& pixels) {
     ensureForwardTarget();
     _forwardTarget->setPixels(pixels);
 }
 
-void GForwardDrawingSurface::setPixelsARGB(const Grid<int>& pixelsARGB) {
+void GForwardDrawingSurface::setPixelsARGB(const ::sgl::collections::Grid<int>& pixelsARGB) {
     ensureForwardTarget();
     _forwardTarget->setPixelsARGB(pixelsARGB);
 }
@@ -650,3 +654,5 @@ void GForwardDrawingSurface::setRepaintImmediately(bool repaintImmediately) {
     ensureForwardTarget();
     _forwardTarget->setAutoRepaint(repaintImmediately);
 }
+
+} // namespace sgl

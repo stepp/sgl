@@ -3,6 +3,8 @@
  * --------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/02/02
  * - destructor now stops event processing
  * @version 2018/08/23
@@ -15,6 +17,8 @@
 #include <exception>
 #include <stdexcept>
 #include "gthread.h"
+
+namespace sgl {
 
 GScrollBar::GScrollBar(GScrollBar::Orientation orientation,
                          int value,
@@ -171,4 +175,4 @@ QSize _Internal_QScrollBar::sizeHint() const {
     }
 }
 
-
+} // namespace sgl

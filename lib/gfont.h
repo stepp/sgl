@@ -3,6 +3,8 @@
  * -------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/30
  * - added changeFontSize for a GText*
  * @version 2018/09/07
@@ -22,6 +24,8 @@
 
 #include "ginteractor.h"
 #include "gobjects.h"
+
+namespace sgl {
 
 /**
  * This class contains static methods for dealing with fonts in our GUI system.
@@ -120,5 +124,7 @@ private:
     GFont();   // prevent construction
     static QFont::StyleHint getStyleHint(const std::string& fontFamily);
 };
+
+} // namespace sgl
 
 #endif // _gfont_h

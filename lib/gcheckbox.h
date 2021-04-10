@@ -3,6 +3,8 @@
  * -----------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/23
  * - added key event support
  * @version 2018/10/06
@@ -27,6 +29,8 @@
 #include <QCheckBox>
 
 #include "ginteractor.h"
+
+namespace sgl {
 
 class _Internal_QCheckBox;
 
@@ -143,5 +147,7 @@ private:
 
     friend class GCheckBox;
 };
+
+} // namespace sgl
 
 #endif // _gcheckbox_h

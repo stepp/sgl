@@ -3,6 +3,8 @@
  * --------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/09/20
  * - removed deprecation warning on waitForEvent/Click global functions (for now)
  * @version 2018/09/07
@@ -24,6 +26,9 @@
 #include "gtypes.h"
 
 class QEvent;
+
+namespace sgl {
+
 class GEvent;
 class GInteractor;
 class GObservable;
@@ -642,5 +647,7 @@ GMouseEvent waitForClick() /*Q_DECL_DEPRECATED*/;
  * such as setActionListener or setMouseListener.
  */
 GEvent waitForEvent(int mask = ANY_EVENT) /*Q_DECL_DEPRECATED*/;
+
+} // namespace sgl
 
 #endif // _gevent_h

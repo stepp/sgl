@@ -3,6 +3,8 @@
  * -----------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/08/23
  * - renamed to glayout.cpp to replace Java version
  * @version 2018/06/25
@@ -12,6 +14,8 @@
 #include "glayout.h"
 #include "require.h"
 #include "privatestrlib.h"
+
+namespace sgl {
 
 GLayout::GLayout() {
     // empty
@@ -132,7 +136,7 @@ void GLayout::invalidateLayout(QLayout* layout) {
 }
 
 GLayout::Position GLayout::toPosition(const std::string& positionName) {
-    std::string regionU = toUpperCase(positionName);
+    std::string regionU = sgl::priv::strlib::toUpperCase(positionName);
     if (regionU == "NORTH" || regionU == "TOP") {
         return GLayout::North;
     } else if (regionU == "SOUTH" || regionU == "BOTTOM") {
@@ -326,3 +330,5 @@ QSize GBorderLayout::calculateSize(SizeType sizeType) const {
     }
     return totalSize;
 }
+
+} // namespace sgl

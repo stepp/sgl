@@ -3,6 +3,8 @@
  * --------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/02/02
@@ -29,6 +31,8 @@
 #include "gthread.h"
 #include "require.h"
 #include "privatestrlib.h"
+
+namespace sgl {
 
 // margin  - around container, but outside of its background color area (like CSS)
 // padding - around container, but within its background color area (like CSS)
@@ -176,11 +180,11 @@ std::vector<GInteractor*> GContainer::getDescendents(const std::string& type) co
     std::vector<GInteractor*> result;
     for (GInteractor* interactor : _interactors) {
         // pre-order traversal; add parent and then visit children
-        if (type.empty() || type == "*" || equalsIgnoreCase(type, interactor->getType())) {
+        if (type.empty() || type == "*" || sgl::priv::strlib::equalsIgnoreCase(type, interactor->getType())) {
             result.push_back(interactor);
         }
 
-        if (equalsIgnoreCase(interactor->getType(), "GContainer")) {
+        if (sgl::priv::strlib::equalsIgnoreCase(interactor->getType(), "GContainer")) {
             // recursively get all descendents of this child
             GContainer* subcontainer = static_cast<GContainer*>(interactor);
             std::vector<GInteractor*> descendents = subcontainer->getDescendents(type);
@@ -533,14 +537,14 @@ void GContainer::setVerticalAlignment(VerticalAlignment valign) {
 }
 
 GContainer::Region GContainer::stringToRegion(const std::string& regionStr) {
-    std::string regionLC = toLowerCase(trim(regionStr));
-    if (stringContains(regionLC, "north") || stringContains(regionLC, "top")) {
+    std::string regionLC = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::trim(regionStr));
+    if (sgl::priv::strlib::contains(regionLC, "north") || sgl::priv::strlib::contains(regionLC, "top")) {
         return REGION_NORTH;
-    } else if (stringContains(regionLC, "south") || stringContains(regionLC, "bottom")) {
+    } else if (sgl::priv::strlib::contains(regionLC, "south") || sgl::priv::strlib::contains(regionLC, "bottom")) {
         return REGION_SOUTH;
-    } else if (stringContains(regionLC, "west") || stringContains(regionLC, "left")) {
+    } else if (sgl::priv::strlib::contains(regionLC, "west") || sgl::priv::strlib::contains(regionLC, "left")) {
         return REGION_WEST;
-    } else if (stringContains(regionLC, "east") || stringContains(regionLC, "right")) {
+    } else if (sgl::priv::strlib::contains(regionLC, "east") || sgl::priv::strlib::contains(regionLC, "right")) {
         return REGION_EAST;
     } else {
         return REGION_CENTER;
@@ -1368,4 +1372,4 @@ QSize _Internal_QContainer::sizeHint() const {
     }
 }
 
-
+} // namespace sgl

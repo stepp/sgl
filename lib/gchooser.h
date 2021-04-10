@@ -3,6 +3,8 @@
  * ----------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/04/23
@@ -27,6 +29,8 @@
 #include <QComboBox>
 
 #include "ginteractor.h"
+
+namespace sgl {
 
 class _Internal_QComboBox;
 
@@ -194,5 +198,7 @@ private:
 
 // alias GComboBox for GChooser for name compatibility with Java and Qt
 typedef GChooser GComboBox;
+
+} // namespace sgl
 
 #endif // _gchooser_h

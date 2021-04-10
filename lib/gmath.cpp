@@ -5,6 +5,8 @@
  * implementation for each function requires only one line of code,
  * which makes detailed documentation unnecessary.
  *
+ * @version 2021/04/09
+ * - added sgl::math namespace
  * @version 2018/11/22
  * - added headless mode support
  * - alphabetized methods
@@ -17,6 +19,9 @@
 #include <exception>
 #include <stdexcept>
 #include "gtypes.h"
+
+namespace sgl {
+namespace math {
 
 extern const double PI = 3.14159265358979323846;
 extern const double E  = 2.71828182845904523536;
@@ -63,7 +68,7 @@ double vectorAngle(double x, double y) {
             ? 0 : toDegrees(atan2(-y, x));
 }
 
-double vectorAngle(const GPoint& pt) {
+double vectorAngle(const ::sgl::GPoint& pt) {
     return vectorAngle(pt.x, pt.y);
 }
 
@@ -71,6 +76,9 @@ double vectorDistance(double x, double y) {
     return sqrt(x * x + y * y);
 }
 
-double vectorDistance(const GPoint& pt) {
+double vectorDistance(const ::sgl::GPoint& pt) {
     return vectorDistance(pt.x, pt.y);
 }
+
+} // namespace math
+} // namespace sgl

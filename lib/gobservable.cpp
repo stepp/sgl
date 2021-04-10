@@ -3,6 +3,8 @@
  * ---------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/08/23
@@ -18,6 +20,8 @@
 #include "gthread.h"
 #include "require.h"
 #include "privatestrlib.h"
+
+namespace sgl {
 
 GObservable::GObservable()
         : _eventsEnabled(true) {
@@ -185,21 +189,21 @@ bool GObservable::isAcceptingEvent(const std::string& eventType) const {
         return true;
     }
     int eventMask = ANY_EVENT;
-    if (startsWith(eventType, "action")) {
+    if (sgl::priv::strlib::startsWith(eventType, "action")) {
         eventMask = ACTION_EVENT;
-    } else if (startsWith(eventType, "change")) {
+    } else if (sgl::priv::strlib::startsWith(eventType, "change")) {
         eventMask = CHANGE_EVENT;
-    } else if (startsWith(eventType, "key")) {
+    } else if (sgl::priv::strlib::startsWith(eventType, "key")) {
         eventMask = KEY_EVENT;
-    } else if (startsWith(eventType, "mouse")) {
+    } else if (sgl::priv::strlib::startsWith(eventType, "mouse")) {
         eventMask = MOUSE_EVENT;
-    } else if (startsWith(eventType, "server")) {
+    } else if (sgl::priv::strlib::startsWith(eventType, "server")) {
         eventMask = SERVER_EVENT;
-    } else if (startsWith(eventType, "table")) {
+    } else if (sgl::priv::strlib::startsWith(eventType, "table")) {
         eventMask = TABLE_EVENT;
-    } else if (startsWith(eventType, "timer")) {
+    } else if (sgl::priv::strlib::startsWith(eventType, "timer")) {
         eventMask = TIMER_EVENT;
-    } else if (startsWith(eventType, "window")) {
+    } else if (sgl::priv::strlib::startsWith(eventType, "window")) {
         eventMask = WINDOW_EVENT;
     }
     return isAcceptingEvent(eventMask);
@@ -262,3 +266,5 @@ std::string GObservable::toString() const {
     out << getType() << "@" << this;
     return out.str();
 }
+
+} // namespace sgl

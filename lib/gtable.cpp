@@ -5,6 +5,8 @@
  * See that file for documentation of each member.
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/02/02
@@ -37,6 +39,8 @@
 #include "gevent.h"
 #include "gfont.h"
 #include "gthread.h"
+
+namespace sgl {
 
 GTable::TableStyle GTable::_defaultCellStyle = GTable::TableStyle::unset();
 
@@ -220,25 +224,25 @@ double GTable::getRowHeight(int row) const {
     return _iqtableview->rowHeight(row);
 }
 
-GridLocation GTable::getSelectedCell() const {
+::sgl::collections::GridLocation GTable::getSelectedCell() const {
     QModelIndexList list = _iqtableview->selectionModel()->selectedIndexes();
     if (list.empty()) {
-        return GridLocation(-1, -1);
+        return ::sgl::collections::GridLocation(-1, -1);
     } else {
         QModelIndex index = list.at(0);
-        return GridLocation(index.row(), index.column());
+        return ::sgl::collections::GridLocation(index.row(), index.column());
     }
 }
 
 void GTable::getSelectedCell(int& row, int& column) const {
-    GridLocation loc = getSelectedCell();
+    ::sgl::collections::GridLocation loc = getSelectedCell();
     row = loc.row;
     column = loc.col;
 }
 
 std::string GTable::getSelectedCellValue() const {
     if (hasSelectedCell()) {
-        GridLocation loc = getSelectedCell();
+        ::sgl::collections::GridLocation loc = getSelectedCell();
         return get(loc.row, loc.col);
     } else {
         return "";
@@ -262,7 +266,7 @@ QWidget* GTable::getWidget() const {
 }
 
 bool GTable::hasSelectedCell() const {
-    GridLocation loc = getSelectedCell();
+    ::sgl::collections::GridLocation loc = getSelectedCell();
     return loc.row >= 0 && loc.col >= 0;
 }
 
@@ -302,7 +306,7 @@ void GTable::requestFocus() {
     GInteractor::requestFocus();
     if (!wasEditing && hasSelectedCell()) {
         GThread::runOnQtGuiThread([this]() {
-            GridLocation loc = getSelectedCell();
+            ::sgl::collections::GridLocation loc = getSelectedCell();
             _iqtableview->closePersistentEditor(_iqtableview->item(loc.row, loc.col));
         });
     }
@@ -753,7 +757,7 @@ void GTable::setRowHeight(int row, double height) {
 
 void GTable::setSelectedCellValue(const std::string& text) {
     if (hasSelectedCell()) {
-        GridLocation loc = getSelectedCell();
+        ::sgl::collections::GridLocation loc = getSelectedCell();
         set(loc.row, loc.col, text);
     }
 }
@@ -786,7 +790,7 @@ std::string GTable::toExcelColumnName(int col) {
     std::string colStr;
     col = col + 1;   // 1-based
     while (col-- > 0) {
-        colStr = charToString((char) ('A' + (col % 26))) + colStr;
+        colStr = sgl::priv::strlib::charToString((char) ('A' + (col % 26))) + colStr;
         col /= 26;
     }
     return colStr;
@@ -959,7 +963,7 @@ void _Internal_QTableWidget::keyPressEvent(QKeyEvent* event) {
     if (!wasEditing && event->key() == Qt::Key_Delete) {
         // clear data from selected cell
         if (_gtable->hasSelectedCell()) {
-            GridLocation loc = _gtable->getSelectedCell();
+            ::sgl::collections::GridLocation loc = _gtable->getSelectedCell();
             _gtable->clearCell(loc.row, loc.col);
             return;
         }
@@ -975,7 +979,7 @@ void _Internal_QTableWidget::keyPressEvent(QKeyEvent* event) {
 
     if (GClipboard::isCut(event)) {
         // keyboard "cut" command; remove data from cell into clipboard
-        GridLocation loc = _gtable->getSelectedCell();
+        ::sgl::collections::GridLocation loc = _gtable->getSelectedCell();
         std::string cellValue = _gtable->get(loc.row, loc.col);
         GClipboard::set(cellValue);
         _gtable->clearCell(loc.row, loc.col);
@@ -1027,4 +1031,4 @@ QSize _Internal_QTableWidget::sizeHint() const {
     }
 }
 
-
+} // namespace sgl

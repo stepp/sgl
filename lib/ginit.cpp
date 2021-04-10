@@ -3,6 +3,8 @@
  * ---------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependencies
  * @version 2018/11/22
@@ -32,12 +34,10 @@
 
 // inline void initResourcesOutsideNamespace() { Q_INIT_RESOURCE(images); }
 
-
-namespace sgl {
-namespace qtgui {
 extern void initializeQtGraphicalConsole();
 extern void shutdownConsole();
-}
+
+namespace sgl {
 
 static void parseArgsQt(int argc, char** argv);
 
@@ -57,25 +57,25 @@ void initializeLibrary(int argc, char** argv) {
     }
     _initialized = true;
 
-#ifndef SPL_HEADLESS_MODE
+#ifndef SGL_HEADLESS_MODE
     GThread::setGuiThread();
-#endif // SPL_HEADLESS_MODE
+#endif // SGL_HEADLESS_MODE
 
     parseArgsQt(argc, argv);
 
-#ifndef SPL_HEADLESS_MODE
+#ifndef SGL_HEADLESS_MODE
     // initialize the main Qt graphics subsystem
     QtGui::instance()->setArgs(argc, argv);
     QtGui::instance()->initializeQt();
     // initResourcesOutsideNamespace();
 
     // initialize Qt graphical console (if student #included it)
-    initializeQtGraphicalConsole();
-#endif // SPL_HEADLESS_MODE
+    ::initializeQtGraphicalConsole();
+#endif // SGL_HEADLESS_MODE
 }
 
 void initializeStudentThread() {
-    gexceptions::setTopLevelExceptionHandlerEnabled(true);
+    exceptions::setTopLevelExceptionHandlerEnabled(true);
 }
 
 // this should be roughly the same code as platform.cpp's parseArgs function
@@ -84,7 +84,7 @@ static void parseArgsQt(int argc, char** argv) {
         return;
     }
     std::string arg0 = argv[0];
-    gexceptions::setProgramName(argv[0]);
+    exceptions::setProgramName(argv[0]);
     // programName() = getRoot(getTail(arg0));
 
 #ifndef _WIN32
@@ -118,18 +118,18 @@ void setExitEnabled(bool enabled) {
 // shut down the Qt graphical console window;
 // to be run in Qt main thread
 void shutdownLibrary() {
-#ifdef SPL_HEADLESS_MODE
+#ifdef SGL_HEADLESS_MODE
     // empty
 #else
-    shutdownConsole();
-#endif // SPL_HEADLESS_MODE
+    ::shutdownConsole();
+#endif // SGL_HEADLESS_MODE
 }
 
 } // namespace sgl
 
 namespace std {
 void __sgl__exitLibrary(int status) {
-    if (sgl::exitEnabled()) {
+    if (::sgl::exitEnabled()) {
         // call std::exit (has been renamed)
 
 #ifdef exit

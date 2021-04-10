@@ -3,6 +3,8 @@
  * ---------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/01/08
@@ -20,6 +22,8 @@
 #include "gtypes.h"
 #include "gwindow.h"
 #include "privatestrlib.h"
+
+namespace sgl {
 
 GEventQueue* GEventQueue::_instance = nullptr;
 
@@ -172,3 +176,5 @@ GMouseEvent waitForClick() {
 GEvent waitForEvent(int mask) {
     return GEventQueue::instance()->waitForEvent(mask);
 }
+
+} // namespace sgl

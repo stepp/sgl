@@ -16,13 +16,12 @@ int studentMain();
 // initializes the Qt GUI library subsystems and Qt graphical console as needed
 // before calling studentMain
 
-int libraryMain(int argc, char** argv)
-{
+int libraryMain(int argc, char** argv) {
     sgl::initializeLibrary(argc, argv);
-#ifdef SPL_HEADLESS_MODE
+#ifdef SGL_HEADLESS_MODE
     studentMain();
 #else
-    QtGui::instance()->startBackgroundEventLoop(studentMain);
+    ::sgl::QtGui::instance()->startBackgroundEventLoop(studentMain);
 #endif
     sgl::shutdownLibrary();
     return 0;

@@ -5,6 +5,8 @@
  * See gfilechooser.h for documentation of each member.
  * 
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/09/07
@@ -20,6 +22,8 @@
 #include <QFileDialog>
 #include "gthread.h"
 #include "privatestrlib.h"
+
+namespace sgl {
 
 GFileChooser::GFileChooser() {
     // empty
@@ -68,12 +72,14 @@ std::string GFileChooser::showSaveDialog(QWidget* parent, const std::string& tit
 }
 
 std::string GFileChooser::normalizeFileFilter(const std::string& fileFilter) {
-    std::vector<std::string> tokens = stringSplit(fileFilter, ",");
+    std::vector<std::string> tokens = sgl::priv::strlib::split(fileFilter, ",");
     for (int i = 0; i < tokens.size(); i++) {
         std::string token = tokens[i];
-        token = trim(token);
+        token = sgl::priv::strlib::trim(token);
         // TODO: more processing
         tokens[i] = token;
     }
-    return stringJoin(tokens, ";;");
+    return sgl::priv::strlib::join(tokens, ";;");
 }
+
+} // namespace sgl

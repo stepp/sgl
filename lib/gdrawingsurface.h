@@ -3,6 +3,8 @@
  * -----------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/09/10
  * - added doc comments for new documentation generation
  * @version 2018/08/23
@@ -22,6 +24,8 @@
 #include "gobjects.h"
 #include "grid.h"
 #include "gtypes.h"
+
+namespace sgl {
 
 /**
  * GDrawingSurface is an abstract superclass for types that allow drawing shapes
@@ -377,7 +381,7 @@ public:
      * Returns all pixels of the surface as a Grid,
      * where rows represent y values and columns represent x values.
      */
-    virtual Grid<int> getPixels() const = 0;
+    virtual ::sgl::collections::Grid<int> getPixels() const = 0;
 
     /**
      * Returns all pixels of the background layer of the surface as a Grid,
@@ -386,7 +390,7 @@ public:
      * the alpha channel of each pixel in the top 8 bits, allowing for
      * transparency effects.
      */
-    virtual Grid<int> getPixelsARGB() const = 0;
+    virtual ::sgl::collections::Grid<int> getPixelsARGB() const = 0;
 
     /**
      * Returns the color of the pixel at the given x/y coordinates of the image
@@ -650,7 +654,7 @@ public:
      * If the given grid is not the same size as this interactor, the interactor
      * will be resized to match the grid.
      */
-    virtual void setPixels(const Grid<int>& pixels) = 0;
+    virtual void setPixels(const ::sgl::collections::Grid<int>& pixels) = 0;
 
     /**
      * Sets the color of the all pixels in the background layer of the
@@ -659,7 +663,7 @@ public:
      * If the given grid is not the same size as this interactor, the interactor
      * will be resized to match the grid.
      */
-    virtual void setPixelsARGB(const Grid<int>& pixelsARGB) = 0;
+    virtual void setPixelsARGB(const ::sgl::collections::Grid<int>& pixelsARGB) = 0;
 
     /**
      * Sets whether the interactor should repaint itself automatically whenever
@@ -786,8 +790,8 @@ public:
     void draw(QPainter* painter) override;
     int getPixel(double x, double y) const override;
     int getPixelARGB(double x, double y) const override;
-    Grid<int> getPixels() const override;
-    Grid<int> getPixelsARGB() const override;
+    ::sgl::collections::Grid<int> getPixels() const override;
+    ::sgl::collections::Grid<int> getPixelsARGB() const override;
     bool isAutoRepaint() const override;
     void repaint() override;
     void repaintRegion(int x, int y, int width, int height) override;
@@ -805,13 +809,15 @@ public:
     void setPixel(double x, double y, int r, int g, int b) override;
     void setPixelARGB(double x, double y, int argb) override;
     void setPixelARGB(double x, double y, int a, int r, int g, int b) override;
-    void setPixels(const Grid<int>& pixels) override;
-    void setPixelsARGB(const Grid<int>& pixelsARGB) override;
+    void setPixels(const ::sgl::collections::Grid<int>& pixels) override;
+    void setPixelsARGB(const ::sgl::collections::Grid<int>& pixelsARGB) override;
     void setRepaintImmediately(bool repaintImmediately) override;
 
 protected:
     virtual void ensureForwardTarget() = 0;
     virtual void ensureForwardTargetConstHack() const;
 };
+
+} // namespace sgl
 
 #endif // _gcanvas_h

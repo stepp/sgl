@@ -3,6 +3,8 @@
  * --------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/04/23
@@ -29,6 +31,8 @@
 #include "gthread.h"
 #include "gwindow.h"
 #include "require.h"
+
+namespace sgl {
 
 GTextField::GTextField(const std::string& text, int charsWide, QWidget* parent)
         : _iqlineedit(nullptr),
@@ -175,8 +179,8 @@ std::string GTextField::getValue() const {
 }
 
 bool GTextField::getValueAsBool() const {
-    std::string text = trim(getText());
-    return stringToBool(text);
+    std::string text = sgl::priv::strlib::trim(getText());
+    return sgl::priv::strlib::stringToBool(text);
 }
 
 char GTextField::getValueAsChar() const {
@@ -189,8 +193,8 @@ char GTextField::getValueAsChar() const {
 }
 
 double GTextField::getValueAsDouble() const {
-    std::string text = trim(getText());
-    return stringToDouble(text);
+    std::string text = sgl::priv::strlib::trim(getText());
+    return sgl::priv::strlib::stringToDouble(text);
 }
 
 int GTextField::getValueAsInt() const {
@@ -198,8 +202,8 @@ int GTextField::getValueAsInt() const {
 }
 
 int GTextField::getValueAsInteger() const {
-    std::string text = trim(getText());
-    return stringToInteger(text);
+    std::string text = sgl::priv::strlib::trim(getText());
+    return sgl::priv::strlib::stringToInteger(text);
 }
 
 QWidget* GTextField::getWidget() const {
@@ -351,15 +355,15 @@ void GTextField::setTextChangeListener(GEventListenerVoid func) {
 }
 
 void GTextField::setValue(bool value) {
-    setText(boolToString(value));
+    setText(sgl::priv::strlib::boolToString(value));
 }
 
 void GTextField::setValue(char value) {
-    setText(charToString(value));
+    setText(sgl::priv::strlib::charToString(value));
 }
 
 void GTextField::setValue(double value) {
-    setText(realToString(value));
+    setText(std::to_string(value));
 }
 
 void GTextField::setValue(int value) {
@@ -371,7 +375,7 @@ void GTextField::setValue(const std::string& value) {
 }
 
 bool GTextField::valueIsBool() const {
-    return stringIsBool(trim(getText()));
+    return sgl::priv::strlib::stringIsBool(sgl::priv::strlib::trim(getText()));
 }
 
 bool GTextField::valueIsChar() const {
@@ -379,19 +383,19 @@ bool GTextField::valueIsChar() const {
 }
 
 bool GTextField::valueIsDouble() const {
-    return stringIsDouble(trim(getText()));
+    return sgl::priv::strlib::stringIsDouble(sgl::priv::strlib::trim(getText()));
 }
 
 bool GTextField::valueIsInt() const {
-    return stringIsInteger(trim(getText()));
+    return sgl::priv::strlib::stringIsInteger(sgl::priv::strlib::trim(getText()));
 }
 
 bool GTextField::valueIsInteger() const {
-    return stringIsInteger(trim(getText()));
+    return sgl::priv::strlib::stringIsInteger(sgl::priv::strlib::trim(getText()));
 }
 
 bool GTextField::valueIsReal() const {
-    return stringIsReal(trim(getText()));
+    return sgl::priv::strlib::stringIsReal(sgl::priv::strlib::trim(getText()));
 }
 
 
@@ -625,4 +629,4 @@ QSize _Internal_QDoubleSpinBox::sizeHint() const {
     }
 }
 
-
+} // namespace sgl

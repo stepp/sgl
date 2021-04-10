@@ -3,6 +3,8 @@
  * ---------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/05/05
@@ -43,6 +45,8 @@
 #include "geventqueue.h"
 #include "ginteractor.h"
 #include "gtypes.h"
+
+namespace sgl {
 
 class _Internal_QMainWindow;
 
@@ -1321,5 +1325,7 @@ private:
 
     friend class GWindow;
 };
+
+} // namespace sgl
 
 #endif // _gwindow_h

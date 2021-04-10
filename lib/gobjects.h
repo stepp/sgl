@@ -6,6 +6,8 @@
  * <include src="pictures/ClassHierarchies/GObjectHierarchy-h.html">
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/05/05
@@ -39,6 +41,8 @@
 #include <QWidget>
 
 #include "gtypes.h"
+
+namespace sgl {
 
 class GCanvas;
 class GCompound;
@@ -1531,5 +1535,7 @@ private:
  * Prints the given graphical object to an output stream.
  */
 std::ostream& operator <<(std::ostream& out, const GObject& obj);
+
+} // namespace sgl
 
 #endif // _gobjects_h

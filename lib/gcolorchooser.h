@@ -5,6 +5,8 @@
  * popping up graphical dialog boxes to select colors.
  * 
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/09/07
  * - added doc comments for new documentation generation
  * - added overloads that accept GWindow* parent
@@ -22,6 +24,8 @@
 #include <QWidget>
 
 #include "gwindow.h"
+
+namespace sgl {
 
 /**
  * The GColorChooser class contains static methods for popping up color-choosing
@@ -76,5 +80,7 @@ public:
 private:
     GColorChooser();   // prevent construction
 };
+
+} // namespace sgl
 
 #endif // _gcolorchooser_h

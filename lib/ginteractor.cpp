@@ -3,6 +3,8 @@
  * ---------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/23
  * - added set/removeActionListener
  * - added set/removeClickListener
@@ -32,6 +34,8 @@
 #include "gwindow.h"
 #include "qtgui.h"
 #include "require.h"
+
+namespace sgl {
 
 int GInteractor::_interactorCount = 0;
 
@@ -233,11 +237,12 @@ void GInteractor::lockForWriteConst() const {
 }
 
 std::string GInteractor::normalizeAccelerator(const std::string& accelerator) {
-    std::string acceleratorStr = stringReplace(accelerator, "Alt-", "Alt+");
-    acceleratorStr = stringReplace(acceleratorStr, "Command-", "Command+");
-    acceleratorStr = stringReplace(acceleratorStr, "Ctrl-", "Ctrl+");
-    acceleratorStr = stringReplace(acceleratorStr, "Meta-", "Meta+");
-    acceleratorStr = stringReplace(acceleratorStr, "Shift-", "Shift+");
+    std::string acceleratorStr = accelerator;
+    sgl::priv::strlib::replaceInPlace(acceleratorStr, "Alt-", "Alt+");
+    sgl::priv::strlib::replaceInPlace(acceleratorStr, "Command-", "Command+");
+    sgl::priv::strlib::replaceInPlace(acceleratorStr, "Ctrl-", "Ctrl+");
+    sgl::priv::strlib::replaceInPlace(acceleratorStr, "Meta-", "Meta+");
+    sgl::priv::strlib::replaceInPlace(acceleratorStr, "Shift-", "Shift+");
     return acceleratorStr;
 }
 
@@ -635,3 +640,5 @@ void _Internal_QWidget::setPreferredSize(double width, double height) {
 void _Internal_QWidget::setPreferredSize(const QSize& size) {
     setPreferredSize(size.width(), size.height());
 }
+
+} // namespace sgl

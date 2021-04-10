@@ -29,7 +29,7 @@ static const int DEFAULT_X = -1, DEFAULT_Y = -1; // will center
 static const int DEFAULT_WIDTH = 900, DEFAULT_HEIGHT = 500;
 static const bool DEFAULT_ECHO = true, DEFAULT_EXIT_ON_CLOSE = true;
 
-#ifdef SPL_HEADLESS_MODE
+#ifdef SGL_HEADLESS_MODE
 
 void clearConsole() {
     // empty
@@ -151,29 +151,29 @@ void shutdownConsole() {
     // empty
 }
 
-#else // SPL_HEADLESS_MODE
+#else // SGL_HEADLESS_MODE
 
 void clearConsole() {
-    GConsoleWindow::instance()->clearConsole();
+    ::sgl::GConsoleWindow::instance()->clearConsole();
 }
 
 bool getConsoleClearEnabled() {
-    return GConsoleWindow::instance()->isClearEnabled();
+    return ::sgl::GConsoleWindow::instance()->isClearEnabled();
 }
 
 /* GWindow::CloseOperation */ int getConsoleCloseOperation() {
-    return GConsoleWindow::instance()->getCloseOperation();
+    return ::sgl::GConsoleWindow::instance()->getCloseOperation();
 }
 
 bool getConsoleEcho() {
-    return GConsoleWindow::instance()->isEcho();
+    return ::sgl::GConsoleWindow::instance()->isEcho();
 }
 
 bool getConsoleEnabled() {
 #ifdef __DONT_ENABLE_QT_GRAPHICAL_CONSOLE
     return false;
 #else
-    return GConsoleWindow::consoleEnabled();
+    return ::sgl::GConsoleWindow::consoleEnabled();
 #endif
 }
 
@@ -182,77 +182,77 @@ bool getConsoleEventOnClose() {
 }
 
 bool getConsoleExitProgramOnClose() {
-    return GConsoleWindow::instance()->getCloseOperation() == GWindow::CLOSE_EXIT;
+    return ::sgl::GConsoleWindow::instance()->getCloseOperation() == ::sgl::GWindow::CLOSE_EXIT;
 }
 
 std::string getConsoleFont() {
 #ifdef __DONT_ENABLE_QT_GRAPHICAL_CONSOLE
-    return GConsoleWindow::getDefaultFont();
+    return ::sgl::GConsoleWindow::getDefaultFont();
 #else
-    return GConsoleWindow::instance()->getFont();
+    return ::sgl::GConsoleWindow::instance()->getFont();
 #endif
 }
 
 double getConsoleHeight() {
-    return GConsoleWindow::instance()->getHeight();
+    return ::sgl::GConsoleWindow::instance()->getHeight();
 }
 
-GPoint getConsoleLocation() {
-    return GConsoleWindow::instance()->getLocation();
+::sgl::GPoint getConsoleLocation() {
+    return ::sgl::GConsoleWindow::instance()->getLocation();
 }
 
 bool getConsoleLocationSaved() {
-    return GConsoleWindow::instance()->isLocationSaved();
+    return ::sgl::GConsoleWindow::instance()->isLocationSaved();
 }
 
 bool getConsolePrintExceptions() {
-    return gexceptions::getTopLevelExceptionHandlerEnabled();
+    return ::sgl::exceptions::getTopLevelExceptionHandlerEnabled();
 }
 
 bool getConsoleSettingsLocked() {
-    return GConsoleWindow::isInitialized()
-            && GConsoleWindow::instance()->isLocked();
+    return ::sgl::GConsoleWindow::isInitialized()
+            && ::sgl::GConsoleWindow::instance()->isLocked();
 }
 
-GDimension getConsoleSize() {
-    return GConsoleWindow::instance()->getSize();
+::sgl::GDimension getConsoleSize() {
+    return ::sgl::GConsoleWindow::instance()->getSize();
 }
 
 double getConsoleWidth() {
-    return GConsoleWindow::instance()->getWidth();
+    return ::sgl::GConsoleWindow::instance()->getWidth();
 }
 
-GConsoleWindow* getConsoleWindow() {
-    return GConsoleWindow::instance();
+::sgl::GConsoleWindow* getConsoleWindow() {
+    return ::sgl::GConsoleWindow::instance();
 }
 
 std::string getConsoleWindowTitle() {
-    return GConsoleWindow::instance()->getTitle();
+    return ::sgl::GConsoleWindow::instance()->getTitle();
 }
 
 void setConsoleClearEnabled(bool value) {
     if (getConsoleSettingsLocked()) { return; }
-    GConsoleWindow::instance()->setClearEnabled(value);
+    ::sgl::GConsoleWindow::instance()->setClearEnabled(value);
 }
 
 void setConsoleCloseOperation(/*GWindow::CloseOperation*/ int op) {
-    GWindow::CloseOperation gwcop = static_cast<GWindow::CloseOperation>(op);
+    ::sgl::GWindow::CloseOperation gwcop = static_cast<::sgl::GWindow::CloseOperation>(op);
     if (getConsoleSettingsLocked()) { return; }
-    GConsoleWindow::instance()->setCloseOperation(gwcop);
+    ::sgl::GConsoleWindow::instance()->setCloseOperation(gwcop);
 }
 
 void setConsoleEcho(bool echo) {
     if (getConsoleSettingsLocked()) { return; }
-    GConsoleWindow::instance()->setEcho(echo);
+    ::sgl::GConsoleWindow::instance()->setEcho(echo);
 }
 
 void setConsoleEnabled(bool enabled) {
-    GConsoleWindow::setConsoleEnabled(enabled);
+    ::sgl::GConsoleWindow::setConsoleEnabled(enabled);
 }
 
 void setConsoleErrorColor(const std::string& color) {
     if (getConsoleSettingsLocked()) { return; }
-    GConsoleWindow::instance()->setErrorColor(color);
+    ::sgl::GConsoleWindow::instance()->setErrorColor(color);
 }
 
 void setConsoleEventOnClose(bool /*eventOnClose*/) {
@@ -261,52 +261,52 @@ void setConsoleEventOnClose(bool /*eventOnClose*/) {
 
 void setConsoleExitProgramOnClose(bool exitOnClose) {
     if (getConsoleSettingsLocked()) { return; }
-    GConsoleWindow::instance()->setExitOnClose(exitOnClose);
+    ::sgl::GConsoleWindow::instance()->setExitOnClose(exitOnClose);
 }
 
 void setConsoleFont(const std::string& font) {
     if (getConsoleSettingsLocked()) { return; }
-    GConsoleWindow::instance()->setFont(font);
+    ::sgl::GConsoleWindow::instance()->setFont(font);
 }
 
 void setConsoleLocation(double x, double y) {
     if (getConsoleSettingsLocked()) { return; }
     if ((int) x == -1 && (int) y == -1) {
-        GConsoleWindow::instance()->center();
+        ::sgl::GConsoleWindow::instance()->center();
     } else {
-        GConsoleWindow::instance()->setLocation(x, y);
+        ::sgl::GConsoleWindow::instance()->setLocation(x, y);
     }
 }
 
 void setConsoleLocationSaved(bool value) {
-    GConsoleWindow::instance()->setLocationSaved(value);
+    ::sgl::GConsoleWindow::instance()->setLocationSaved(value);
 }
 
 void setConsoleOutputColor(const std::string& color) {
-    GConsoleWindow::instance()->setOutputColor(color);
+    ::sgl::GConsoleWindow::instance()->setOutputColor(color);
 }
 
 void setConsoleSettingsLocked(bool value) {
-    GConsoleWindow::instance()->setLocked(value);
+    ::sgl::GConsoleWindow::instance()->setLocked(value);
 }
 
 void setConsoleSize(double width, double height) {
     if (getConsoleSettingsLocked()) { return; }
-    GConsoleWindow::instance()->setConsoleSize(width, height);
+    ::sgl::GConsoleWindow::instance()->setConsoleSize(width, height);
 }
 
 void setConsoleWindowTitle(const std::string& title) {
     if (getConsoleSettingsLocked()) { return; }
-    GConsoleWindow::instance()->setTitle(title);
+    ::sgl::GConsoleWindow::instance()->setTitle(title);
 }
 
 void shutdownConsole() {
-    if (getConsoleEnabled() && !GConsoleWindow::instance()->isLocked()) {
-        GConsoleWindow::instance()->shutdown("Shutdown");
+    if (getConsoleEnabled() && !::sgl::GConsoleWindow::instance()->isLocked()) {
+        ::sgl::GConsoleWindow::instance()->shutdown("Shutdown");
     }
 }
 
-#endif // SPL_HEADLESS_MODE
+#endif // SGL_HEADLESS_MODE
 
 /*
  * Sets up console settings like window size, location, exit-on-close, etc.
@@ -340,12 +340,12 @@ void initializeQtGraphicalConsole() {
     // properly before our lib tries to mess with them / redirect them
     static std::ios_base::Init ios_base_init;
 
-#ifndef SPL_HEADLESS_MODE
-    if (GConsoleWindow::consoleEnabled()) {
-        GConsoleWindow::instance();   // ensure that console window is ready
-        setConsolePropertiesQt();
+#ifndef SGL_HEADLESS_MODE
+    if (::sgl::GConsoleWindow::consoleEnabled()) {
+        ::sgl::GConsoleWindow::instance();   // ensure that console window is ready
+        ::setConsolePropertiesQt();
     }
-#endif // SPL_HEADLESS_MODE
+#endif // SGL_HEADLESS_MODE
 
 #endif // __DONT_ENABLE_QT_GRAPHICAL_CONSOLE
 }

@@ -3,6 +3,8 @@
  * ---------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/23
  * - moved some event-handling code to GInteractor superclass
  * @version 2019/04/22
@@ -25,6 +27,8 @@
 #include <QToolButton>
 
 #include "ginteractor.h"
+
+namespace sgl {
 
 class _Internal_QPushButton;
 
@@ -147,5 +151,7 @@ private:
 
     friend class GButton;
 };
+
+} // namespace sgl
 
 #endif // _gbutton_h

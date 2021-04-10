@@ -4,6 +4,8 @@
  * This file exports the GTable class for a graphical editable 2D table.
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/08/23
@@ -30,6 +32,8 @@
 #include "ginteractor.h"
 #include "gobjects.h"
 #include "gtypes.h"
+
+namespace sgl {
 
 class _Internal_QTableWidget;
 
@@ -147,7 +151,7 @@ public:
      * Returns the row and column of the cell that is currently selected.
      * Sets both row and column to -1 if no cell is currently selected.
      */
-    virtual GridLocation getSelectedCell() const;
+    virtual ::sgl::collections::GridLocation getSelectedCell() const;
 
     /**
      * Returns the row and column of the cell that is currently selected
@@ -665,5 +669,7 @@ private:
 
     friend class GTable;
 };
+
+} // namespace sgl
 
 #endif // _gtable_h

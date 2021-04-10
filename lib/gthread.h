@@ -9,6 +9,8 @@
  * You can also run code in a new thread using the static method
  * GThread::runInNewThread or GThread::runInNewThreadAsync.
  *
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/04/13
@@ -36,6 +38,8 @@
 #include <thread>
 
 #include "gtypes.h"
+
+namespace sgl {
 
 class QtGui;
 
@@ -335,8 +339,6 @@ protected:
     static std::map<QThread*, GThread*> _allGThreadsQt;
     static std::map<std::thread*, GThread*> _allGThreadsStd;
 
-
-
 private:
     friend class QtGui;
 };
@@ -425,7 +427,7 @@ private:
 
 
 /**
- * A GThreadQt is an object that runs a function in its own
+ * A GThreadStd is an object that runs a function in its own
  * std::thread thread of execution.
  * You construct it, passing a void function to run as a parameter,
  * and then call its <code>run()</code> method to run that function in its
@@ -513,5 +515,7 @@ void native_set_thread_name(const char *name);
 
 // Platform-specific way to exit current thread
 [[noreturn]] void native_thread_exit();
+
+} // namespace sgl
 
 #endif // _gthread_h

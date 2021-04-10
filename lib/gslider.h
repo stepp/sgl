@@ -3,6 +3,8 @@
  * ---------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/23
  * - added key events
  * @version 2018/09/08
@@ -21,6 +23,8 @@
 #include <QSlider>
 
 #include "ginteractor.h"
+
+namespace sgl {
 
 class _Internal_QSlider;
 
@@ -229,5 +233,7 @@ private:
 
     friend class GSlider;
 };
+
+} // namespace sgl
 
 #endif // _gslider_h

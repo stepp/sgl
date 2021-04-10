@@ -3,6 +3,8 @@
  * ------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on non-graphical library code
  * @version 2019/04/23
@@ -25,6 +27,8 @@
 #include "gwindow.h"
 #include "require.h"
 #include "privatefilelib.h"
+
+namespace sgl {
 
 GButton::GButton(const std::string& text, const std::string& iconFileName, QWidget* parent) {
     GThread::runOnQtGuiThread([this, parent]() {
@@ -134,7 +138,7 @@ void GButton::setIcon(const QPixmap& icon) {
 
 void GButton::setIcon(const std::string& filename, bool retainIconSize) {
     GInteractor::setIcon(filename, retainIconSize);
-    if (!filename.empty() && fileExists(filename)) {
+    if (!filename.empty() && sgl::priv::filelib::fileExists(filename)) {
         GThread::runOnQtGuiThread([this, filename, retainIconSize]() {
             if (filename.empty()) {
                 _iqpushbutton->setIcon(QIcon());
@@ -230,3 +234,5 @@ QSize _Internal_QPushButton::sizeHint() const {
         return QToolButton::sizeHint();
     }
 }
+
+} // namespace sgl

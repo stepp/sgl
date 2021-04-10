@@ -4,6 +4,8 @@
  * This file declares the <code>GBrowserPane</code> class, which is a
  * graphical interactor that displays a web page.
  *
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/23
  * - moved some event-handling code to GInteractor superclass
  * @version 2018/12/28
@@ -24,8 +26,9 @@
 
 #include <string>
 #include <QTextBrowser>
-
 #include "ginteractor.h"
+
+namespace sgl {
 
 class _Internal_QTextBrowser;
 
@@ -335,5 +338,7 @@ private:
     GBrowserPane* _gbrowserpane;
     QString _clickedLink;
 };
+
+} // namespace sgl
 
 #endif // _gbrowserpane_h

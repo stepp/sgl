@@ -3,6 +3,8 @@
  * -----------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/23
  * - moved some event listener code to GInteractor superclass
  * @version 2018/09/10
@@ -21,6 +23,8 @@
 #include <QTextEdit>
 
 #include "ginteractor.h"
+
+namespace sgl {
 
 class _Internal_QTextEdit;
 
@@ -362,5 +366,7 @@ private:
 
     friend class GTextArea;
 };
+
+} // namespace sgl
 
 #endif // _gtextarea_h

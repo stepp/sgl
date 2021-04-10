@@ -3,6 +3,8 @@
  * --------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/09/08
@@ -23,6 +25,8 @@
 #include <QtEvents>
 
 #include "gevent.h"
+
+namespace sgl {
 
 class GInteractor;
 class _Internal_QWidget;
@@ -208,5 +212,7 @@ private:
     friend class GInteractor;
     friend class _Internal_QWidget;
 };
+
+} // namespace sgl
 
 #endif // _gobservable_h

@@ -3,6 +3,8 @@
  * -------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/23
  * - added key event support
  * @version 2019/02/02
@@ -21,6 +23,8 @@
 #include "gthread.h"
 #include "gwindow.h"
 #include "require.h"
+
+namespace sgl {
 
 GCheckBox::GCheckBox(const std::string& text, bool checked, QWidget* parent) {
     GThread::runOnQtGuiThread([this, checked, parent]() {
@@ -173,4 +177,4 @@ QSize _Internal_QCheckBox::sizeHint() const {
     }
 }
 
-
+} // namespace sgl

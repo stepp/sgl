@@ -4,6 +4,8 @@
  * This file exports the <code>Grid</code> class, which offers a
  * convenient abstraction for representing a two-dimensional array.
  *
+ * @version 2021/04/09
+ * - added sgl::collections namespace
  * @version 2021/04/03
  * - removed dependency on other custom collections
  * - removed hashCode
@@ -46,7 +48,6 @@
  *   function to avoid unused-function errors on some newer compilers
  */
 
-
 #ifndef _grid_h
 #define _grid_h
 
@@ -61,6 +62,9 @@
 #include <vector>
 #include "gridlocation.h"
 #include "privatestrlib.h"
+
+namespace sgl {
+namespace collections {
 
 /*
  * Class: Grid<ValueType>
@@ -911,5 +915,8 @@ void shuffle(Grid<T>& grid) {
         }
     }
 }
+
+} // namespace collections
+} // namespace sgl
 
 #endif // _grid_h

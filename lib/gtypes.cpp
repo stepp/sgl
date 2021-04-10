@@ -3,6 +3,8 @@
  * ----------------
  * This file implements the classes in the gtypes.h interface.
  *
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependencies
  * @version 2019/05/16
@@ -17,6 +19,8 @@
 #include <string>
 #include "gmath.h"
 #include "privatestrlib.h"
+
+namespace sgl {
 
 /*
  * Implementation notes: GDimension class
@@ -44,8 +48,8 @@ std::ostream& operator <<(std::ostream& os, const GDimension& dim) {
 }
 
 bool operator ==(const GDimension& d1, const GDimension& d2) {
-    return floatingPointEqual(d1.width, d2.width)
-            && floatingPointEqual(d1.height, d2.height);
+    return ::sgl::math::floatingPointEqual(d1.width, d2.width)
+            && ::sgl::math::floatingPointEqual(d1.height, d2.height);
 }
 
 bool operator !=(const GDimension& d1, const GDimension& d2) {
@@ -54,7 +58,7 @@ bool operator !=(const GDimension& d1, const GDimension& d2) {
 
 bool operator <(const GDimension& d1, const GDimension& d2) {
     return d1.width < d2.width
-            || (floatingPointEqual(d1.width, d2.width) && d1.height < d2.height);
+            || (::sgl::math::floatingPointEqual(d1.width, d2.width) && d1.height < d2.height);
 }
 
 bool operator <=(const GDimension& d1, const GDimension& d2) {
@@ -94,12 +98,12 @@ std::string toString(VerticalAlignment alignment) {
 }
 
 HorizontalAlignment toHorizontalAlignment(const std::string& alignmentStr) {
-    std::string alignLC = toLowerCase(trim(alignmentStr));
-    if (stringContains(alignLC, "left") || stringContains(alignLC, "west")) {
+    std::string alignLC = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::trim(alignmentStr));
+    if (sgl::priv::strlib::contains(alignLC, "left") || sgl::priv::strlib::contains(alignLC, "west")) {
         return ALIGN_LEFT;
-    } else if (stringContains(alignLC, "right") || stringContains(alignLC, "east")) {
+    } else if (sgl::priv::strlib::contains(alignLC, "right") || sgl::priv::strlib::contains(alignLC, "east")) {
         return ALIGN_RIGHT;
-    } else if (stringContains(alignLC, "stretch") || stringContains(alignLC, "justify")) {
+    } else if (sgl::priv::strlib::contains(alignLC, "stretch") || sgl::priv::strlib::contains(alignLC, "justify")) {
         return ALIGN_HORIZONTAL_STRETCH;
     } else {
         return ALIGN_CENTER;
@@ -121,12 +125,12 @@ Qt::Alignment toQtAlignment(VerticalAlignment alignment) {
 }
 
 VerticalAlignment toVerticalAlignment(const std::string& alignmentStr) {
-    std::string alignLC = toLowerCase(trim(alignmentStr));
-    if (stringContains(alignLC, "top") || stringContains(alignLC, "north")) {
+    std::string alignLC = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::trim(alignmentStr));
+    if (sgl::priv::strlib::contains(alignLC, "top") || sgl::priv::strlib::contains(alignLC, "north")) {
         return ALIGN_TOP;
-    } else if (stringContains(alignLC, "bottom") || stringContains(alignLC, "south")) {
+    } else if (sgl::priv::strlib::contains(alignLC, "bottom") || sgl::priv::strlib::contains(alignLC, "south")) {
         return ALIGN_BOTTOM;
-    } else if (stringContains(alignLC, "stretch") || stringContains(alignLC, "justify")) {
+    } else if (sgl::priv::strlib::contains(alignLC, "stretch") || sgl::priv::strlib::contains(alignLC, "justify")) {
         return ALIGN_VERTICAL_STRETCH;
     } else {
         return ALIGN_MIDDLE;
@@ -159,8 +163,8 @@ std::ostream& operator <<(std::ostream& os, const GPoint& pt) {
 }
 
 bool operator ==(const GPoint& p1, const GPoint& p2) {
-    return floatingPointEqual(p1.x, p2.x)
-            && floatingPointEqual(p1.y, p2.y);
+    return ::sgl::math::floatingPointEqual(p1.x, p2.x)
+            && ::sgl::math::floatingPointEqual(p1.y, p2.y);
 }
 
 bool operator !=(const GPoint& p1, const GPoint& p2) {
@@ -168,7 +172,7 @@ bool operator !=(const GPoint& p1, const GPoint& p2) {
 }
 
 bool operator <(const GPoint& p1, const GPoint& p2) {
-    return p1.x < p2.x || (floatingPointEqual(p1.x, p2.x) && p1.y < p2.y);
+    return p1.x < p2.x || (::sgl::math::floatingPointEqual(p1.x, p2.x) && p1.y < p2.y);
 }
 
 bool operator <=(const GPoint& p1, const GPoint& p2) {
@@ -270,10 +274,10 @@ std::ostream& operator <<(std::ostream& os, const GRectangle& rect) {
 }
 
 bool operator ==(const GRectangle& r1, const GRectangle& r2) {
-    return floatingPointEqual(r1.x, r2.x)
-            && floatingPointEqual(r1.y, r2.y)
-            && floatingPointEqual(r1.width, r2.width)
-            && floatingPointEqual(r1.height, r2.height);
+    return ::sgl::math::floatingPointEqual(r1.x, r2.x)
+            && ::sgl::math::floatingPointEqual(r1.y, r2.y)
+            && ::sgl::math::floatingPointEqual(r1.width, r2.width)
+            && ::sgl::math::floatingPointEqual(r1.height, r2.height);
 }
 
 bool operator !=(const GRectangle& r1, const GRectangle& r2) {
@@ -282,9 +286,9 @@ bool operator !=(const GRectangle& r1, const GRectangle& r2) {
 
 bool operator <(const GRectangle& r1, const GRectangle& r2) {
     return r1.x < r2.x
-            || (floatingPointEqual(r1.x, r2.x) && r1.y < r2.y)
-            || (floatingPointEqual(r1.y, r2.y) && r1.width < r2.width)
-            || (floatingPointEqual(r1.width, r2.width) && r1.height < r2.height);
+            || (::sgl::math::floatingPointEqual(r1.x, r2.x) && r1.y < r2.y)
+            || (::sgl::math::floatingPointEqual(r1.y, r2.y) && r1.width < r2.width)
+            || (::sgl::math::floatingPointEqual(r1.width, r2.width) && r1.height < r2.height);
 }
 
 bool operator <=(const GRectangle& r1, const GRectangle& r2) {
@@ -298,3 +302,5 @@ bool operator >(const GRectangle& r1, const GRectangle& r2) {
 bool operator >=(const GRectangle& r1, const GRectangle& r2) {
     return r1 > r2 || r1 == r2;
 }
+
+} // namespace sgl

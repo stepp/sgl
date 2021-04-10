@@ -3,6 +3,8 @@
  * --------------
  * This file defines a class that represents a sound.
  *
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependencies
  * - renamed to GSound
@@ -18,6 +20,8 @@
 
 #include <string>
 #include <QMediaPlayer>
+
+namespace sgl {
 
 /**
  * This class encapsulates a sound file.  The sound file is specified in the
@@ -102,5 +106,7 @@ private:
 
     std::string _filename;
 };
+
+} // namespace sgl
 
 #endif // _gsound_h

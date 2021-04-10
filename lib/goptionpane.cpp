@@ -6,6 +6,8 @@
  * Qt's QMessageBox and QInputDialog classes.
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/04/23
@@ -35,6 +37,8 @@
 #include "gthread.h"
 #include "gwindow.h"
 #include "privatestrlib.h"
+
+namespace sgl {
 
 GOptionPane::GOptionPane() {
     // empty
@@ -325,3 +329,5 @@ void GOptionPane::showTextFileDialog(QWidget* /*parent*/,
     window->center();
     window->show();
 }
+
+} // namespace sgl

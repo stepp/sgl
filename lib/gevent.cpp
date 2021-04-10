@@ -3,6 +3,8 @@
  * ----------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/08/23
  * - renamed to gevent.cpp to replace Java version
  * @version 2018/07/06
@@ -14,6 +16,8 @@
 #include <sys/time.h>
 #include "ginteractor.h"
 #include "privatestrlib.h"
+
+namespace sgl {
 
 static void __emptyEventListener(GEvent) {
     // empty
@@ -286,7 +290,7 @@ std::string GEvent::keyCodeToString(int keyCode) {
     case WINDOWS_KEY: return "Win";
     case '\r': return "Enter";
     case '\\': return "\\";
-    default: return charToString((char) keyCode);
+    default: return sgl::priv::strlib::charToString(static_cast<char>(keyCode));
     }
 }
 
@@ -510,3 +514,5 @@ std::ostream& operator <<(std::ostream& out, const GEvent& event) {
     out << ")";
     return out;
 }
+
+} // namespace sgl

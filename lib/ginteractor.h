@@ -3,6 +3,8 @@
  * -------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/23
  * - added set/removeActionListener
  * - added set/removeClickListener
@@ -34,6 +36,8 @@
 
 class QPixmap;
 class QIcon;
+
+namespace sgl {
 
 class GContainer;
 class GDiffGui;
@@ -834,5 +838,7 @@ private:
     _Internal_QWidget* _iqwidget;
     T* _widget;
 };
+
+} // namespace sgl
 
 #endif // _ginteractor_h

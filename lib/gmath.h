@@ -5,6 +5,8 @@
  * geometry along with the mathematical constants <code>PI</code>
  * and <code>E</code>.
  *
+ * @version 2021/04/09
+ * - added sgl::math namespace
  * @version 2018/11/22
  * - added headless mode support
  * - alphabetized methods
@@ -23,10 +25,11 @@
 #include <cmath>
 #include <limits>
 
-#ifndef SPL_HEADLESS_MODE
-#include "gtypes.h"
-#endif // SPL_HEADLESS_MODE
+namespace sgl {
 
+struct GPoint;
+
+namespace math {
 
 /**
  * The mathematical constant pi, which is the ratio of the circumference
@@ -171,7 +174,7 @@ double vectorAngle(double x, double y);
  * system is flipped in the <i>y</i> direction from the traditional
  * Cartesian plane.
  */
-double vectorAngle(const GPoint& pt);
+double vectorAngle(const ::sgl::GPoint& pt);
 
 /**
  * Computes the distance between the origin and the specified point.
@@ -181,6 +184,9 @@ double vectorDistance(double x, double y);
 /**
  * Computes the distance between the origin and the specified point.
  */
-double vectorDistance(const GPoint& pt);
+double vectorDistance(const ::sgl::GPoint& pt);
+
+} // namespace math
+} // namespace sgl
 
 #endif // _gmath_h

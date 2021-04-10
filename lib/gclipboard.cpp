@@ -3,6 +3,8 @@
  * --------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/08/23
  * - renamed to gclipboard.cpp to replace Java version
  * @version 2018/07/19
@@ -14,6 +16,8 @@
 #include <QClipboard>
 #include <QString>
 #include "require.h"
+
+namespace sgl {
 
 GClipboard::GClipboard() {
     // empty
@@ -55,3 +59,5 @@ bool GClipboard::isPaste(QKeyEvent* event) {
     return (ctrlOrMeta && event->key() == Qt::Key_V)
             || (shift && event->key() == Qt::Key_Insert);
 }
+
+} // namespace sgl

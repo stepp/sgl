@@ -6,6 +6,8 @@
  *
  * @author Marty Stepp
  * - includes previous work by Julie Zelenski
+ * @version 2021/04/09
+ * - added sgl::exceptions namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * - renamed to gexceptions
@@ -71,8 +73,9 @@
 #include <cxxabi.h>
 #endif
 
+namespace sgl {
+namespace exceptions {
 
-namespace gexceptions {
 // just some value that is not any existing signal
 #define SIGSTACK (static_cast<int>(0xdeadbeef))
 #define SIGUNKNOWN (static_cast<int>(0xcafebabe))
@@ -227,7 +230,7 @@ static void reportFatalEvent(std::string event, std::string details)
     std::cerr << "*** SGL: Simple Graphics Library (C++)" << std::endl;
     std::cerr << "*** The " << QCoreApplication::applicationName().toStdString() << " program has terminated unexpectedly (crashed)" << std::endl;
     std::cerr << "*** " << event << std::endl;
-    stringReplaceInPlace(details ,"\n", "\n" + indent);
+    sgl::priv::strlib::replaceInPlace(details ,"\n", "\n" + indent);
     std::cerr << std::endl << indent << details << std::endl << std::endl;
     std::cerr << "*** To get more information about a program crash," << std::endl;
     std::cerr << "*** run your program again under the debugger." << std::endl;
@@ -269,13 +272,13 @@ static void sglSignalHandler(int sig) {
 
     reportFatalEvent(event, details);
 
-    if (GThread::iAmRunningOnTheQtGuiThread()) {
+    if (::sgl::GThread::iAmRunningOnTheQtGuiThread()) {
         // no recovery possible if gui thread was the one who crashed
         raise(sig); // our signal handling has been disabled, default handler will abort
     } else {
         interruptIfDebug();
-        sgl::studentThreadHasExited("Terminated");
-        native_thread_exit(); // exit this thread (no return), gui loop can live on
+        ::sgl::studentThreadHasExited("Terminated");
+        ::sgl::native_thread_exit(); // exit this thread (no return), gui loop can live on
     }
 }
 
@@ -304,7 +307,7 @@ static void sglSignalHandler(int sig) {
     } catch (int n) {   // throw primitive type is unhelpful, but I suppose some might do it
         details = "int exception " + std::to_string(n);
     } catch (double d) {
-        details = "double exception " + realToString(d);
+        details = "double exception " + std::to_string(d);
     } catch (...) {
         event = "An unexpected exception was thrown during program execution";
         // use default details
@@ -312,15 +315,15 @@ static void sglSignalHandler(int sig) {
 
     reportFatalEvent(event, details);
 
-    if (GThread::iAmRunningOnTheQtGuiThread()) {
+    if (::sgl::GThread::iAmRunningOnTheQtGuiThread()) {
         // no recovery possible if gui thread was the one who crashed
         abort();
     } else {
         interruptIfDebug();
-        sgl::studentThreadHasExited("Terminated");
-        native_thread_exit(); // exit this thread (no return), gui loop can live on
+        ::sgl::studentThreadHasExited("Terminated");
+        ::sgl::native_thread_exit(); // exit this thread (no return), gui loop can live on
     }
 }
 
-
-} // namespace gexceptions
+} // namespace exceptions
+} // namespace sgl

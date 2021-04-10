@@ -15,6 +15,8 @@
  *
  * See gridlocation.cpp for the implementation of each member.
  *
+ * @version 2021/04/09
+ * - added sgl::collections namespace
  * @version 2021/04/03
  * - removed dependencies
  * - removed hashCode
@@ -22,7 +24,6 @@
  * @version 2018/03/12
  * - initial version
  */
-
 
 #ifndef _gridlocation_h
 #define _gridlocation_h
@@ -32,6 +33,9 @@
 #include <iterator>
 #include <stdexcept>
 #include <string>
+
+namespace sgl {
+namespace collections {
 
 class GridLocationRange;   // forward declaration
 
@@ -305,5 +309,8 @@ public:
  * I/O stream operators for writing location ranges in their toString format.
  */
 std::ostream& operator <<(std::ostream& out, const GridLocationRange& range);
+
+} // namespace collections
+} // namespace sgl
 
 #endif // _gridlocation_h

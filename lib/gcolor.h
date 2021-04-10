@@ -3,6 +3,8 @@
  * --------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/05/05
@@ -24,6 +26,8 @@
 #include <map>
 #include <string>
 #include <QColor>
+
+namespace sgl {
 
 /**
  * This class provides static methods for dealing with colors.
@@ -245,5 +249,7 @@ private:
     static std::map<std::string, int> _colorTable;
     static std::map<std::string, std::string> _colorNameTable;
 };
+
+} // namespace sgl
 
 #endif // _gcolor_h

@@ -3,6 +3,8 @@
  * -------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/09/09
  * - added doc comments for new documentation generation
  * @version 2018/08/23
@@ -23,6 +25,8 @@
 #include "gtypes.h"
 
 #define EXITING_DUE_TO_WINDOW_CLOSE 106
+
+namespace sgl {
 
 class GWindow;
 
@@ -128,12 +132,12 @@ private:
     friend class GWindow;
 };
 
-namespace sgl {
 /*
  * Code that runs when student thread shuts down.
  * @private
  */
 void studentThreadHasExited(const std::string& reason);
+
 } // namespace sgl
 
 #endif // _qtgui_h

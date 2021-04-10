@@ -5,6 +5,8 @@
  * A GSpacer is just an empty blob of space that helps you pad layouts.
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/10/06
  * - initial version
  */
@@ -17,7 +19,10 @@
 
 #include "ginteractor.h"
 
+namespace sgl {
+
 class _Internal_QSpacer;
+
 /**
  * A GSpacer is just an empty blob of space that helps you pad layouts.
  */
@@ -62,5 +67,7 @@ public:
 // private:
     // GSpacer* _gspacer;
 };
+
+} // namespace sgl
 
 #endif // _gspacer_h

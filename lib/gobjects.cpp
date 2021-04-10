@@ -4,6 +4,8 @@
  * This file implements the gobjects.h interface.
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/08/13
@@ -44,6 +46,8 @@
 #include "gmath.h"
 #include "privatefilelib.h"
 #include "privatestrlib.h"
+
+namespace sgl {
 
 const double GRoundRect::DEFAULT_CORNER = 10.0;
 const std::string GText::DEFAULT_FONT = "Dialog-13";
@@ -515,7 +519,7 @@ std::string GObject::toString() const {
             + (_color.empty() ? "" : (",color=" + _color))
             + (_fillColor.empty() ? "" : (",fillColor=" + _fillColor))
             + (_font.empty() ? "" : (",font=" + _font))
-            + (_visible ? "" : (",visible=" + boolToString(_visible)))
+            + (_visible ? "" : (",visible=" + sgl::priv::strlib::boolToString(_visible)))
             + (extra.empty() ? "" : ("," + extra))
             + ")";
 }
@@ -564,7 +568,7 @@ bool GArc::contains(double x, double y) const {
     }
     double rx = getWidth() / 2;
     double ry = getHeight() / 2;
-    if (floatingPointEqual(rx, 0) || floatingPointEqual(ry, 0)) {
+    if (::sgl::math::floatingPointEqual(rx, 0) || ::sgl::math::floatingPointEqual(ry, 0)) {
         return false;
     }
     double dx = x - (getX() + rx);
@@ -582,7 +586,7 @@ bool GArc::contains(double x, double y) const {
     }
 
     // JL BUGFIX: must scale by ry, rx.
-    return containsAngle(atan2(-dy/ry, dx/rx) * 180 / PI);
+    return containsAngle(atan2(-dy/ry, dx/rx) * 180 / ::sgl::math::PI);
 }
 
 bool GArc::containsAngle(double theta) const {
@@ -616,7 +620,7 @@ GPoint GArc::getArcPoint(double theta) const {
     double ry = getHeight() / 2;
     double cx = getX() + rx;
     double cy = getY() + ry;
-    double radians = theta * PI / 180;
+    double radians = theta * ::sgl::math::PI / 180;
     return GPoint(cx + rx * cos(radians), cy - ry * sin(radians));
 }
 
@@ -629,8 +633,8 @@ GRectangle GArc::getBounds() const {
     double ry = getHeight() / 2;
     double cx = getX() + rx;
     double cy = getY() + ry;
-    double startRadians = _start * PI / 180;
-    double sweepRadians = _sweep * PI / 180;
+    double startRadians = _start * ::sgl::math::PI / 180;
+    double sweepRadians = _sweep * ::sgl::math::PI / 180;
     double p1x = cx + cos(startRadians) * rx;
     double p1y = cy - sin(startRadians) * ry;
     double p2x = cx + cos(startRadians + sweepRadians) * rx;
@@ -1026,7 +1030,7 @@ GImage::~GImage() {
 }
 
 bool GImage::load(const std::string& filename) {
-    if (filename.empty() || !fileExists(filename)) {
+    if (!sgl::priv::filelib::fileExists(filename)) {
         return false;
     }
     bool hasError = false;
@@ -1075,7 +1079,8 @@ void GImage::draw(QPainter* painter) {
     double imgHeight = _qimage->height();
     painter->setOpacity(_opacity);
     painter->setTransform(_transform, /* combine */ false);
-    if (floatingPointEqual(myWidth, imgWidth) && floatingPointEqual(myHeight, imgHeight)) {
+    if (::sgl::math::floatingPointEqual(myWidth, imgWidth)
+            && ::sgl::math::floatingPointEqual(myHeight, imgHeight)) {
         // draw unscaled
         painter->drawImage((int) myX, (int) myY, *_qimage);
     } else {
@@ -1154,7 +1159,8 @@ bool GLine::contains(double x, double y) const {
     if (y > std::max(y0, y1) + STATIC_VARIABLE(LINE_TOLERANCE)) {
         return false;
     }
-    if (floatingPointEqual(x0 - x1, 0) && floatingPointEqual(y0 - y1, 0)) {
+    if (::sgl::math::floatingPointEqual(x0 - x1, 0)
+            && ::sgl::math::floatingPointEqual(y0 - y1, 0)) {
         return false;
     }
     double u = ((x - x0) * (x1 - x0) + (y - y0) * (y1 - y0))
@@ -1266,7 +1272,8 @@ bool GOval::contains(double x, double y) const {
     }
     double rx = getWidth() / 2;
     double ry = getHeight() / 2;
-    if (floatingPointEqual(rx, 0) || floatingPointEqual(ry, 0)) {
+    if (::sgl::math::floatingPointEqual(rx, 0)
+            || ::sgl::math::floatingPointEqual(ry, 0)) {
         return false;
     }
     double dx = x - (getX() + rx);
@@ -1329,7 +1336,7 @@ void GPolygon::addEdges(std::initializer_list<GPoint> points) {
 }
 
 void GPolygon::addPolarEdge(double r, double theta) {
-    addEdge(r * cos(theta * PI / 180), -r * sin(theta * PI / 180));
+    addEdge(r * cos(theta * ::sgl::math::PI / 180), -r * sin(theta * ::sgl::math::PI / 180));
 }
 
 void GPolygon::addVertex(double x, double y) {
@@ -1651,3 +1658,5 @@ std::ostream& operator <<(std::ostream& out, const GObject& obj) {
 static double dsq(double x0, double y0, double x1, double y1) {
     return (x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0);
 }
+
+} // namespace sgl

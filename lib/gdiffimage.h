@@ -3,6 +3,8 @@
  * ------------------
  * 
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/10/12
  * - added "highlight diffs in color" checkbox and functionality
  * @version 2018/09/15
@@ -24,6 +26,8 @@
 #include "glabel.h"
 #include "gslider.h"
 #include "gwindow.h"
+
+namespace sgl {
 
 /**
  * A GDiffImage is a graphical window that displays differences between two
@@ -75,5 +79,7 @@ private:
 
     friend class GImage;
 };
+
+} // namespace sgl
 
 #endif // _gdiffimage_h

@@ -3,6 +3,8 @@
  * --------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/23
  * - moved some event-handling code to GInteractor superclass
  * @version 2019/04/22
@@ -30,6 +32,8 @@
 
 #include "ginteractor.h"
 #include "gobjects.h"
+
+namespace sgl {
 
 // forward declaration
 class _Internal_QLabel;
@@ -222,5 +226,7 @@ private:
 
     friend class GLabel;
 };
+
+} // namespace sgl
 
 #endif // _glabel_h

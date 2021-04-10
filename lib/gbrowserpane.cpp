@@ -4,6 +4,8 @@
  * This file contains the implementation of the <code>GBrowserPane</code> class
  * as declared in gbrowserpane.h.
  *
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on non-graphical library code
  * @version 2019/04/23
@@ -27,6 +29,8 @@
 #include "require.h"
 #include "privatefilelib.h"
 #include "privatestrlib.h"
+
+namespace sgl {
 
 GBrowserPane::GBrowserPane(const std::string& url, QWidget* parent) {
     GThread::runOnQtGuiThread([this, url, parent]() {
@@ -154,7 +158,7 @@ void GBrowserPane::moveCursorToStart() {
 }
 
 void GBrowserPane::readTextFromFile(std::istream& file) {
-    std::string fileText = readEntireStream(file);
+    std::string fileText = sgl::priv::filelib::readEntireStream(file);
     setText(fileText);
 }
 
@@ -240,8 +244,8 @@ static std::string lookupContentType(const std::string& extension) {
     }
 
     // "foo.BAZ.BaR" => "bar"
-    std::string ext = toLowerCase(extension);
-    int dot = stringLastIndexOf(ext, ".");
+    std::string ext = sgl::priv::strlib::toLowerCase(extension);
+    int dot = sgl::priv::strlib::lastIndexOf(ext, ".");
     if (dot >= 0) {
         ext = ext.substr(dot + 1);
     }
@@ -258,7 +262,7 @@ void GBrowserPane::readTextFromFile(const std::string& filename) {
     input.open(filename.c_str());
     if (!input.fail()) {
         _pageUrl = filename;
-        std::string extension = getExtension(filename);
+        std::string extension = sgl::priv::filelib::getExtension(filename);
         std::string contentType = lookupContentType(extension);
         if (!contentType.empty()) {
             setContentType(contentType);
@@ -457,4 +461,4 @@ QSize _Internal_QTextBrowser::sizeHint() const {
     }
 }
 
-
+} // namespace sgl

@@ -4,6 +4,8 @@
  *
  * This file implements the members declared in gthread.h.
  *
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * - fixed native_set_thread_name on Linux
@@ -35,6 +37,8 @@
 #include <exception>
 #include <pthread.h>
 #include <stdexcept>
+
+namespace sgl {
 
 void native_set_thread_name(const char *name)
 {
@@ -442,3 +446,5 @@ void GThreadStd::stop() {
 void GThreadStd::yield() {
     std::this_thread::yield();
 }
+
+} // namespace sgl

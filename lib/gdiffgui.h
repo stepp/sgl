@@ -3,6 +3,8 @@
  * ----------------
  * 
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/10/06
  * - allow passing diff flags
  * @version 2018/09/07
@@ -25,6 +27,8 @@
 #include "gtextarea.h"
 #include "gwindow.h"
 #include "privatediff.h"
+
+namespace sgl {
 
 /**
  * A GDiffGui is a graphical window that displays differences between two
@@ -50,7 +54,7 @@ public:
                            const std::string& text1,
                            const std::string& name2,
                            const std::string& text2,
-                           int diffFlags = diff::DIFF_DEFAULT_FLAGS,
+                           int diffFlags = ::sgl::priv::diff::DIFF_DEFAULT_FLAGS,
                            bool showCheckBoxes = false);
 
 private:
@@ -60,7 +64,7 @@ private:
              const std::string& text1,
              const std::string& name2,
              const std::string& text2,
-             int diffFlags = diff::DIFF_DEFAULT_FLAGS,
+             int diffFlags = ::sgl::priv::diff::DIFF_DEFAULT_FLAGS,
              bool showCheckBoxes = false);   // forbid construction
     virtual ~GDiffGui();
 
@@ -79,5 +83,7 @@ private:
     GGenericInteractor<QSplitter>* _hsplitterInteractor;
     GGenericInteractor<QSplitter>* _vsplitterInteractor;
 };
+
+} // namespace sgl
 
 #endif // _gdiffgui_h

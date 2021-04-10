@@ -4,6 +4,8 @@
  * This file defines the <code>GTimer</code> class, which implements a
  * general interval timer.
  *
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/01/23
  * - added destructor
  * @version 2018/09/09
@@ -16,6 +18,8 @@
 #define _gtimer_h
 
 #include <string>
+
+namespace sgl {
 
 /**
  * This class implements a simple interval timer that generates a
@@ -87,5 +91,7 @@ private:
     double _ms;
     int _id;
 };
+
+} // namespace sgl
 
 #endif // _gtimer_h

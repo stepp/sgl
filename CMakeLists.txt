@@ -103,7 +103,6 @@ set(sgl_HDRS
 	# lib/gfont.h
 	# lib/ginit.h
 	# lib/ginteractor.h
-	# lib/ginteractors.h
 	# lib/glabel.h
 	# lib/glayout.h
 	# lib/gmath.h

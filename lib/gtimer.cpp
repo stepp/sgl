@@ -3,6 +3,8 @@
  * ----------------
  * This file implements the gtimer.h interface.
  * 
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/01/23
  * - added destructor
  * @version 2015/07/05
@@ -20,6 +22,8 @@
 #include "require.h"
 
 /* Implementation of the GTimer class */
+
+namespace sgl {
 
 GTimer::GTimer(double milliseconds)
         : _ms(0),
@@ -74,3 +78,5 @@ void GTimer::stop() {
         _id = -1;
     });
 }
+
+} // namespace sgl

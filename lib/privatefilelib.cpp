@@ -1,18 +1,19 @@
 /*
- * File: filelib.cpp
- * -----------------
- * This file implements the filelib.h interface.
+ * File: privatefilelib.cpp
+ * ------------------------
+ * This file implements the privatefilelib.h interface.
  * Platform-dependent functions are handled through filelib_* functions
- * defined in filelibunix.cpp and filelibwindows.cpp.
+ * with different implementations for Windows and Mac/Linux.
+ * This functionality is considered "private" and not to be used by students.
  *
+ * @version 2021/04/09
+ * - moved to private SGL namespace
  * @version 2021/04/03
- * - removed dependency on Stanford collections
+ * - removed dependency on custom collections
  * @version 2016/11/20
  * - small bug fix in readEntireStream method (failed for non-text files)
  * @version 2016/11/12
  * - added fileSize, readEntireStream
- * @version 2016/08/12
- * - added second overload of openFileDialog that accepts path parameter
  * @version 2015/07/05
  * - removed static global Platform variable, replaced by getPlatform as needed
  * - moved appendSpace function to simpio
@@ -34,12 +35,16 @@
 #include <stdexcept>
 #include "privatestrlib.h"
 
+namespace sgl {
+namespace priv {
+namespace filelib {
+
 static std::string expandPathname(const std::string& filename) {
     return platform::filelib_expandPathname(filename);
 }
 
 bool fileExists(const std::string& filename) {
-    return platform::filelib_fileExists(filename);
+    return platform::filelib_fileExists(::sgl::priv::strlib::trim(filename));
 }
 
 std::string getAbsolutePath(const std::string& path) {
@@ -145,20 +150,18 @@ bool writeEntireFile(const std::string& filename,
     return !output.fail();
 }
 
-
-
+} // namespace filelib
+} // namespace priv
+} // namespace sgl
 
 
 // BEGIN PLATFORM-SPECIFIC CODE
 
 /*
- * File: filelibunix.cpp
- * ---------------------
- * This file contains Unix implementations of filelib.h primitives.
- * This code used to live in platform.cpp before the Java back-end was retired.
+ * This code contains Unix implementations of privatefilelib.h primitives.
  *
  * @version 2021/04/03
- * - removed dependency on Stanford collections
+ * - removed dependency on custom collections
  * @version 2018/10/23
  * - added getAbsolutePath
  */
@@ -185,13 +188,15 @@ bool writeEntireFile(const std::string& filename,
 #include <ios>
 #include <stdexcept>
 #include <string>
-#include "privatestrlib.h"
 
+namespace sgl {
+namespace priv {
+namespace filelib {
 namespace platform {
 
 void filelib_createDirectory(const std::string& path) {
     std::string pathStr = path;
-    if (endsWith(path, "/")) {
+    if (::sgl::priv::strlib::endsWith(path, "/")) {
         pathStr = path.substr(0, path.length() - 1);
     }
     if (mkdir(pathStr.c_str(), 0777) != 0) {
@@ -245,6 +250,9 @@ std::string filelib_expandPathname(const std::string& filename) {
 }
 
 bool filelib_fileExists(const std::string& filename) {
+    if (filename.empty()) {
+        return false;
+    }
     struct stat fileInfo;
     return stat(filename.c_str(), &fileInfo) == 0;
 }
@@ -331,13 +339,6 @@ void filelib_listDirectory(const std::string& path, std::vector<std::string>& li
     std::sort(list.begin(), list.end());
 }
 
-std::string file_openFileDialog(const std::string& /*title*/,
-                                const std::string& /*mode*/,
-                                const std::string& /*path*/) {
-    // TODO
-    return "";
-}
-
 void filelib_setCurrentDirectory(const std::string& path) {
     if (chdir(path.c_str()) != 0) {
         std::string msg = "setCurrentDirectory: ";
@@ -346,19 +347,20 @@ void filelib_setCurrentDirectory(const std::string& path) {
     }
 }
 
+} // namespace filelib
+} // namespace priv
+} // namespace sgl
 } // namespace platform
 
 #endif // _WIN32
 
 
+
 /*
- * File: filelibwindows.cpp
- * ------------------------
- * This file contains Windows implementations of filelib.h primitives.
- * This code used to live in platform.cpp before the Java back-end was retired.
+ * This code contains Windows implementations of privatefilelib.h primitives.
  *
  * @version 2021/04/03
- * - removed dependency on Stanford collections
+ * - removed dependency on custom collections
  * @version 2018/10/23
  * - added getAbsolutePath
  */
@@ -385,8 +387,10 @@ void filelib_setCurrentDirectory(const std::string& path) {
 #include <ios>
 #include <stdexcept>
 #include <string>
-#include "privatestrlib.h"
 
+namespace sgl {
+namespace priv {
+namespace filelib {
 namespace platform {
 
 void filelib_createDirectory(const std::string& path) {
@@ -424,6 +428,9 @@ std::string filelib_expandPathname(const std::string& filename) {
 }
 
 bool filelib_fileExists(const std::string& filename) {
+    if (filename.empty()) {
+        return false;
+    }
     return GetFileAttributesA(filename.c_str()) != INVALID_FILE_ATTRIBUTES;
 }
 
@@ -499,19 +506,17 @@ void filelib_listDirectory(const std::string& path, std::vector<std::string> & l
     std::sort(list.begin(), list.end());
 }
 
-std::string file_openFileDialog(const std::string& /*title*/,
-                                const std::string& /*mode*/,
-                                const std::string& /*path*/) {
-    // TODO
-    return "";
-}
-
 void filelib_setCurrentDirectory(const std::string& path) {
     if (!filelib_isDirectory(path) || !SetCurrentDirectoryA(path.c_str())) {
         throw std::runtime_error("setCurrentDirectory: Can't change to " + path);
     }
 }
 
+} // namespace filelib
+} // namespace priv
+} // namespace sgl
 } // namespace platform
 
 #endif // _WIN32
+
+// END PLATFORM-SPECIFIC CODE

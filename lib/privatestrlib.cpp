@@ -1,8 +1,12 @@
 /*
- * File: strlib.cpp
- * ----------------
- * This file implements the strlib.h interface.
- * 
+ * File: privatestrlib.cpp
+ * -----------------------
+ * This file implements the privatestrlib.h interface.
+ * This functionality is considered "private" and not to be used by students.
+ *
+ * @version 2021/04/09
+ * - moved to private SGL namespace
+ * - renamed some functions to remove 'string' prefix
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/11/14
@@ -49,7 +53,9 @@
 #include <stdexcept>
 #include "privatestrlib.h"
 
-/* Function prototypes */
+namespace sgl {
+namespace priv {
+namespace strlib {
 
 std::string boolToString(bool b) {
     return (b ? "true" : "false");
@@ -73,6 +79,14 @@ std::string charToString(char c) {
     std::string s;
     s += c;
     return s;
+}
+
+bool contains(const std::string& s, char ch) {
+    return s.find(ch) != std::string::npos;
+}
+
+bool contains(const std::string& s, const std::string& substring) {
+    return s.find(substring) != std::string::npos;
 }
 
 std::string doubleToString(double d) {
@@ -111,20 +125,38 @@ bool equalsIgnoreCase(const std::string& s1, const std::string& s2) {
 
 std::string htmlDecode(const std::string& s) {
     std::string result = s;
-    stringReplaceInPlace(result, "&lt;", "<");
-    stringReplaceInPlace(result, "&gt;", ">");
-    stringReplaceInPlace(result, "&quot;", "\"");
-    stringReplaceInPlace(result, "&amp;", "&");
+    replaceInPlace(result, "&lt;", "<");
+    replaceInPlace(result, "&gt;", ">");
+    replaceInPlace(result, "&quot;", "\"");
+    replaceInPlace(result, "&amp;", "&");
     return result;
 }
 
 std::string htmlEncode(const std::string& s) {
     std::string result = s;
-    stringReplaceInPlace(result, "&", "&amp;");
-    stringReplaceInPlace(result, "<", "&lt;");
-    stringReplaceInPlace(result, ">", "&gt;");
-    stringReplaceInPlace(result, "\"", "&quot;");
+    replaceInPlace(result, "&", "&amp;");
+    replaceInPlace(result, "<", "&lt;");
+    replaceInPlace(result, ">", "&gt;");
+    replaceInPlace(result, "\"", "&quot;");
     return result;
+}
+
+int indexOf(const std::string& s, char ch, int startIndex) {
+    size_t index = s.find(ch, (size_t) startIndex);
+    if (index == std::string::npos) {
+        return -1;
+    } else {
+        return index;
+    }
+}
+
+int indexOf(const std::string& s, const std::string& substring, int startIndex) {
+    size_t index = s.find(substring, (size_t) startIndex);
+    if (index == std::string::npos) {
+        return -1;
+    } else {
+        return index;
+    }
 }
 
 char integerToChar(int n) {
@@ -151,6 +183,43 @@ std::string integerToString(int n, int radix) {
     }
     stream << n;
     return stream.str();
+}
+
+std::string join(const std::vector<std::string>& v, char delimiter) {
+    std::string delim = charToString(delimiter);
+    return join(v, delim);
+}
+
+std::string join(const std::vector<std::string>& v, const std::string& delimiter) {
+    if (v.empty()) {
+        return "";
+    } else {
+        std::ostringstream out;
+        out << v[0];
+        for (int i = 1; i < (int) v.size(); i++) {
+            out << delimiter;
+            out << v[i];
+        }
+        return out.str();
+    }
+}
+
+int lastIndexOf(const std::string& s, char ch, int startIndex) {
+    size_t index = s.rfind(ch, (size_t) startIndex);
+    if (index == std::string::npos) {
+        return -1;
+    } else {
+        return index;
+    }
+}
+
+int lastIndexOf(const std::string& s, const std::string& substring, int startIndex) {
+    size_t index = s.rfind(substring, (size_t) startIndex);
+    if (index == std::string::npos) {
+        return -1;
+    } else {
+        return index;
+    }
 }
 
 std::string longToString(long n, int radix) {
@@ -208,6 +277,74 @@ std::string realToString(double d) {
     return stream.str();
 }
 
+std::string replace(const std::string& str, char old, char replacement, int limit) {
+    std::string str2 = str;
+    replaceInPlace(str2, old, replacement, limit);
+    return str2;
+}
+
+std::string replace(const std::string& str, const std::string& old, const std::string& replacement, int limit) {
+    std::string str2 = str;
+    replaceInPlace(str2, old, replacement, limit);
+    return str2;
+}
+
+int replaceInPlace(std::string& str, char old, char replacement, int limit) {
+    int count = 0;
+    for (size_t i = 0, len = str.length(); i < len; i++) {
+        if (str[i] == old) {
+            str[i] = replacement;
+            count++;
+            if (limit > 0 && count >= limit) {
+                break;
+            }
+        }
+    }
+    return count;
+}
+
+int replaceInPlace(std::string& str, const std::string& old, const std::string& replacement, int limit) {
+    int count = 0;
+    size_t startIndex = 0;
+    size_t rlen = replacement.length();
+    while (limit <= 0 || count < limit) {
+        size_t index = str.find(old, startIndex);
+        if (index == std::string::npos) {
+            break;
+        }
+        str.replace(index, old.length(), replacement);
+        startIndex = index + rlen;
+        count++;
+    }
+    return count;
+}
+
+std::vector<std::string> split(const std::string& str, char delimiter, int limit) {
+    std::string delim = charToString(delimiter);
+    return split(str, delim, limit);
+}
+
+std::vector<std::string> split(const std::string& str, const std::string& delimiter, int limit) {
+    std::string str2 = str;
+    std::vector<std::string> result;
+    int count = 0;
+    size_t index = 0;
+    while (limit < 0 || count < limit) {
+        index = str2.find(delimiter);
+        if (index == std::string::npos) {
+            break;
+        }
+        result.push_back(str2.substr(0, index));
+        str2.erase(str2.begin(), str2.begin() + index + delimiter.length());
+        count++;
+    }
+    if ((int) str2.length() > 0) {
+        result.push_back(str2);
+    }
+
+    return result;
+}
+
 bool startsWith(const std::string& str, char prefix) {
     return str.length() > 0 && str[0] == prefix;
 }
@@ -256,137 +393,6 @@ bool stringIsReal(const std::string& str) {
     double value;
     stream >> value;
     return !(stream.fail() || !stream.eof());
-}
-
-bool stringContains(const std::string& s, char ch) {
-    return s.find(ch) != std::string::npos;
-}
-
-bool stringContains(const std::string& s, const std::string& substring) {
-    return s.find(substring) != std::string::npos;
-}
-
-int stringIndexOf(const std::string& s, char ch, int startIndex) {
-    size_t index = s.find(ch, (size_t) startIndex);
-    if (index == std::string::npos) {
-        return -1;
-    } else {
-        return index;
-    }
-}
-
-int stringIndexOf(const std::string& s, const std::string& substring, int startIndex) {
-    size_t index = s.find(substring, (size_t) startIndex);
-    if (index == std::string::npos) {
-        return -1;
-    } else {
-        return index;
-    }
-}
-
-std::string stringJoin(const std::vector<std::string>& v, char delimiter) {
-    std::string delim = charToString(delimiter);
-    return stringJoin(v, delim);
-}
-
-std::string stringJoin(const std::vector<std::string>& v, const std::string& delimiter) {
-    if (v.empty()) {
-        return "";
-    } else {
-        std::ostringstream out;
-        out << v[0];
-        for (int i = 1; i < (int) v.size(); i++) {
-            out << delimiter;
-            out << v[i];
-        }
-        return out.str();
-    }
-}
-
-int stringLastIndexOf(const std::string& s, char ch, int startIndex) {
-    size_t index = s.rfind(ch, (size_t) startIndex);
-    if (index == std::string::npos) {
-        return -1;
-    } else {
-        return index;
-    }
-}
-
-int stringLastIndexOf(const std::string& s, const std::string& substring, int startIndex) {
-    size_t index = s.rfind(substring, (size_t) startIndex);
-    if (index == std::string::npos) {
-        return -1;
-    } else {
-        return index;
-    }
-}
-
-std::string stringReplace(const std::string& str, char old, char replacement, int limit) {
-    std::string str2 = str;
-    stringReplaceInPlace(str2, old, replacement, limit);
-    return str2;
-}
-
-std::string stringReplace(const std::string& str, const std::string& old, const std::string& replacement, int limit) {
-    std::string str2 = str;
-    stringReplaceInPlace(str2, old, replacement, limit);
-    return str2;
-}
-
-int stringReplaceInPlace(std::string& str, char old, char replacement, int limit) {
-    int count = 0;
-    for (size_t i = 0, len = str.length(); i < len; i++) {
-        if (str[i] == old) {
-            str[i] = replacement;
-            count++;
-            if (limit > 0 && count >= limit) {
-                break;
-            }
-        }
-    }
-    return count;
-}
-
-int stringReplaceInPlace(std::string& str, const std::string& old, const std::string& replacement, int limit) {
-    int count = 0;
-    size_t startIndex = 0;
-    size_t rlen = replacement.length();
-    while (limit <= 0 || count < limit) {
-        size_t index = str.find(old, startIndex);
-        if (index == std::string::npos) {
-            break;
-        }
-        str.replace(index, old.length(), replacement);
-        startIndex = index + rlen;
-        count++;
-    }
-    return count;
-}
-
-std::vector<std::string> stringSplit(const std::string& str, char delimiter, int limit) {
-    std::string delim = charToString(delimiter);
-    return stringSplit(str, delim, limit);
-}
-
-std::vector<std::string> stringSplit(const std::string& str, const std::string& delimiter, int limit) {
-    std::string str2 = str;
-    std::vector<std::string> result;
-    int count = 0;
-    size_t index = 0;
-    while (limit < 0 || count < limit) {
-        index = str2.find(delimiter);
-        if (index == std::string::npos) {
-            break;
-        }
-        result.push_back(str2.substr(0, index));
-        str2.erase(str2.begin(), str2.begin() + index + delimiter.length());
-        count++;
-    }
-    if ((int) str2.length() > 0) {
-        result.push_back(str2);
-    }
-
-    return result;
 }
 
 bool stringToBool(const std::string& str) {
@@ -594,24 +600,28 @@ void urlEncodeInPlace(std::string& str) {
     str = urlEncode(str);   // no real efficiency gain here
 }
 
+} // namespace strlib
+} // namespace priv
+} // namespace sgl
+
 namespace std {
 bool stob(const std::string& str) {
-    return ::stringToBool(str);
+    return ::sgl::priv::strlib::stringToBool(str);
 }
 
 char stoc(const std::string& str) {
-    return ::stringToChar(str);
+    return ::sgl::priv::strlib::stringToChar(str);
 }
 
 std::string to_string(bool b) {
-    return ::boolToString(b);
+    return ::sgl::priv::strlib::boolToString(b);
 }
 
 std::string to_string(char c) {
-    return ::charToString(c);
+    return ::sgl::priv::strlib::charToString(c);
 }
 
 std::string to_string(void* p) {
-    return ::pointerToString(p);
+    return ::sgl::priv::strlib::pointerToString(p);
 }
 } // namespace std

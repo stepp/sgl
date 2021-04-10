@@ -3,6 +3,8 @@
  * -----------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/10/06
  * - initial version
  */
@@ -10,6 +12,8 @@
 #include "gspacer.h"
 #include "gthread.h"
 #include "require.h"
+
+namespace sgl {
 
 GSpacer::GSpacer(double width, double height, QWidget* parent)
         : _iqspacer(nullptr) {
@@ -54,4 +58,4 @@ QSize _Internal_QSpacer::sizeHint() const {
     }
 }
 
-
+} // namespace sgl

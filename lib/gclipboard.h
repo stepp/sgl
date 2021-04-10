@@ -3,6 +3,8 @@
  * ------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/09/07
  * - added doc comments for new documentation generation
  * @version 2018/08/23
@@ -11,12 +13,13 @@
  * - initial version
  */
 
-
 #ifndef _gclipboard_h
 #define _gclipboard_h
 
 #include <QKeyEvent>
 #include <string>
+
+namespace sgl {
 
 /**
  * The GClipboard class contains static methods you can use to get and set
@@ -56,5 +59,7 @@ public:
 private:
     GClipboard();   // prevent construction
 };
+
+} // namespace sgl
 
 #endif // _gclipboard_h

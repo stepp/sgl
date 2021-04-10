@@ -3,6 +3,8 @@
  * -----------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/05/05
@@ -63,6 +65,8 @@
 #include "require.h"
 #include "privatefilelib.h"
 #include "privatestrlib.h"
+
+namespace sgl {
 
 _Internal_QMainWindow* GWindow::_lastWindow = nullptr;
 /*static*/ const int GWindow::DEFAULT_WIDTH = 500;
@@ -180,7 +184,7 @@ void GWindow::add(GObject& obj, double x, double y) {
 }
 
 QMenu* GWindow::addMenu(const std::string& menu) {
-    std::string menuKey = toLowerCase(stringReplace(menu, "&", ""));
+    std::string menuKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(menu, "&", ""));
     if (_menuMap.find(menuKey) != _menuMap.end()) {
         // duplicate; do not create again
         return _menuMap[menuKey];
@@ -189,7 +193,7 @@ QMenu* GWindow::addMenu(const std::string& menu) {
     QMenu* qmenu = nullptr;
     GThread::runOnQtGuiThread([this, menu, &qmenu]() {
         qmenu = _iqmainwindow->menuBar()->addMenu(QString::fromStdString(menu));
-        std::string menuKey = toLowerCase(stringReplace(stringReplace(menu, "/", ""), "&", ""));
+        std::string menuKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(sgl::priv::strlib::replace(menu, "/", ""), "&", ""));
         _menuMap[menuKey] = qmenu;
     });
     return qmenu;
@@ -203,13 +207,13 @@ QAction* GWindow::addMenuItem(const std::string& menu, const std::string& item, 
 }
 
 QAction* GWindow::addMenuItem(const std::string& menu, const std::string& item, const std::string& icon, GEventListenerVoid func) {
-    std::string menuKey = toLowerCase(stringReplace(menu, "&", ""));
+    std::string menuKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(menu, "&", ""));
     if (_menuMap.find(menuKey) == _menuMap.end()) {
         throw std::runtime_error("GWindow::addMenuItem: menu \"" + menu + "\" does not exist");
         return nullptr;
     }
 
-    std::string itemKey = toLowerCase(stringReplace(item, "&", ""));
+    std::string itemKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(item, "&", ""));
     std::string menuItemKey = menuKey + "/" + itemKey;
     if (_menuActionMap.find(menuItemKey) != _menuActionMap.end()) {
         // duplicate; do not create again
@@ -220,7 +224,7 @@ QAction* GWindow::addMenuItem(const std::string& menu, const std::string& item, 
     GThread::runOnQtGuiThread([this, menu, item, icon, func, menuKey, menuItemKey, &action]() {
         QMenu* qmenu = _menuMap[menuKey];
         action = qmenu->addAction(QString::fromStdString(item));
-        if (!icon.empty() && fileExists(icon)) {
+        if (sgl::priv::filelib::fileExists(icon)) {
             QIcon qicon(QString::fromStdString(icon));
             action->setIcon(qicon);
         }
@@ -235,13 +239,13 @@ QAction* GWindow::addMenuItem(const std::string& menu, const std::string& item, 
 }
 
 QAction* GWindow::addMenuItem(const std::string& menu, const std::string& item, const QIcon& icon, GEventListenerVoid func) {
-    std::string menuKey = toLowerCase(stringReplace(menu, "&", ""));
+    std::string menuKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(menu, "&", ""));
     if (_menuMap.find(menuKey) == _menuMap.end()) {
         throw std::runtime_error("GWindow::addMenuItem: menu \"" + menu + "\" does not exist");
         return nullptr;
     }
 
-    std::string itemKey = toLowerCase(stringReplace(item, "&", ""));
+    std::string itemKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(item, "&", ""));
     std::string menuItemKey = menuKey + "/" + itemKey;
     if (_menuActionMap.find(menuItemKey) != _menuActionMap.end()) {
         // duplicate; do not create again
@@ -264,13 +268,13 @@ QAction* GWindow::addMenuItem(const std::string& menu, const std::string& item, 
 }
 
 QAction* GWindow::addMenuItem(const std::string& menu, const std::string& item, const QPixmap& icon, GEventListenerVoid func) {
-    std::string menuKey = toLowerCase(stringReplace(menu, "&", ""));
+    std::string menuKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(menu, "&", ""));
     if (_menuMap.find(menuKey) == _menuMap.end()) {
         throw std::runtime_error("GWindow::addMenuItem: menu \"" + menu + "\" does not exist");
         return nullptr;
     }
 
-    std::string itemKey = toLowerCase(stringReplace(item, "&", ""));
+    std::string itemKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(item, "&", ""));
     std::string menuItemKey = menuKey + "/" + itemKey;
     if (_menuActionMap.find(menuItemKey) != _menuActionMap.end()) {
         // duplicate; do not create again
@@ -308,7 +312,7 @@ QAction* GWindow::addMenuItemCheckBox(const std::string& menu,
                                       const std::string& icon,
                                       GEventListenerVoid func) {
     QAction* action = nullptr;
-    std::string menuKey = toLowerCase(stringReplace(menu, "&", ""));
+    std::string menuKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(menu, "&", ""));
     if (_menuMap.find(menuKey) == _menuMap.end()) {
         throw std::runtime_error("GWindow::addMenuItem: menu \"" + menu + "\" does not exist");
         return nullptr;
@@ -319,7 +323,7 @@ QAction* GWindow::addMenuItemCheckBox(const std::string& menu,
         action = qmenu->addAction(QString::fromStdString(item));
         action->setCheckable(true);
         action->setChecked(checked);
-        if (!icon.empty() && fileExists(icon)) {
+        if (sgl::priv::filelib::fileExists(icon)) {
             QIcon qicon(QString::fromStdString(icon));
             action->setIcon(qicon);
         }
@@ -329,7 +333,7 @@ QAction* GWindow::addMenuItemCheckBox(const std::string& menu,
             func();
         });
 
-        std::string itemKey = toLowerCase(stringReplace(item, "&", ""));
+        std::string itemKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(item, "&", ""));
         _menuActionMap[menuKey + "/" + itemKey] = action;
     });
     return action;
@@ -337,7 +341,7 @@ QAction* GWindow::addMenuItemCheckBox(const std::string& menu,
 
 
 QAction* GWindow::addMenuSeparator(const std::string& menu) {
-    std::string menuKey = toLowerCase(stringReplace(menu, "&", ""));
+    std::string menuKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(menu, "&", ""));
     if (_menuMap.find(menuKey) == _menuMap.end()) {
         throw std::runtime_error("GWindow::addMenuItem: menu \"" + menu + "\" does not exist");
         return nullptr;
@@ -352,7 +356,7 @@ QAction* GWindow::addMenuSeparator(const std::string& menu) {
 }
 
 QMenu* GWindow::addSubMenu(const std::string& menu, const std::string& submenu) {
-    std::string menuKey = toLowerCase(stringReplace(menu, "&", ""));
+    std::string menuKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(menu, "&", ""));
     if (_menuMap.find(menuKey) == _menuMap.end()) {
         throw std::runtime_error("GWindow::addMenuItem: menu \"" + menu + "\" does not exist");
         return nullptr;
@@ -363,7 +367,7 @@ QMenu* GWindow::addSubMenu(const std::string& menu, const std::string& submenu) 
         QMenu* qmenu = _menuMap[menuKey];
         qsubmenu = qmenu->addMenu(QString::fromStdString(submenu));
         std::string subMenuKey = menuKey + "/"
-                + toLowerCase(stringReplace(submenu, "&", ""));
+                + sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(submenu, "&", ""));
         _menuMap[subMenuKey] = qsubmenu;
     });
     return qsubmenu;
@@ -423,7 +427,7 @@ QAction* GWindow::addToolbarItem(const std::string& item,
         addToolbar();
     }
 
-    std::string itemKey = toLowerCase(stringReplace(item, "&", ""));
+    std::string itemKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(item, "&", ""));
     std::string menuItemKey = "toolbar/" + itemKey;
     if (_menuActionMap.find(menuItemKey) != _menuActionMap.end()) {
         // duplicate; do not create again
@@ -458,7 +462,7 @@ QAction* GWindow::addToolbarItem(const std::string& item,
         addToolbar();
     }
 
-    std::string itemKey = toLowerCase(stringReplace(item, "&", ""));
+    std::string itemKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(item, "&", ""));
     std::string menuItemKey = "toolbar/" + itemKey;
     if (_menuActionMap.find(menuItemKey) != _menuActionMap.end()) {
         // duplicate; do not create again
@@ -488,7 +492,7 @@ QAction* GWindow::addToolbarItem(const std::string& item,
         addToolbar();
     }
 
-    std::string itemKey = toLowerCase(stringReplace(item, "&", ""));
+    std::string itemKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(item, "&", ""));
     std::string menuItemKey = "toolbar/" + itemKey;
     if (_menuActionMap.find(menuItemKey) != _menuActionMap.end()) {
         // duplicate; do not create again
@@ -1088,8 +1092,8 @@ void GWindow::setLocation(const GPoint& p) {
 }
 
 void GWindow::setMenuItemEnabled(const std::string& menu, const std::string& item, bool enabled) {
-    std::string menuKey = toLowerCase(stringReplace(menu, "&", ""));
-    std::string itemKey = toLowerCase(stringReplace(item, "&", ""));
+    std::string menuKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(menu, "&", ""));
+    std::string itemKey = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::replace(item, "&", ""));
     std::string menuItemKey = menuKey + "/" + itemKey;
     if (_menuMap.find(menuKey) == _menuMap.end()) {
         throw std::runtime_error("GWindow::setMenuItemEnabled: menu \"" + menu + "\" does not exist");
@@ -1243,7 +1247,7 @@ void GWindow::setWidth(double width) {
 }
 
 void GWindow::setWindowIcon(const std::string& iconFile) {
-    if (fileExists(iconFile)) {
+    if (sgl::priv::filelib::fileExists(iconFile)) {
         GThread::runOnQtGuiThread([this, iconFile]() {
             QIcon qicon(QString::fromStdString(iconFile));
             _iqmainwindow->setWindowIcon(qicon);
@@ -1293,14 +1297,14 @@ void GWindow::sleep(double ms) {
 }
 
 GWindow::Region GWindow::stringToRegion(const std::string& regionStr) {
-    std::string regionLC = toLowerCase(trim(regionStr));
-    if (stringContains(regionLC, "north") || stringContains(regionLC, "top")) {
+    std::string regionLC = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::trim(regionStr));
+    if (sgl::priv::strlib::contains(regionLC, "north") || sgl::priv::strlib::contains(regionLC, "top")) {
         return GWindow::REGION_NORTH;
-    } else if (stringContains(regionLC, "south") || stringContains(regionLC, "bottom")) {
+    } else if (sgl::priv::strlib::contains(regionLC, "south") || sgl::priv::strlib::contains(regionLC, "bottom")) {
         return GWindow::REGION_SOUTH;
-    } else if (stringContains(regionLC, "west") || stringContains(regionLC, "left")) {
+    } else if (sgl::priv::strlib::contains(regionLC, "west") || sgl::priv::strlib::contains(regionLC, "left")) {
         return GWindow::REGION_WEST;
-    } else if (stringContains(regionLC, "east") || stringContains(regionLC, "right")) {
+    } else if (sgl::priv::strlib::contains(regionLC, "east") || sgl::priv::strlib::contains(regionLC, "right")) {
         return GWindow::REGION_EAST;
     } else {
         return GWindow::REGION_CENTER;
@@ -1347,11 +1351,11 @@ double getScreenWidth() {
     return GWindow::getScreenWidth();
 }
 
-#ifndef SPL_HEADLESS_MODE
+#ifndef SGL_HEADLESS_MODE
 void pause(double milliseconds) {
     GThread::getCurrentThread()->sleep(milliseconds);
 }
-#endif // SPL_HEADLESS_MODE
+#endif // SGL_HEADLESS_MODE
 
 void repaint() {
     QMainWindow* lastWindow = GWindow::getLastWindow();
@@ -1483,4 +1487,4 @@ void _Internal_QMainWindow::timerStop(int id) {
     }
 }
 
-
+} // namespace sgl

@@ -1,10 +1,14 @@
 /*
- * File: diff.h
- * ------------
+ * File: privatediff.h
+ * -------------------
  * This file contains declarations of functions that perform a text 'diff'
  * operation to compare two strings and output the differences.
- * 
+ * @version 2021/04/09
+ * - moved to private SGL namespace
+ *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - moved to private SGL namespace
  * @version 2016/10/30
  * - fixed diff flags; added punctuation flag
  * @version 2016/10/28
@@ -17,12 +21,15 @@
  */
 
 
-#ifndef _diff_h
-#define _diff_h
+#ifndef _private_diff_h
+#define _private_diff_h
 
 #include <string>
 
+namespace sgl {
+namespace priv {
 namespace diff {
+
 const std::string NO_DIFFS_MESSAGE = "No differences found";
 
 enum DiffFlags {
@@ -47,6 +54,9 @@ const int DIFF_DEFAULT_FLAGS = IGNORE_CASE | IGNORE_TRAILING | IGNORE_WHITESPACE
 std::string diff(std::string s1, std::string s2, int flags = DIFF_DEFAULT_FLAGS);
 bool diffPass(const std::string& s1, const std::string& s2, int flags = DIFF_DEFAULT_FLAGS);
 bool isDiffMatch(const std::string& diffs);
+
+} // namespace sgl
+} // namespace priv
 } // namespace diff
 
-#endif // _diff_h
+#endif // _private_diff_h

@@ -8,6 +8,7 @@
 #include "console.h"
 #include "gwindow.h"
 using namespace std;
+using namespace sgl;
 
 void welcomeAlert(string name)
 {

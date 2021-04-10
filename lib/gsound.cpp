@@ -3,6 +3,8 @@
  * ----------------
  * Implementation of the GSound class.
  * 
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependencies
  * - renamed to GSound
@@ -20,6 +22,8 @@
 #include "gthread.h"
 #include "require.h"
 #include "privatefilelib.h"
+
+namespace sgl {
 
 /*static*/ QMediaPlayer* GSound::_qmediaPlayer = nullptr;
 
@@ -50,8 +54,8 @@
 
 /*static*/ void GSound::playSound(const std::string& filename) {
     initialize();
-    std::string absPath = getAbsolutePath(filename);
-    if (!fileExists(absPath)) {
+    std::string absPath = sgl::priv::filelib::getAbsolutePath(filename);
+    if (!sgl::priv::filelib::fileExists(absPath)) {
         throw std::runtime_error("GSound::playSound: file not found: " + filename);
     }
 
@@ -84,3 +88,5 @@ GSound::~GSound() {
 void GSound::play() {
     playSound(_filename);
 }
+
+} // namespace sgl

@@ -3,13 +3,19 @@
  * ---------------
  * This file contains functions related to the library's graphical console window,
  * implemented using the Qt graphics library in native C++ instead of Java.
+ *
  * In general if you #include this file, it will implicitly enable the graphical
- * console.  If you don't want to do that, you should #define a flag named
- * __DONT_ENABLE_QT_GRAPHICAL_CONSOLE right before #include'ing this header.
+ * console.  If you don't want to do that, you can include consoletext.h which
+ * exports the same functions without enabling the graphical console.
+ * Or you can #define a flag named __DONT_ENABLE_QT_GRAPHICAL_CONSOLE right
+ * before #include'ing this header.
+ *
  * Once the graphical console has been enabled, it cannot easily be turned off
- * again for that program.
+ * again for that program. Sorry.
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/11/22
  * - added headless mode support
  * @version 2018/10/18
@@ -35,11 +41,15 @@
 
 #include <string>
 
-#ifndef SPL_HEADLESS_MODE
+#ifndef SGL_HEADLESS_MODE
+namespace sgl {
+
 class GConsoleWindow;
 struct GDimension;
 struct GPoint;
-#endif // SPL_HEADLESS_MODE
+
+} // namespace sgl
+#endif // SGL_HEADLESS_MODE
 
 /**
  * Erases the contents of the console window.
@@ -108,9 +118,9 @@ double getConsoleHeight();
 /**
  * Returns the x/y position of the top-left corner of the console window.
  */
-#ifndef SPL_HEADLESS_MODE
-GPoint getConsoleLocation();
-#endif // SPL_HEADLESS_MODE
+#ifndef SGL_HEADLESS_MODE
+::sgl::GPoint getConsoleLocation();
+#endif // SGL_HEADLESS_MODE
 
 /**
  * Returns whether the location of the console window should be remembered and
@@ -136,9 +146,9 @@ bool getConsoleSettingsLocked();
 /**
  * Returns the size of the console window in pixels.
  */
-#ifndef SPL_HEADLESS_MODE
-GDimension getConsoleSize();
-#endif // SPL_HEADLESS_MODE
+#ifndef SGL_HEADLESS_MODE
+::sgl::GDimension getConsoleSize();
+#endif // SGL_HEADLESS_MODE
 
 /**
  * Returns the width of the console window in pixels.
@@ -152,9 +162,9 @@ double getConsoleWidth();
  *
  * @private
  */
-#ifndef SPL_HEADLESS_MODE
-GConsoleWindow* getConsoleWindow();
-#endif // SPL_HEADLESS_MODE
+#ifndef SGL_HEADLESS_MODE
+::sgl::GConsoleWindow* getConsoleWindow();
+#endif // SGL_HEADLESS_MODE
 
 /**
  * Returns the title bar text of the console window.
@@ -291,7 +301,6 @@ void shutdownConsole();
 extern void setConsoleEnabled(bool);
 
 namespace sgl {
-namespace qtgui {
 
 #ifndef QtConsoleInitializer_created
 #define QtConsoleInitializer_created
@@ -317,7 +326,6 @@ public:
 static QtConsoleInitializer_private __qt_console_init;
 #endif // QtConsoleInitializer_created
 
-} // namespace qtgui
 } // namespace sgl
 
 #endif // __DONT_ENABLE_QT_GRAPHICAL_CONSOLE

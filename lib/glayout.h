@@ -3,6 +3,8 @@
  * ---------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/09/07
  * - added doc comments for new documentation generation
  * @version 2018/08/23
@@ -20,6 +22,8 @@
 #include <QWidget>
 
 #include "ginteractor.h"
+
+namespace sgl {
 
 /**
  * A helper class with functionality related to container layout management.
@@ -94,5 +98,7 @@ private:
 
     QList<ItemWrapper*> list;
 };
+
+} // namespace sgl
 
 #endif // _glayout_h

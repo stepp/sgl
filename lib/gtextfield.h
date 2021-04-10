@@ -3,6 +3,8 @@
  * ------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/04/23
@@ -29,6 +31,8 @@
 #include <QString>
 
 #include "ginteractor.h"
+
+namespace sgl {
 
 class _Internal_QLineEdit;
 class _Internal_QSpinBox;
@@ -438,5 +442,7 @@ private:
 
     friend class GTextField;
 };
+
+} // namespace sgl
 
 #endif // _gtextfield_h

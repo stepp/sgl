@@ -1,9 +1,13 @@
 /*
- * File: strlib.h
- * --------------
+ * File: privatestrlib.h
+ * ---------------------
  * This file exports several useful string functions that are not
  * included in the C++ string library.
+ * This functionality is considered "private" and not to be used by students.
  *
+ * @version 2021/04/09
+ * - moved to private SGL namespace
+ * - renamed some functions to remove 'string' prefix
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/11/14
@@ -38,13 +42,17 @@
  */
 
 
-#ifndef _strlib_h
-#define _strlib_h
+#ifndef _private_strlib_h
+#define _private_strlib_h
 
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
+
+namespace sgl {
+namespace priv {
+namespace strlib {
 
 /**
  * Returns the string "true" if b is true, or "false" if b is false.
@@ -68,6 +76,16 @@ int charToInteger(char c);
  * For example, charToString('Q') returns the string "Q".
  */
 std::string charToString(char c);
+
+/**
+ * Returns true if the given character occurs somewhere in s.
+ */
+bool contains(const std::string& s, char ch);
+
+/**
+ * Returns true if the given substring occurs somewhere in s.
+ */
+bool contains(const std::string& s, const std::string& substring);
 
 /**
  * Converts a floating-point number into the corresponding string form.
@@ -113,6 +131,22 @@ std::string htmlDecode(const std::string& s);
 std::string htmlEncode(const std::string& s);
 
 /**
+ * Returns the index of the start of the first occurrence of the given character
+ * in s, if it occurs in s.  If it does not occur, returns -1.
+ * This function is very similar to string.find, but find returns string::npos
+ * when the string is not found.
+ */
+int indexOf(const std::string& s, char ch, int startIndex = 0);
+
+/**
+ * Returns the index of the start of the first occurrence of the given substring
+ * in s, if it occurs in s.  If it does not occur, returns -1.
+ * This function is very similar to string.find, but find returns string::npos
+ * when the string is not found.
+ */
+int indexOf(const std::string& s, const std::string& substring, int startIndex = 0);
+
+/**
  * Converts an integer into the corresponding numeric character.
  * For example, calling <code>integerToChar(3)</code> returns
  * the char <code>'3'</code>.
@@ -126,6 +160,38 @@ char integerToChar(int n);
  * the string <code>"123"</code>.
  */
 std::string integerToString(int n, int radix = 10);
+
+/**
+ * Combines the elements of the given vector into a single string,
+ * with the given delimiter separating neighboring elements, and returns it.
+ * For example, joining the elements of the vector
+ * {"Hi", "there", "", "Jim"} with the delimiter '?' returns "Hi?there??Jim".
+ */
+std::string join(const std::vector<std::string>& v, char delimiter = '\n');
+
+/**
+ * Combines the elements of the given vector into a single string,
+ * with the given delimiter separating neighboring elements, and returns it.
+ * For example, joining the elements of the vector
+ * {"Hi", "there", "", "Jim"} with the delimiter "??" returns "Hi??there????Jim".
+ */
+std::string join(const std::vector<std::string>& v, const std::string& delimiter = "\n");
+
+/**
+ * Returns the index of the start of the last occurrence of the given character
+ * in s, if it occurs in s.  If it does not occur, returns -1.
+ * This function is very similar to string.rfind, but rfind returns string::npos
+ * when the string is not found.
+ */
+int lastIndexOf(const std::string& s, char ch, int startIndex = (int) std::string::npos);
+
+/**
+ * Returns the index of the start of the last occurrence of the given substring
+ * in s, if it occurs in s.  If it does not occur, returns -1.
+ * This function is very similar to string.rfind, but rfind returns string::npos
+ * when the string is not found.
+ */
+int lastIndexOf(const std::string& s, const std::string& substring, int startIndex = (int) std::string::npos);
 
 /**
  * Converts an integer into the corresponding string of digits.
@@ -172,6 +238,54 @@ std::string pointerToString(void* p);
 std::string realToString(double d);
 
 /**
+ * Returns a new string formed by replacing any occurrences of the given 'old'
+ * character with the given replacement character in 'str'.
+ * Note that this is NOT a regular expression replacement; it looks for the
+ * 'old' string literally.  If you want regular expressions, see regexpr.h.
+ * The 'inPlace' variant modifies an existing string rather than returning a new one,
+ * and returns the number of occurrences of 'old' were replaced.
+ */
+std::string replace(const std::string& str, char old, char replacement, int limit = -1);
+
+/**
+ * Returns a new string formed by replacing any occurrences of the given 'old'
+ * text with the given replacement text in 'str'.
+ * Note that this is NOT a regular expression replacement; it looks for the
+ * 'old' string literally.  If you want regular expressions, see regexpr.h.
+ * The 'inPlace' variant modifies an existing string rather than returning a new one,
+ * and returns the number of occurrences of 'old' were replaced.
+ */
+std::string replace(const std::string& str, const std::string& old, const std::string& replacement, int limit = -1);
+
+/**
+ * A variant of stringReplace, except that it accepts the string as a reference
+ * and modifies it in-place rather than returning a new string.
+ */
+int replaceInPlace(std::string& str, char old, char replacement, int limit = -1);
+
+/**
+ * A variant of stringReplace, except that it accepts the string as a reference
+ * and modifies it in-place rather than returning a new string.
+ */
+int replaceInPlace(std::string& str, const std::string& old, const std::string& replacement, int limit = -1);
+
+/**
+ * Returns a vector whose elements are strings formed by splitting the
+ * given string 'str' by the given separator character.
+ * For example, splitting "Hi there  Jim!" on " " returns
+ * {"Hi", "there", "", "Jim!"}.
+ */
+std::vector<std::string> split(const std::string& str, char delimiter, int limit = -1);
+
+/**
+ * Returns a vector whose elements are strings formed by splitting the
+ * given string 'str' by the given separator text.
+ * For example, splitting "Hi there  Jim!" on " " returns
+ * {"Hi", "there", "", "Jim!"}.
+ */
+std::vector<std::string> split(const std::string& str, const std::string& delimiter, int limit = -1);
+
+/**
  * Returns <code>true</code> if the string <code>str</code> starts with
  * the specified prefix.
  */
@@ -182,32 +296,6 @@ bool startsWith(const std::string& str, char prefix);
  * the specified character.
  */
 bool startsWith(const std::string& str, const std::string& prefix);
-
-/**
- * Returns true if the given character occurs somewhere in s.
- */
-bool stringContains(const std::string& s, char ch);
-
-/**
- * Returns true if the given substring occurs somewhere in s.
- */
-bool stringContains(const std::string& s, const std::string& substring);
-
-/**
- * Returns the index of the start of the first occurrence of the given character
- * in s, if it occurs in s.  If it does not occur, returns -1.
- * This function is very similar to string.find, but find returns string::npos
- * when the string is not found.
- */
-int stringIndexOf(const std::string& s, char ch, int startIndex = 0);
-
-/**
- * Returns the index of the start of the first occurrence of the given substring
- * in s, if it occurs in s.  If it does not occur, returns -1.
- * This function is very similar to string.find, but find returns string::npos
- * when the string is not found.
- */
-int stringIndexOf(const std::string& s, const std::string& substring, int startIndex = 0);
 
 /**
  * Returns true if the given string is either "true" or "false".
@@ -244,86 +332,6 @@ bool stringIsLong(const std::string& str, int radix = 10);
  * the string has the format of a real number such as "3.14" or "-46".
  */
 bool stringIsReal(const std::string& str);
-
-/**
- * Combines the elements of the given vector into a single string,
- * with the given delimiter separating neighboring elements, and returns it.
- * For example, joining the elements of the vector
- * {"Hi", "there", "", "Jim"} with the delimiter '?' returns "Hi?there??Jim".
- */
-std::string stringJoin(const std::vector<std::string>& v, char delimiter = '\n');
-
-/**
- * Combines the elements of the given vector into a single string,
- * with the given delimiter separating neighboring elements, and returns it.
- * For example, joining the elements of the vector
- * {"Hi", "there", "", "Jim"} with the delimiter "??" returns "Hi??there????Jim".
- */
-std::string stringJoin(const std::vector<std::string>& v, const std::string& delimiter = "\n");
-
-/**
- * Returns the index of the start of the last occurrence of the given character
- * in s, if it occurs in s.  If it does not occur, returns -1.
- * This function is very similar to string.rfind, but rfind returns string::npos
- * when the string is not found.
- */
-int stringLastIndexOf(const std::string& s, char ch, int startIndex = (int) std::string::npos);
-
-/**
- * Returns the index of the start of the last occurrence of the given substring
- * in s, if it occurs in s.  If it does not occur, returns -1.
- * This function is very similar to string.rfind, but rfind returns string::npos
- * when the string is not found.
- */
-int stringLastIndexOf(const std::string& s, const std::string& substring, int startIndex = (int) std::string::npos);
-
-/**
- * Returns a new string formed by replacing any occurrences of the given 'old'
- * character with the given replacement character in 'str'.
- * Note that this is NOT a regular expression replacement; it looks for the
- * 'old' string literally.  If you want regular expressions, see regexpr.h.
- * The 'inPlace' variant modifies an existing string rather than returning a new one,
- * and returns the number of occurrences of 'old' were replaced.
- */
-std::string stringReplace(const std::string& str, char old, char replacement, int limit = -1);
-
-/**
- * Returns a new string formed by replacing any occurrences of the given 'old'
- * text with the given replacement text in 'str'.
- * Note that this is NOT a regular expression replacement; it looks for the
- * 'old' string literally.  If you want regular expressions, see regexpr.h.
- * The 'inPlace' variant modifies an existing string rather than returning a new one,
- * and returns the number of occurrences of 'old' were replaced.
- */
-std::string stringReplace(const std::string& str, const std::string& old, const std::string& replacement, int limit = -1);
-
-/**
- * A variant of stringReplace, except that it accepts the string as a reference
- * and modifies it in-place rather than returning a new string.
- */
-int stringReplaceInPlace(std::string& str, char old, char replacement, int limit = -1);
-
-/**
- * A variant of stringReplace, except that it accepts the string as a reference
- * and modifies it in-place rather than returning a new string.
- */
-int stringReplaceInPlace(std::string& str, const std::string& old, const std::string& replacement, int limit = -1);
-
-/**
- * Returns a vector whose elements are strings formed by splitting the
- * given string 'str' by the given separator character.
- * For example, splitting "Hi there  Jim!" on " " returns
- * {"Hi", "there", "", "Jim!"}.
- */
-std::vector<std::string> stringSplit(const std::string& str, char delimiter, int limit = -1);
-
-/**
- * Returns a vector whose elements are strings formed by splitting the
- * given string 'str' by the given separator text.
- * For example, splitting "Hi there  Jim!" on " " returns
- * {"Hi", "there", "", "Jim!"}.
- */
-std::vector<std::string> stringSplit(const std::string& str, const std::string& delimiter, int limit = -1);
 
 /**
  * If str is "true", returns the bool value true.
@@ -473,8 +481,13 @@ std::string urlEncode(const std::string& str);
  */
 void urlEncodeInPlace(std::string& str);
 
+} // namespace strlib
+} // namespace priv
+} // namespace sgl
+
 // add to_string overloads for some common types missing from C++ standard
 namespace std {
+
 /**
  * String-to-bool conversion function.
  * If str is "true", returns the bool value true.
@@ -519,4 +532,4 @@ std::string to_string(const T& value) {
 }
 } // namespace std
 
-#endif // _strlib_h
+#endif // _private_strlib_h

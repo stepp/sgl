@@ -1,13 +1,16 @@
 /*
- * File: filelib.h
- * ---------------
+ * File: privatefilelib.h
+ * ----------------------
  * This file exports a standardized set of tools for working with
  * files.  The library offers at least some portability across the
  * file systems used in the three supported platforms: Mac OSX,
  * Windows, and Linux.  Directory and search paths are allowed to
  * contain separators in any of the supported styles, which usually
  * makes it possible to use the same code on different platforms.
+ * This functionality is considered "private" and not to be used by students.
  *
+ * @version 2021/04/09
+ * - moved to private SGL namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/10/23
@@ -16,8 +19,6 @@
  * - added doc comments for new documentation generation
  * @version 2016/11/12
  * - added fileSize, readEntireStream
- * @version 2016/08/12
- * - added second overload of openFileDialog that accepts path parameter
  * @version 2015/04/12
  * - added promptUserForFile overload without stream parameter
  * @version 2014/10/19
@@ -27,13 +28,17 @@
  */
 
 
-#ifndef _filelib_h
-#define _filelib_h
+#ifndef _private_filelib_h
+#define _private_filelib_h
 
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
+
+namespace sgl {
+namespace priv {
+namespace filelib {
 
 /**
  * Returns <code>true</code> if the specified file exists.
@@ -130,7 +135,6 @@ bool writeEntireFile(const std::string& filename,
  * @private
  */
 namespace platform {
-    std::string file_openFileDialog(const std::string& title, const std::string& mode, const std::string& path);
     void filelib_createDirectory(const std::string& path);
     void filelib_deleteFile(const std::string& path);
     std::string filelib_expandPathname(const std::string& filename);
@@ -145,6 +149,10 @@ namespace platform {
     bool filelib_isSymbolicLink(const std::string& filename);
     void filelib_listDirectory(const std::string& path, std::vector<std::string>& list);
     void filelib_setCurrentDirectory(const std::string& path);
-}
+} // namespace platform
 
-#endif // _filelib_h
+} // namespace filelib
+} // namespace priv
+} // namespace sgl
+
+#endif // _private_filelib_h

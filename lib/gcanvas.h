@@ -3,6 +3,8 @@
  * ---------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/05/01
  * - added createArgbPixel
  * - bug fixes related to save / setPixels with alpha transparency
@@ -33,6 +35,8 @@
 
 // default color used to highlight pixels that do not match between two images
 #define GCANVAS_DEFAULT_DIFF_PIXEL_COLOR 0xdd00dd
+
+namespace sgl {
 
 class _Internal_QCanvas;
 
@@ -338,7 +342,7 @@ public:
      * Any previous background layer contents are lost.
      * Equivalent to getPixels.
      */
-    virtual void fromGrid(const Grid<int>& grid);
+    virtual void fromGrid(const ::sgl::collections::Grid<int>& grid);
 
     /* @inherit */
     std::string getBackground() const override;
@@ -415,7 +419,7 @@ public:
      * So for example, grid[y][x] returns the RGB int value at that pixel.
      * Equivalent to toGrid.
      */
-    Grid<int> getPixels() const override;
+    ::sgl::collections::Grid<int> getPixels() const override;
 
     /**
      * Returns all pixels of the background layer of the canvas as a Grid,
@@ -424,7 +428,7 @@ public:
      * the alpha channel of each pixel in the top 8 bits, allowing for
      * transparency effects.
      */
-    Grid<int> getPixelsARGB() const override;
+    ::sgl::collections::Grid<int> getPixelsARGB() const override;
 
     /* @inherit */
     std::string getType() const override;
@@ -608,7 +612,7 @@ public:
      * be resized to match the grid.
      * Equivalent to fromGrid.
      */
-    void setPixels(const Grid<int>& pixels) override;
+    void setPixels(const ::sgl::collections::Grid<int>& pixels) override;
 
     /**
      * Sets the color of the all pixels in the background layer of the
@@ -617,7 +621,7 @@ public:
      * If the given grid is not the same size as this canvas, the canvas will
      * be resized to match the grid.
      */
-    void setPixelsARGB(const Grid<int>& pixelsARGB) override;
+    void setPixelsARGB(const ::sgl::collections::Grid<int>& pixelsARGB) override;
 
     /**
      * Converts the pixels of the canvas into a GImage object.
@@ -632,7 +636,7 @@ public:
      * In this version of the method, the grid is returned.
      * Equivalent to getPixels.
      */
-    virtual Grid<int> toGrid() const;
+    virtual ::sgl::collections::Grid<int> toGrid() const;
 
     /**
      * Converts this canvas's pixel data into a grid of RGB pixels.
@@ -642,7 +646,7 @@ public:
      * In this version of the method, the grid is filled by reference.
      * Equivalent to getPixels.
      */
-    virtual void toGrid(Grid<int>& grid) const;
+    virtual void toGrid(::sgl::collections::Grid<int>& grid) const;
 
 private:
     Q_DISABLE_COPY(GCanvas)
@@ -704,5 +708,7 @@ private:
 
     friend class GCanvas;
 };
+
+} // namespace sgl
 
 #endif // _gcanvas_h

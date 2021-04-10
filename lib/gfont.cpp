@@ -3,6 +3,8 @@
  * ---------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/04/30
@@ -25,6 +27,8 @@
 #include <QtGlobal>
 #include "require.h"
 #include "privatestrlib.h"
+
+namespace sgl {
 
 GFont::GFont() {
     // empty
@@ -71,7 +75,7 @@ QFont GFont::deriveQFont(const std::string& font, const std::string& fontFamily,
 
 // http://doc.qt.io/qt-5/qfont.html#StyleHint-enum
 QFont::StyleHint GFont::getStyleHint(const std::string& fontFamily) {
-    std::string fontFamilyStr = toLowerCase(trim(fontFamily));
+    std::string fontFamilyStr = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::trim(fontFamily));
     if (fontFamilyStr == "arial"
             || fontFamilyStr == "helvetica"
             || fontFamilyStr == "sansserif"
@@ -87,7 +91,7 @@ QFont::StyleHint GFont::getStyleHint(const std::string& fontFamily) {
             || fontFamilyStr == "consolas"
             || fontFamilyStr == "monospace"
             || fontFamilyStr == "monospaced"
-            || endsWith(fontFamilyStr, " mono")) {
+            || sgl::priv::strlib::endsWith(fontFamilyStr, " mono")) {
         return QFont::Monospace;
     } else if (fontFamilyStr == "comic sans"
             || fontFamilyStr == "comic sans ms"
@@ -153,7 +157,7 @@ std::string GFont::toFontString(const QFont& font) {
 // example font string:
 // "Courier New-Bold-12"
 QFont GFont::toQFont(const std::string& fontString) {
-    std::vector<std::string> tokens = stringSplit(trim(fontString), "-");
+    std::vector<std::string> tokens = sgl::priv::strlib::split(sgl::priv::strlib::trim(fontString), "-");
     if (tokens.empty()) {
         return QFont();
     }
@@ -164,7 +168,7 @@ QFont GFont::toQFont(const std::string& fontString) {
     int fontSize = 12;   // 12pt standard font size
 
     if (!tokens.empty()) {
-        fontFamily = trim(tokens[0]);
+        fontFamily = sgl::priv::strlib::trim(tokens[0]);
         tokens.erase(tokens.begin());
         if (fontFamily == "*") {
             fontFamily = "SansSerif";
@@ -173,15 +177,15 @@ QFont GFont::toQFont(const std::string& fontString) {
     for (int i = 0; i < 2; i++) {
         if (!tokens.empty()) {
             // tokens 2-3 can be size-style or style-size
-            std::string fontWeightStr = toLowerCase(trim(tokens[0]));
+            std::string fontWeightStr = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::trim(tokens[0]));
             tokens.erase(tokens.begin());
-            if (stringIsInteger(fontWeightStr)) {
-                fontSize = stringToInteger(fontWeightStr);
+            if (sgl::priv::strlib::stringIsInteger(fontWeightStr)) {
+                fontSize = sgl::priv::strlib::stringToInteger(fontWeightStr);
             }
-            if (stringContains(fontWeightStr, "bold")) {
+            if (sgl::priv::strlib::contains(fontWeightStr, "bold")) {
                 fontBold = true;
             }
-            if (stringContains(fontWeightStr, "italic")) {
+            if (sgl::priv::strlib::contains(fontWeightStr, "italic")) {
                 fontItalic = true;
             }
         }
@@ -196,7 +200,7 @@ QFont GFont::toQFont(const std::string& fontString) {
 }
 
 QFont GFont::toQFont(const QFont& basisFont, const std::string& fontString) {
-    std::vector<std::string> tokens = stringSplit(trim(fontString), "-");
+    std::vector<std::string> tokens = sgl::priv::strlib::split(sgl::priv::strlib::trim(fontString), "-");
     if (tokens.empty()) {
         return QFont();
     }
@@ -207,7 +211,7 @@ QFont GFont::toQFont(const QFont& basisFont, const std::string& fontString) {
     int fontSize = basisFont.pointSize();   // 12pt standard font size
 
     if (!tokens.empty()) {
-        fontFamily = trim(tokens[0]);
+        fontFamily = sgl::priv::strlib::trim(tokens[0]);
         tokens.erase(tokens.begin());
         if (fontFamily == "*") {
             fontFamily = basisFont.family().toStdString();
@@ -216,13 +220,13 @@ QFont GFont::toQFont(const QFont& basisFont, const std::string& fontString) {
     for (int i = 0; i < 2; i++) {
         if (!tokens.empty()) {
             // tokens 2-3 can be size-style or style-size
-            std::string fontWeightStr = toLowerCase(trim(tokens[0]));
+            std::string fontWeightStr = sgl::priv::strlib::toLowerCase(sgl::priv::strlib::trim(tokens[0]));
             tokens.erase(tokens.begin());
-            if (stringIsInteger(fontWeightStr)) {
-                fontSize = stringToInteger(fontWeightStr);
-            } else if (stringContains(fontWeightStr, "bold")) {
+            if (sgl::priv::strlib::stringIsInteger(fontWeightStr)) {
+                fontSize = sgl::priv::strlib::stringToInteger(fontWeightStr);
+            } else if (sgl::priv::strlib::contains(fontWeightStr, "bold")) {
                 fontBold = true;
-            } else if (stringContains(fontWeightStr, "italic")) {
+            } else if (sgl::priv::strlib::contains(fontWeightStr, "italic")) {
                 fontItalic = true;
             }
         }
@@ -235,3 +239,5 @@ QFont GFont::toQFont(const QFont& basisFont, const std::string& fontString) {
     font.setStyleHint(getStyleHint(fontFamily));
     return font;
 }
+
+} // namespace sgl

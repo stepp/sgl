@@ -3,6 +3,8 @@
  * -----------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/05/01
  * - added createArgbPixel
  * - bug fixes related to save / setPixels with alpha transparency
@@ -34,6 +36,8 @@
 #include "require.h"
 #include "privatefilelib.h"
 #include "privatestrlib.h"
+
+namespace sgl {
 
 const int GCanvas::WIDTH_HEIGHT_MAX = 65535;
 
@@ -290,7 +294,7 @@ GCanvas* GCanvas::diff(const GCanvas& image, int diffPixelColor) const {
     int wmax = std::max(w1, w2);
     int hmax = std::max(h1, h2);
 
-    Grid<int> resultGrid;
+    ::sgl::collections::Grid<int> resultGrid;
     resultGrid.resize(hmax, wmax);
     resultGrid.fill(diffPixelColor);
     for (int r = 0; r < h1; r++) {
@@ -438,7 +442,7 @@ void GCanvas::flatten() {
     });
 }
 
-void GCanvas::fromGrid(const Grid<int>& grid) {
+void GCanvas::fromGrid(const ::sgl::collections::Grid<int>& grid) {
     checkSize("GCanvas::fromGrid", grid.numCols(), grid.numRows());
     setSize(grid.numCols(), grid.numRows());
 
@@ -522,12 +526,12 @@ int GCanvas::getPixelARGB(double x, double y) const {
     return pixel;
 }
 
-Grid<int> GCanvas::getPixels() const {
+::sgl::collections::Grid<int> GCanvas::getPixels() const {
     ensureBackgroundImageConstHack();
     lockForReadConst();
     int w = static_cast<int>(getWidth());
     int h = static_cast<int>(getHeight());
-    Grid<int> grid(h, w);
+    ::sgl::collections::Grid<int> grid(h, w);
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
             grid[y][x] = _backgroundImage->pixel(x, y) & 0x00ffffff;
@@ -537,10 +541,10 @@ Grid<int> GCanvas::getPixels() const {
     return grid;
 }
 
-Grid<int> GCanvas::getPixelsARGB() const {
+::sgl::collections::Grid<int> GCanvas::getPixelsARGB() const {
     ensureBackgroundImageConstHack();
     lockForReadConst();
-    Grid<int> grid(static_cast<int>(getHeight()), static_cast<int>(getWidth()));
+    ::sgl::collections::Grid<int> grid(static_cast<int>(getHeight()), static_cast<int>(getWidth()));
     for (int y = 0; y < static_cast<int>(getHeight()); y++) {
         for (int x = 0; x < static_cast<int>(getWidth()); x++) {
             grid[y][x] = static_cast<int>(_backgroundImage->pixel(x, y));
@@ -565,7 +569,7 @@ bool GCanvas::isAutoRepaint() const {
 void GCanvas::load(const std::string& filename) {
     // for efficiency, let's at least check whether the file exists
     // and throw error immediately rather than contacting the back-end
-    if (!fileExists(filename)) {
+    if (!sgl::priv::filelib::fileExists(filename)) {
         throw std::runtime_error("GCanvas::load: file not found: " + filename);
     }
 
@@ -841,7 +845,7 @@ void GCanvas::setPixelARGB(double x, double y, int a, int r, int g, int b) {
     setPixelARGB(x, y, GColor::convertARGBToARGB(a, r, g, b));
 }
 
-void GCanvas::setPixels(const Grid<int>& pixels) {
+void GCanvas::setPixels(const ::sgl::collections::Grid<int>& pixels) {
     // TODO: is this redundant with fromGrid?
     ensureBackgroundImage();
     if (pixels.numCols() != (int) getWidth() || pixels.numRows() != (int) getHeight()) {
@@ -862,7 +866,7 @@ void GCanvas::setPixels(const Grid<int>& pixels) {
     });
 }
 
-void GCanvas::setPixelsARGB(const Grid<int>& pixels) {
+void GCanvas::setPixelsARGB(const ::sgl::collections::Grid<int>& pixels) {
     ensureBackgroundImage();
     if (pixels.numCols() != (int) getWidth() || pixels.numRows() != (int) getHeight()) {
         // TODO
@@ -906,13 +910,13 @@ GImage* GCanvas::toGImage() const {
 //    return gimage;
 }
 
-Grid<int> GCanvas::toGrid() const {
-    Grid<int> grid;
+::sgl::collections::Grid<int> GCanvas::toGrid() const {
+    ::sgl::collections::Grid<int> grid;
     toGrid(grid);
     return grid;
 }
 
-void GCanvas::toGrid(Grid<int>& grid) const {
+void GCanvas::toGrid(::sgl::collections::Grid<int>& grid) const {
     grid.resize(getHeight(), getWidth());
     lockForReadConst();
     for (int row = 0, width = (int) getWidth(), height = (int) getHeight(); row < height; row++) {
@@ -1091,4 +1095,4 @@ void _Internal_QCanvas::wheelEvent(QWheelEvent* event) {
     }
 }
 
-
+} // namespace sgl

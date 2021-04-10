@@ -3,6 +3,8 @@
  * ------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/09/25
@@ -25,6 +27,8 @@
 #include <QLayout>
 
 #include "ginteractor.h"
+
+namespace sgl {
 
 class _Internal_QContainer;   // forward declaration
 
@@ -735,5 +739,7 @@ private:
 
     friend class GContainer;
 };
+
+} // namespace sgl
 
 #endif // _gcontainer_h

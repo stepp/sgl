@@ -24,9 +24,11 @@
 #include <vector>
 #include "privateregexpr.h"
 #include "privatestrlib.h"
-// #include "stringutils.h"
 
+namespace sgl {
+namespace priv {
 namespace diff {
+
 static std::string stripWhitespace(const std::string& s) {
     std::ostringstream result;
     for (size_t i = 0; i < s.length(); i++) {
@@ -37,50 +39,42 @@ static std::string stripWhitespace(const std::string& s) {
     return result.str();
 }
 
-static std::string trimR(const std::string& s) {
-    std::string trimmed = s;
-    while (!trimmed.empty() && isspace(trimmed[trimmed.length() - 1])) {
-        trimmed.erase(trimmed.length() - 1, 1);
-    }
-    return trimmed;
-}
-
 std::string diff(std::string s1, std::string s2, int flags) {
-    std::vector<std::string> lines1 = stringSplit(s1, "\n");
-    std::vector<std::string> lines2 = stringSplit(s2, "\n");
+    std::vector<std::string> lines1 = sgl::priv::strlib::split(s1, "\n");
+    std::vector<std::string> lines2 = sgl::priv::strlib::split(s2, "\n");
     std::vector<std::string> lines1Original = lines1;
     std::vector<std::string> lines2Original = lines2;
 
     if (flags & IGNORE_NUMBERS) {
-        s1 = regexReplace(s1, "[0-9]+", "###");
-        s2 = regexReplace(s2, "[0-9]+", "###");
-        lines1 = stringSplit(s1, "\n");
-        lines2 = stringSplit(s2, "\n");
+        s1 = sgl::priv::regexpr::replace(s1, "[0-9]+", "###");
+        s2 = sgl::priv::regexpr::replace(s2, "[0-9]+", "###");
+        lines1 = sgl::priv::strlib::split(s1, "\n");
+        lines2 = sgl::priv::strlib::split(s2, "\n");
     }
     if (flags & IGNORE_NONNUMBERS) {
-        s1 = regexReplace(s1, "[^0-9\n]+", " ");
-        s2 = regexReplace(s2, "[^0-9\n]+", " ");
-        lines1 = stringSplit(s1, "\n");
-        lines2 = stringSplit(s2, "\n");
+        s1 = sgl::priv::regexpr::replace(s1, "[^0-9\n]+", " ");
+        s2 = sgl::priv::regexpr::replace(s2, "[^0-9\n]+", " ");
+        lines1 = sgl::priv::strlib::split(s1, "\n");
+        lines2 = sgl::priv::strlib::split(s2, "\n");
     }
     if (flags & IGNORE_PUNCTUATION) {
         std::string punct = "[.,?!'\"()\\/#$%@^&*_\\[\\]{}|<>:;-]+";
-        s1 = regexReplace(s1, punct, "");
-        s2 = regexReplace(s2, punct, "");
-        lines1 = stringSplit(s1, "\n");
-        lines2 = stringSplit(s2, "\n");
+        s1 = sgl::priv::regexpr::replace(s1, punct, "");
+        s2 = sgl::priv::regexpr::replace(s2, punct, "");
+        lines1 = sgl::priv::strlib::split(s1, "\n");
+        lines2 = sgl::priv::strlib::split(s2, "\n");
     }
     if (flags & IGNORE_AFTERDECIMAL) {
-        s1 = regexReplace(s1, "\\.[0-9]+", ".#");
-        s2 = regexReplace(s2, "\\.[0-9]+", ".#");
-        lines1 = stringSplit(s1, "\n");
-        lines2 = stringSplit(s2, "\n");
+        s1 = sgl::priv::regexpr::replace(s1, "\\.[0-9]+", ".#");
+        s2 = sgl::priv::regexpr::replace(s2, "\\.[0-9]+", ".#");
+        lines1 = sgl::priv::strlib::split(s1, "\n");
+        lines2 = sgl::priv::strlib::split(s2, "\n");
     }
     if (flags & IGNORE_CASE) {
-        s1 = toLowerCase(s1);
-        s2 = toLowerCase(s2);
-        lines1 = stringSplit(s1, "\n");
-        lines2 = stringSplit(s2, "\n");
+        s1 = sgl::priv::strlib::toLowerCase(s1);
+        s2 = sgl::priv::strlib::toLowerCase(s2);
+        lines1 = sgl::priv::strlib::split(s1, "\n");
+        lines2 = sgl::priv::strlib::split(s2, "\n");
     }
     if (flags & IGNORE_CHARORDER) {
         std::vector<std::string> lines1Sorted;
@@ -89,7 +83,7 @@ std::string diff(std::string s1, std::string s2, int flags) {
             lines1Sorted.push_back(line);
         }
         lines1 = lines1Sorted;
-        s1 = stringJoin(lines1, "\n");
+        s1 = sgl::priv::strlib::join(lines1, "\n");
 
         std::vector<std::string> lines2Sorted;
         for (std::string line : lines2) {
@@ -97,13 +91,13 @@ std::string diff(std::string s1, std::string s2, int flags) {
             lines2Sorted.push_back(line);
         }
         lines2 = lines2Sorted;
-        s2 = stringJoin(lines2, "\n");
+        s2 = sgl::priv::strlib::join(lines2, "\n");
     }
     if (flags & IGNORE_LINEORDER) {
         std::sort(lines1.begin(), lines1.end());
         std::sort(lines2.begin(), lines2.end());
-        s1 = stringJoin(lines1, "\n");
-        s2 = stringJoin(lines2, "\n");
+        s1 = sgl::priv::strlib::join(lines1, "\n");
+        s2 = sgl::priv::strlib::join(lines2, "\n");
     }
     if (flags & IGNORE_WHITESPACE) {
         for (int i = 0; i < lines1.size(); i++) {
@@ -114,7 +108,7 @@ std::string diff(std::string s1, std::string s2, int flags) {
         }
     }
 
-    if (trimR(s1) == trimR(s2)) {
+    if (sgl::priv::strlib::trimEnd(s1) == sgl::priv::strlib::trimEnd(s2)) {
         return NO_DIFFS_MESSAGE;
     }
 
@@ -280,7 +274,7 @@ std::string diff(std::string s1, std::string s2, int flags) {
 
     if (out.size() > 0) {
         out.push_back("");
-        return trim(stringJoin(out, "\n"));
+        return sgl::priv::strlib::trim(sgl::priv::strlib::join(out, "\n"));
     } else {
         return NO_DIFFS_MESSAGE;
     }
@@ -288,11 +282,14 @@ std::string diff(std::string s1, std::string s2, int flags) {
 
 bool diffPass(const std::string& s1, const std::string& s2, int flags) {
     std::string diffs = diff(s1, s2, flags);
-    bool result = trim(diffs) == NO_DIFFS_MESSAGE;
+    bool result = sgl::priv::strlib::trim(diffs) == NO_DIFFS_MESSAGE;
     return result;
 }
 
 bool isDiffMatch(const std::string& diffs) {
-    return trim(diffs) == NO_DIFFS_MESSAGE;
+    return sgl::priv::strlib::trim(diffs) == NO_DIFFS_MESSAGE;
 }
+
+} // namespace sgl
+} // namespace priv
 } // namespace diff

@@ -3,6 +3,8 @@
  * -------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/09/07
@@ -24,6 +26,8 @@
 
 #include "gevent.h"
 #include "gtypes.h"
+
+namespace sgl {
 
 class GObservable;
 class GThread;
@@ -118,5 +122,7 @@ private:
     friend class GThread;
     friend class QtGui;
 };
+
+} // namespace sgl
 
 #endif // _geventqueue_h

@@ -114,8 +114,6 @@ public:
     }
 };
 
-namespace qtgui {
-
 extern void endLineConsoleQt(bool isStderr);
 extern std::string getLineConsoleQt();
 extern void putConsoleQt(const std::string& str, bool isStderr);
@@ -152,8 +150,6 @@ protected:
 private:
     bool _isStderr;
 };
-
-} // namespace qtgui
 
 } // namespace sgl
 

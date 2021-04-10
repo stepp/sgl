@@ -7,6 +7,8 @@
  * static method GConsoleWindow::instance().
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2019/04/25
@@ -41,6 +43,8 @@
 #include "gthread.h"
 #include "gwindow.h"
 #include "consolestreambuf.h"
+
+namespace sgl {
 
 /**
  * A GConsoleWindow represents the system console.
@@ -176,8 +180,8 @@ private:
     std::queue<std::string> _inputLines;
     std::queue<std::string> _inputScript;
     std::vector<std::string> _inputCommandHistory;
-    sgl::qtgui::ConsoleStreambufQt* _cinout_new_buf;
-    sgl::qtgui::ConsoleStreambufQt* _cerr_new_buf;
+    ConsoleStreambufQt* _cinout_new_buf;
+    ConsoleStreambufQt* _cerr_new_buf;
     std::streambuf* _cin_old_buf;
     std::streambuf* _cout_old_buf;
     std::streambuf* _cerr_old_buf;
@@ -186,5 +190,7 @@ private:
     QReadWriteLock _cinQueueMutex;
     QMutex _coutMutex;
 };
+
+} // namespace sgl
 
 #endif // _gconsolewindow_h

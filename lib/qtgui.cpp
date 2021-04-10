@@ -3,6 +3,8 @@
  * ---------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/08/23
  * - renamed to qtgui.cpp
  * @version 2018/07/03
@@ -23,13 +25,15 @@
 #include "privatestrlib.h"
 #include "ginit.h"
 
+namespace sgl {
+
 // QSPLApplication members
-QSPLApplication::QSPLApplication(int& argc, char *argv[])
+QSGLApplication::QSGLApplication(int& argc, char *argv[])
         : QApplication(argc, argv) {
     // empty
 }
 
-bool QSPLApplication::notify(QObject* receiver, QEvent* e) {
+bool QSGLApplication::notify(QObject* receiver, QEvent* e) {
     // could use try/catch here to handle exceptions on gui thread
     // but this disguises where came from (loses backtrace)
     return QApplication::notify(receiver, e);   // call super
@@ -37,7 +41,7 @@ bool QSPLApplication::notify(QObject* receiver, QEvent* e) {
 
 
 // QtGui members
-QSPLApplication* QtGui::_app = nullptr;
+QSGLApplication* QtGui::_app = nullptr;
 QtGui* QtGui::_instance = nullptr;
 
 QtGui::QtGui()
@@ -63,7 +67,7 @@ void QtGui::exitGraphics(int exitCode) {
     }
 }
 
-QSPLApplication* QtGui::getApplication() {
+QSGLApplication* QtGui::getApplication() {
     return _app;
 }
 
@@ -95,7 +99,7 @@ void QtGui::initializeQt() {
                     "      %{backtrace depth=20 separator=\"\n      \"}"
 #endif // _WIN32
             );
-            _app = new QSPLApplication(_argc, _argv);
+            _app = new QSGLApplication(_argc, _argv);
             _initialized = true;
         }
     });
@@ -130,9 +134,9 @@ void QtGui::startBackgroundEventLoop(GThunkInt mainFunc, bool exitAfter) {
 
     if (!GThread::studentThreadExists()) {
         GThread::startStudentThread([&]() -> int {
-            sgl::initializeStudentThread();
+            initializeStudentThread();
             int result = mainFunc();
-            sgl::studentThreadHasExited("Completed");
+            studentThreadHasExited("Completed");
             return result;
         });
 
@@ -159,8 +163,6 @@ void QtGui::startEventLoop(bool exitAfter) {
 }
 
 
-
-namespace sgl {
 void studentThreadHasExited(const std::string& reason) {
     // briefly wait for the console to finish printing any/all output
     GThread::getCurrentThread()->yield();
@@ -169,16 +171,17 @@ void studentThreadHasExited(const std::string& reason) {
     // if I get here, student's main() has finished running;
     // indicate this by showing a completed title on the graphical console
     if (getConsoleEnabled()) {
-#ifndef SPL_HEADLESS_MODE
+#ifndef SGL_HEADLESS_MODE
         GConsoleWindow* console = getConsoleWindow();
         if (console) {
             console->shutdown(reason);
         }
-#endif // SPL_HEADLESS_MODE
+#endif // SGL_HEADLESS_MODE
     } else {
         // need to exit here else program will not terminate
         // BUGFIX: no, this is not needed and is bad; it exits the window too soon; disable
         // QtGui::instance()->exitGraphics(result);
     }
 }
+
 } // namespace sgl

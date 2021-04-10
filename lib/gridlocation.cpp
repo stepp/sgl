@@ -5,6 +5,8 @@
  * and the <code>GridLocationRange</code> class.
  * See gridlocation.h for the declarations of each member.
  *
+ * @version 2021/04/09
+ * - added sgl::collections namespace
  * @version 2021/04/03
  * - removed dependencies
  * - removed hashCode
@@ -15,6 +17,9 @@
 
 #include "gridlocation.h"
 #include <sstream>
+
+namespace sgl {
+namespace collections {
 
 GridLocation::GridLocation(int row, int col) {
     this->row = row;
@@ -165,3 +170,6 @@ std::string GridLocationRange::toString() const {
 std::ostream& operator <<(std::ostream& out, const GridLocationRange& range) {
     return out << range.startLocation() << " .. " << range.endLocation();
 }
+
+} // namespace collections
+} // namespace sgl

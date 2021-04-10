@@ -3,6 +3,8 @@
  * -------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2019/04/23
  * - moved some event listener code to GInteractor superclass
  * @version 2019/02/02
@@ -21,6 +23,8 @@
 #include "gthread.h"
 #include "gwindow.h"
 #include "require.h"
+
+namespace sgl {
 
 GTextArea::GTextArea(int rows, int columns, QWidget* parent)
         : _contextMenuEnabled(true) {
@@ -461,4 +465,4 @@ QSize _Internal_QTextEdit::sizeHint() const {
     }
 }
 
-
+} // namespace sgl

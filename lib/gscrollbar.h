@@ -3,6 +3,8 @@
  * -------------------
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2018/09/08
  * - added doc comments for new documentation generation
  * @version 2018/08/23
@@ -19,6 +21,8 @@
 #include <QScrollBar>
 
 #include "ginteractor.h"
+
+namespace sgl {
 
 class _Internal_QScrollBar;
 
@@ -154,5 +158,7 @@ private:
 
     friend class GScrollBar;
 };
+
+} // namespace sgl
 
 #endif // _gscrollbar_h

@@ -5,6 +5,8 @@
  * See the .h file for the declarations of each member and comments.
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/09/23
@@ -27,6 +29,8 @@
 #include <QIODevice>
 #include <QTimer>
 #include "gthread.h"
+
+namespace sgl {
 
 GDownloader::GDownloader()
         : _manager(nullptr),
@@ -254,4 +258,4 @@ void GDownloader::waitForDownload() {
     }
 }
 
-
+} // namespace sgl

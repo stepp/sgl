@@ -14,6 +14,8 @@
  * https://wiki.qt.io/Download_Data_from_URL
  *
  * @author Marty Stepp
+ * @version 2021/04/09
+ * - added sgl namespace
  * @version 2021/04/03
  * - removed dependency on custom collections
  * @version 2018/09/18
@@ -26,7 +28,6 @@
  * - initial version
  */
 
-
 #ifndef _gdownloader_h
 #define _gdownloader_h
 
@@ -34,6 +35,8 @@
 #include <string>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+
+namespace sgl {
 
 /**
  * A GDownloader can download files and data over an internet connection.
@@ -155,5 +158,7 @@ private:
     std::string _filedata;
     std::string _lastErrorMessage;
 };
+
+} // namespace sgl
 
 #endif // _gdownloader_h
