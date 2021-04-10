@@ -95,7 +95,7 @@ We offer brief installation instructions for various operating systems here:
 The following documentation lists each class, function, and other member of the library.
 You can consult these docs to see how to use the various library classes.
 
-[SGL C++ Library API Documentation](doc/html/annotated.html)
+[SGL C++ Library API Documentation](http://www.martystepp.com/sgl/)
 
 
 # Example Code
