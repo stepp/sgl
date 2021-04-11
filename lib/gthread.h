@@ -514,7 +514,11 @@ private:
 void native_set_thread_name(const char *name);
 
 // Platform-specific way to exit current thread
+#if defined(_WIN32) && defined(__GNUG__)
+void native_thread_exit();
+#else
 [[noreturn]] void native_thread_exit();
+#endif // defined(_WIN32) && defined(__GNUG__)
 
 } // namespace sgl
 

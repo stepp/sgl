@@ -395,7 +395,7 @@ namespace platform {
 
 void filelib_createDirectory(const std::string& path) {
     std::string pathStr = path;
-    if (endsWith(path, "\\")) {
+    if (::sgl::priv::strlib::endsWith(path, "\\")) {
         pathStr = path.substr(0, path.length() - 1);
     }
     if (CreateDirectoryA(path.c_str(), nullptr) == 0) {
@@ -477,8 +477,7 @@ bool filelib_isFile(const std::string& filename) {
 
 bool filelib_isSymbolicLink(const std::string& filename) {
     DWORD attr = GetFileAttributesA(filename.c_str());
-    return attr != INVALID_FILE_ATTRIBUTES
-            && (attr & FILE_ATTRIBUTE_REPARSE_POINT);
+    return attr != INVALID_FILE_ATTRIBUTES && (attr & FILE_ATTRIBUTE_REPARSE_POINT);
 }
 
 void filelib_listDirectory(const std::string& path, std::vector<std::string> & list) {

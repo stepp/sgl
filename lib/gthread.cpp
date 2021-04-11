@@ -6,6 +6,7 @@
  *
  * @version 2021/04/09
  * - added sgl namespace
+ * - fixed warnings about noreturn functions on older Windows systems
  * @version 2021/04/03
  * - removed dependency on custom collections
  * - fixed native_set_thread_name on Linux
@@ -40,25 +41,50 @@
 
 namespace sgl {
 
-void native_set_thread_name(const char *name)
-{
 #ifdef __APPLE__
+
+// Mac OS X implementation
+void native_set_thread_name(const char* name) {
     pthread_setname_np(name);
-#elif defined _WIN32
-#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
-    pthread_setname_np(pthread_self(), name);
-#endif
-#else
-    // ignored for other platforms
-    pthread_setname_np(pthread_self(), name);
-#endif
 }
 
-[[noreturn]] void native_thread_exit()
-{
+[[noreturn]] void native_thread_exit() {
     pthread_exit(nullptr);
-    // JDZ:  Mac+Windows, but also linux? Need test
 }
+
+#elif defined(_WIN32) && QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
+
+// Windows implementation for modern systems
+void native_set_thread_name(const char* name) {
+    pthread_setname_np(pthread_self(), name);
+}
+
+void native_thread_exit() {
+    pthread_exit(nullptr);
+}
+
+#elif defined(_WIN32)
+// Windows implementation for old systems
+void native_set_thread_name(const char* /*name*/) {
+    // empty
+}
+
+void native_thread_exit() {
+    pthread_exit(nullptr);
+}
+
+#else
+
+// Linux implementation
+void native_set_thread_name(const char* name) {
+    pthread_setname_np(pthread_self(), name);
+}
+
+[[noreturn]] void native_thread_exit() {
+    pthread_exit(nullptr);
+}
+
+#endif // __APPLE__
 
 
 QFunctionThread::QFunctionThread(GThunk func)

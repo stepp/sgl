@@ -8,6 +8,7 @@
  * - includes previous work by Julie Zelenski
  * @version 2021/04/09
  * - added sgl::exceptions namespace
+ * - fixed warnings about noreturn functions on older Windows systems
  * @version 2021/04/03
  * - removed dependency on custom collections
  * - renamed to gexceptions
@@ -87,7 +88,12 @@ STATIC_CONST_VARIABLE_DECLARE_COLLECTION(std::vector<int>, SIGNALS_HANDLED, SIGS
 static void signalHandlerDisable();
 static void signalHandlerEnable();
 static void sglSignalHandler(int sig);
+
+#if defined(_WIN32) && defined(__GNUG__)
+static void sglTerminateHandler();
+#else
 [[noreturn]] static void sglTerminateHandler();
+#endif // defined(_WIN32) && defined(__GNUG__)
 
 #ifdef __GNUG__ // gnu C++ compiler
 
@@ -286,7 +292,11 @@ static void sglSignalHandler(int sig) {
  * A general handler for any uncaught exception.
  * Prints details about the exception.
  */
+#if defined(_WIN32) && defined(__GNUG__)
+static void sglTerminateHandler() {
+#else
 [[noreturn]] static void sglTerminateHandler() {
+#endif // defined(_WIN32) && defined(__GNUG__)
     signalHandlerDisable();
 
     std::string event  ="An exception was thrown during program execution";
