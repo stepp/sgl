@@ -1,7 +1,7 @@
 ###############################################################################
 # Project file for SGL student program
 #
-# @version 2021/04/03
+# @version 2021/04/12
 # @author Marty Stepp
 ###############################################################################
 
@@ -33,7 +33,9 @@ check_lib.commands  =  $(error SGL graphics library not found. See http://github
 # requires libpthread, add link here
 # LIBS            +=  -lsgl -lpthread
 LIBS            +=  -lpthread
-QMAKE_LFLAGS    =   -L$$shell_quote($${SGL_DIR}/lib)
+exists($${SGL_DIR}/lib/*) {
+    QMAKE_LFLAGS    =   -L$$shell_quote($${SGL_DIR}/lib)
+}
 # put PWD first in search list to allow local copy to shadow if needed
 # INCLUDEPATH     +=  $$PWD "$${SGL_DIR}/include"
 exists($$PWD/lib/*) {
@@ -74,6 +76,8 @@ HEADERS         *=  ""
 SOURCES         *=  $$files(*.cpp, true)
 HEADERS         *=  $$files(*.h, true)
 # HEADERS         -=  $$files(lib/*.h, true)   # so moc will skip them
+
+INCLUDEPATH *= $$PWD/src/
 
 # Gather resource files (image/sound/etc) from res dir, list under "Other files"
 OTHER_FILES     *=  $$files(res/*, true)
